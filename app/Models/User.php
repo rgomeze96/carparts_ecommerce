@@ -2,42 +2,97 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use HasFactory, Notifiable;
+    use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    //attributes id, name, user, password, email, address, age, created_at, updated_at
+    protected $fillable = ['name','user','password','email','address','age'];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public static function validateForm(Request $request)
+    {
+        $request->validate([
+            "name" => "required",
+            "user" => "required",
+            "password" => "required",
+            "email" => "required|numeric|gt:0",
+            "address"=> "required",
+            "age"=> "required|numeric|gt:0"
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+        ]);
+    }
+
+    public function getId()
+    {
+        return $this->attributes['id'];
+    }
+
+    public function setId($id)
+    {
+        $this->attributes['id'] = $id;
+    }
+    
+    public function getName()
+    {
+        return $this->attributes['name'];
+    }
+
+    public function setName($name)
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function getUser()
+    {
+        return $this->attributes['user'];
+    }
+
+    public function setUser($user)
+    {
+        $this->attributes['user'] = $user;
+    }
+
+
+    public function getPassword()
+    {
+        return $this->attributes['password'];
+    }
+
+    public function setPassword($password)
+    {
+        $this->attributes['password'] = $password;
+    }
+    
+    public function getEmail()
+    {
+        return $this->attributes['email'];
+    }
+
+    public function setEmail($email)
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function getAddress()
+    {
+        return $this->attributes['address'];
+    }
+
+    public function setAddress($address)
+    {
+        $this->attributes['address'] = $address;
+    }
+
+    public function getAge()
+    {
+        return $this->attributes['age'];
+    }
+
+    public function setAge($age)
+    {
+        $this->attributes['age'] = $age;
+    }
 }
