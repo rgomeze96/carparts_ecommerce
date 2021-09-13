@@ -9,8 +9,8 @@ class User extends Model
 {
     use HasFactory;
 
-    //attributes id, name, user, password, email, address, age, created_at, updated_at
-    protected $fillable = ['name','user','password','email','address','age'];
+    //attributes id, name, user, password, email, address, age, city, country, telephone. balance created_at, updated_at
+    protected $fillable = ['name','user','password','email','address','age','city','country','telephone','balance'];
 
     public static function validateForm(Request $request)
     {
@@ -19,8 +19,12 @@ class User extends Model
             "user" => "required",
             "password" => "required",
             "email" => "required|numeric|gt:0",
-            "address"=> "required",
-            "age"=> "required|numeric|gt:0"
+            "address" => "required",
+            "age" => "required|numeric|gt:0",
+            'city' => "required",
+            'country' => "required",
+            'telephone' => "required",
+            'balance' => "required"
 
         ]);
     }
@@ -94,5 +98,45 @@ class User extends Model
     public function setAge($age)
     {
         $this->attributes['age'] = $age;
+    }
+
+    public function getCity()
+    {
+        return $this->attributes['city'];
+    }
+
+    public function setCity($city)
+    {
+        $this->attributes['city'] = $city;
+    }
+
+    public function getCountry()
+    {
+        return $this->attributes['country'];
+    }
+
+    public function setCountry($country)
+    {
+        $this->attributes['age'] = $country;
+    }
+
+    public function getTelephone()
+    {
+        return $this->attributes['telephone'];
+    }
+
+    public function setTelephone($telephone)
+    {
+        $this->attributes['telephone'] = $telephone;
+    }
+
+    public function getBalance()
+    {
+        return $this->attributes['balance'];
+    }
+
+    public function setBlance($balance)
+    {
+        $this->attributes['balance'] = $balance;
     }
 }

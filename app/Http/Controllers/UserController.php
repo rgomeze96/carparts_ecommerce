@@ -9,7 +9,7 @@ class UserController extends Controller
     {
         $data = []; //to be sent to the view
         $user = User::findOrFail($id);
-        $data["title"] = $user->getNombre();
+        $data["title"] = $user->getName();
         $data["user"] = $user;
         return view('user.show')->with("data",$data);
     }
@@ -26,15 +26,8 @@ class UserController extends Controller
 
     public function save(Request $request)
     {
-        $request->validate([
-            "name" => "required",
-            "user" => "required",
-            "password" => "required",
-            "email" => "required",
-            "addres" => "required",
-            "age" => "required|numeric|gt:0"
-        ]);
-        User::create($request->only(["name","user","password","email","addres","age"]));
+        User::validateForm($request);
+        User::create($request->only(["name","user","password","email","addres","age","city","country","telephone","balance"]));
         $user=User::latest('id')->first();
         $data=$user->getId();
         return redirect('user/show/'.$data)->with('success','user created successfuly!!');
