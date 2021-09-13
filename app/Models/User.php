@@ -9,7 +9,7 @@ class User extends Model
 {
     use HasFactory;
 
-    //attributes id, name, user, password, email, address, age, city, country, telephone. balance created_at, updated_at
+    //attributes id, name, user, password, email, address, age, city, country, telephone. balance, created_at, updated_at
     protected $fillable = ['name','user','password','email','address','age','city','country','telephone','balance'];
 
     public static function validateForm(Request $request)
