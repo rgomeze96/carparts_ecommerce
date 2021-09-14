@@ -11,15 +11,21 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+    //attributes id, name, user, password, email, address, age, city, country, telephone. balance, created_at, updated_at
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->bigIncrements('id');
+            $table->text('name');
+            $table->text('user');
+            $table->text('password');
+            $table->text('email');
+            $table->text('address');
+            $table->float('age');
+            $table->text('city');
+            $table->text('country');
+            $table->float('telephone');
+            $table->float('balance'); 
             $table->timestamps();
         });
     }

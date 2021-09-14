@@ -20,14 +20,21 @@ class UserFactory extends Factory
      *
      * @return array
      */
+    //attributes id, name, user, password, email, address, age, city, country, telephone. balance, created_at, updated_at
     public function definition()
     {
         return [
             'name' => $this->faker->name,
+            'user' => $this->faker->userName,
+            'password' => $this->faker->password,
             'email' => $this->faker->unique()->safeEmail,
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'address' => $this->faker->address, 
+            //'remember_token' => Str::random(10),
+            'age' => $this->faker->numberBetween($min = 18, $max = 100),
+            'city' => $this->faker->city,
+            'country' => $this->faker->country,
+            'telephone' => $this->faker->numberBetween($min = 10000, $max = 999999),
+            'balance' => $this -> faker -> numberBetween($min = 20000, $max = 1000000)
         ];
     }
 }
