@@ -18,12 +18,9 @@ class CreateProductsTable extends Migration
             $table->text('name');
             $table->text('description');
             $table->float('salePrice');
-            $table->float('loanPrice');
             $table->text('category');
             $table->text('brand');
             $table->text('warranty'); //Podría ser date
-            $table->text('type');
-            $table->boolean('availableLoan');
             $table->timestamps();
         });
     }

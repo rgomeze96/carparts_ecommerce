@@ -26,12 +26,9 @@ class ProductFactory extends Factory
             'name' => $this->faker->company,
             'description' => $this->faker->text,
             'salePrice' => $this->faker->numberBetween($min = 200, $max = 9000),
-            'loanPrice' => $this->faker->numberBetween($min = 200, $max = 9000),
             'category' => $this->faker->company,
             'brand' => $this->faker->company,
             'warranty' => $this->faker->monthName(),
-            'type' => $this->faker->jobTitle,
-            'availableLoan' => $this->faker->boolean(),
         ];
     }
 }

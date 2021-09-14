@@ -11,11 +11,11 @@ class Product extends Model
 {
     use HasFactory;
 
-    //attributes id, name, description, salePrice, loanPrice, category, brand, warranty, type, availableLoan, created_at, updated_at
+    //attributes id, name, description, salePrice, category, brand, warranty, created_at, updated_at
 
     //methods validateProduct
-    
-    protected $fillable = ['id','name','description','salePrice','loanPrice','category','brand','warranty','type','availableLoan'];
+
+    protected $fillable = ['id','name','description','salePrice','category','brand','warranty'];
 
     public static function validateProduct(Request $request)
     {
@@ -23,15 +23,12 @@ class Product extends Model
             "name" => "required",
             "description" => "required",
             "salePrice" => "required|numeric|gt:0",
-            "loanPrice" => "required|numeric|gt:0",
             "category" => "required",
             "brand" => "required",
             "warranty" => "required",
-            "type" => "required",
-            "availableLoan" => "required"
         ]);
 
-        Product::create($request->only(["name","description","salePrice","loanPrice","category","brand","warranty","type","availableLoan"]));
+        Product::create($request->only(["name","description","salePrice","category","brand","warranty"]));
     }
 
     public function getId()
@@ -74,16 +71,6 @@ class Product extends Model
         $this->attributes['salePrice'] = $salePrice;
     }
 
-    public function getLoanPrice()
-    {
-        return $this->attributes['loanPrice'];
-    }
-
-    public function setLoanPrice($loanPrice)
-    {
-        $this->attributes['loanPrice'] = $loanPrice;
-    }
-
     public function getCategory()
     {
         return $this->attributes['category'];
@@ -114,23 +101,4 @@ class Product extends Model
         $this->attributes['warranty'] = $warranty;
     }
 
-    public function getType()
-    {
-        return $this->attributes['type'];
-    }
-
-    public function setType($type)
-    {
-        $this->attributes['type'] = $type;
-    }
-
-    public function getAvailableLoan()
-    {
-        return $this->attributes['availableLoan'];
-    }
-
-    public function setAvailableLoan($availableLoan)
-    {
-        $this->attributes['availableLoan'] = $availableLoan;
-    }
 }
