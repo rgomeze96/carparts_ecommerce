@@ -21,3 +21,4 @@ Route::get('/index', 'App\Http\Controllers\HomeController@index')->name("home.in
 Route::get('/product/create', 'App\Http\Controllers\ProductController@create')->name("product.create");
 Route::post('/product/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
 Route::get('/product/list', 'App\Http\Controllers\ProductController@list')->name("product.list");
+Route::get('/product/show/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
