@@ -22,3 +22,8 @@ Route::get('/product/create', 'App\Http\Controllers\ProductController@create')->
 Route::post('/product/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
 Route::get('/product/list', 'App\Http\Controllers\ProductController@list')->name("product.list");
 Route::get('/product/show/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
+
+Route::get('/user/create', 'App\Http\Controllers\UserController@create')->name("user.create");
+Route::post('/user/save', 'App\Http\Controllers\UserController@save')->name("user.save");
+//Route::get('/user/list', 'App\Http\Controllers\UserController@list')->name("user.list");
+Route::get('/user/show/{id}', 'App\Http\Controllers\UserController@show')->name("user.show");

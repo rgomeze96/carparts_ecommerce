@@ -20,7 +20,6 @@ class UserFactory extends Factory
      *
      * @return array
      */
-    //attributes id, name, user, password, email, address, age, city, country, telephone. balance, created_at, updated_at
     public function definition()
     {
         return [
