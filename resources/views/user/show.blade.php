@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section("title", $data["title"])
 
@@ -12,23 +12,18 @@
                 @endphp
                 <div class="card-header">{{ $user->getName() }}</div>
                 <div class="card-body">
-                    <b>CLient id:</b> {{ $user->getId() }}<br />
-                    <b>CLient name:</b> {{ $user->getName() }}<br /><br />
-                    <b>CLient user:</b> {{ $user->getUser() }}<br /><br />
-                    <b>CLient password:</b> {{ $user->getPassword() }}<br /><br />
-                    <b>CLient email:</b> {{ $user->getEmail() }}<br /><br />
-                    <b>CLient address:</b> {{ $user->getAddress() }}<br /><br />
-                    <b>CLient age:</b> {{ $user->getAge() }}<br /><br />
-                    <b>CLient city:</b> {{ $user->getCity() }}<br /><br />
-                    <b>CLient country:</b> {{ $user->getCountry() }}<br /><br />
-                    <b>CLient telephone:</b> {{ $user->getTelephone() }}<br /><br />
-                    <b>CLient balance:</b> {{ $user->getBalance() }}<br /><br />
+                    <b>Client id:</b> {{ $user->getId() }}<br />
+                    <b>Client name:</b> {{ $user->getName() }}<br /><br />
+                    <b>Client user:</b> {{ $user->getUser() }}<br /><br />
+                    <b>Client password:</b> {{ $user->getPassword() }}<br /><br />
+                    <b>Client email:</b> {{ $user->getEmail() }}<br /><br />
+                    <b>Client address:</b> {{ $user->getAddress() }}<br /><br />
+                    <b>Client age:</b> {{ $user->getAge() }}<br /><br />
+                    <b>Client city:</b> {{ $user->getCity() }}<br /><br />
+                    <b>Client country:</b> {{ $user->getCountry() }}<br /><br />
+                    <b>Client telephone:</b> {{ $user->getTelephone() }}<br /><br />
+                    <b>Client balance:</b> {{ $user->getBalance() }}<br /><br />
                     
-                    <form method="POST" action="{{route('user.destroy', $user->getId()) }}">
-                        @csrf
-                        @method('delete')
-                            <input type="submit" value="Eliminar" onclick="return confirm('¿Do you what delete this user? &quot;{{ $data["user"]["id"] }}&quot;?')">
-                    </form>
                     <ul>
                     </ul>
                 </div>

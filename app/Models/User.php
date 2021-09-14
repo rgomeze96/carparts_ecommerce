@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Http\Request;
 class User extends Model
 {
     use HasFactory;
@@ -12,21 +12,22 @@ class User extends Model
     //attributes id, name, user, password, email, address, age, city, country, telephone. balance, created_at, updated_at
     protected $fillable = ['name','user','password','email','address','age','city','country','telephone','balance'];
 
-    public static function validateForm(Request $request)
+    public static function validateUser(Request $request)
     {
         $request->validate([
             "name" => "required",
             "user" => "required",
             "password" => "required",
-            "email" => "required|numeric|gt:0",
+            "email" => "required",
             "address" => "required",
-            "age" => "required|numeric|gt:0",
+            "age" => "required|numeric",
             'city' => "required",
             'country' => "required",
             'telephone' => "required",
-            'balance' => "required"
+            'balance' => "required",
 
         ]);
+        User::create($request->only(["name","user","password","email","address","age","city","country","telephone","balance"]));
     }
 
     public function getId()

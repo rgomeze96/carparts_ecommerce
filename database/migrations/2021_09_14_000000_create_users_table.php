@@ -11,7 +11,6 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
-    //attributes id, name, user, password, email, address, age, city, country, telephone. balance, created_at, updated_at
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
