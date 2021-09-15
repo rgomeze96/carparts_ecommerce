@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->float('age');
             $table->text('city');
             $table->text('country');
-            $table->float('telephone');
+            $table->text('telephone');
             $table->float('balance'); 
             $table->timestamps();
         });

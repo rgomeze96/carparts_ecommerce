@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'age' => $this->faker->numberBetween($min = 18, $max = 100),
             'city' => $this->faker->city,
             'country' => $this->faker->country,
-            'telephone' => $this->faker->numberBetween($min = 10000, $max = 999999),
+            'telephone' => $this->faker->e164PhoneNumber,
             'balance' => $this -> faker -> numberBetween($min = 20000, $max = 1000000)
         ];
     }
