@@ -27,3 +27,5 @@ Route::get('/user/create', 'App\Http\Controllers\UserController@create')->name("
 Route::post('/user/save', 'App\Http\Controllers\UserController@save')->name("user.save");
 //Route::get('/user/list', 'App\Http\Controllers\UserController@list')->name("user.list");
 Route::get('/user/show/{id}', 'App\Http\Controllers\UserController@show')->name("user.show");
+
+//Route::get /admin/product/list

@@ -27,7 +27,7 @@ class UserController extends Controller
     public function save(Request $request)
     {
         User::validateUser($request);
-        //User::create($request->only(["name","user","password","email","addres","age","city","country","telephone","balance"]));
+        
         $user=User::latest('id')->first();
         $data=$user->getId();
         return redirect('user/show/'.$data)->with('success','user created successfuly!!');

@@ -2,16 +2,34 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
-class User extends Model
+
+class User extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
 
-    //attributes id, name, user, password, email, address, age, city, country, telephone. balance, created_at, updated_at
-    protected $fillable = ['name','user','password','email','address','age','city','country','telephone','balance'];
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    //attributes id, name, email, password, user, address, age, city, country, telephone, balance, created_at, updated_at
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'user',
+        'address',
+        'age',
+        'city',
+        'country',
+        'telephone',
+        'balance',
+    ];
     public static function validateUser(Request $request)
     {
         $request->validate([
@@ -30,6 +48,24 @@ class User extends Model
         User::create($request->only(["name","user","password","email","address","age","city","country","telephone","balance"]));
     }
 
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
     public function getId()
     {
         return $this->attributes['id'];
