@@ -6,14 +6,14 @@
         <div class="col-md-8">
             @include('util.message')
             <div class="card">
-                <div class="card-header">Create product</div>
+                <div class="card-header">{{ __('product.create.product') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('product.save') }}">
+                    <form method="POST" action="{{ route('admin.product.save') }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">Name</label>
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('product.create.name') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="name" value="{{ old('name') }}">
@@ -21,7 +21,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">Description</label>
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('product.create.desc') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="description" value="{{ old('description') }}">
@@ -29,7 +29,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">Sale price</label>
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('product.create.salePrice') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="salePrice" value="{{ old('salePrice') }}">
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">Category</label>
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('product.create.category') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="category" value="{{ old('category') }}">
@@ -45,7 +45,7 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">Brand</label>
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('product.create.brand') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="brand" value="{{ old('brand') }}">
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">Warranty</label>
+                            <label class="col-md-4 col-form-label text-md-right">{{ __('product.create.warranty') }}</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="warranty" value="{{ old('warranty') }}">

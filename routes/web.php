@@ -18,14 +18,24 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index")
 Auth::routes();
 
 Route::get('/index', 'App\Http\Controllers\HomeController@index')->name("home.index");
-Route::get('/product/create', 'App\Http\Controllers\ProductController@create')->name("product.create");
-Route::post('/product/save', 'App\Http\Controllers\ProductController@save')->name("product.save");
+
+//Admin routes
+//Product
+Route::get('/admin/product/create', 'App\Http\Controllers\Admin\ProductAdminController@create')->name("admin.product.create");
+Route::post('/admin/product/save', 'App\Http\Controllers\Admin\ProductAdminController@save')->name("admin.product.save");
+
+//User routes
+//Product
 Route::get('/product/list', 'App\Http\Controllers\ProductController@list')->name("product.list");
 Route::get('/product/show/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
 
+//User
 Route::get('/user/create', 'App\Http\Controllers\UserController@create')->name("user.create");
 Route::post('/user/save', 'App\Http\Controllers\UserController@save')->name("user.save");
 //Route::get('/user/list', 'App\Http\Controllers\UserController@list')->name("user.list");
 Route::get('/user/show/{id}', 'App\Http\Controllers\UserController@show')->name("user.show");
+
+//Language
+Route::get('/language/{lan}', 'App\Http\Controllers\HomeController@language')->name('home.language');
 
 //Route::get /admin/product/list

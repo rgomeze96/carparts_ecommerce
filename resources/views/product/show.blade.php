@@ -8,12 +8,12 @@
                 <div class="card-header">{{ $data["product"]->getName() }}</div>
                 <div class="card-body">
 
-                    <b>Product name:</b>        {{ $data["product"]->getName()        }}<br />
-                    <b>Product description:</b> {{ $data["product"]->getDescription() }}<br /><br />
-                    <b>Product price:</b>       {{ $data["product"]->getSalePrice()   }}<br /><br />
-                    <b>Product category:</b>    {{ $data["product"]->getCategory()    }}<br />
-                    <b>Product brand:</b>       {{ $data["product"]->getBrand()       }}<br /><br />
-                    <b>Product warranty:</b>    {{ $data["product"]->getWarranty()    }}<br /><br />
+                    <b>{{ __('product.show.name') }}</b>        {{ $data["product"]->getName()        }}<br />
+                    <b>{{ __('product.show.desc') }}</b> {{ $data["product"]->getDescription() }}<br /><br />
+                    <b>{{ __('product.show.salePrice') }}</b>       {{ $data["product"]->getSalePrice()   }}<br /><br />
+                    <b>{{ __('product.show.category') }}</b>    {{ $data["product"]->getCategory()    }}<br />
+                    <b>{{ __('product.show.brand') }}</b>       {{ $data["product"]->getBrand()       }}<br /><br />
+                    <b>{{ __('product.show.warranty') }}</b>    {{ $data["product"]->getWarranty()    }}<br /><br />
                     
                 </div>
             </div>
