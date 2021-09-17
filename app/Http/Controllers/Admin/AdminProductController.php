@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
-class ProductAdminController extends Controller
+class AdminProductController extends Controller
 {
     public function show($id)
     {
@@ -31,7 +31,6 @@ class ProductAdminController extends Controller
     public function save(Request $request)
     {   
         Product::validateProduct($request);
-        //Product::create($request->only(["name","description","price","category","brand","warranty"]));
 
         return back()->with('success', __('product.controller.created') );
     }

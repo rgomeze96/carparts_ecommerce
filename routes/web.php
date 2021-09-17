@@ -21,8 +21,8 @@ Route::get('/index', 'App\Http\Controllers\HomeController@index')->name("home.in
 
 //Admin routes
 //Product
-Route::get('/admin/product/create', 'App\Http\Controllers\Admin\ProductAdminController@create')->name("admin.product.create");
-Route::post('/admin/product/save', 'App\Http\Controllers\Admin\ProductAdminController@save')->name("admin.product.save");
+Route::get('/admin/product/create', 'App\Http\Controllers\Admin\AdminProductController@create')->name("admin.product.create");
+Route::post('/admin/product/save', 'App\Http\Controllers\Admin\AdminProductController@save')->name("admin.product.save");
 
 //User routes
 //Product

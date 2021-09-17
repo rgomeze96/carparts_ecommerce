@@ -22,8 +22,8 @@ class HomeController extends Controller
         {
             abort(400);
         }
- 
-        $request->session()->put('applocale', $lan);
+        
+        $request->session()->put('applocale', $lan);    
         return redirect()->route('home.index'); 
     }
 }
