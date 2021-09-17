@@ -40,7 +40,3 @@ Route::get('/user/show/{id}', 'App\Http\Controllers\UserController@show')->name(
 
 //Language
 Route::get('/language/{lan}', 'App\Http\Controllers\HomeController@language')->name('home.language');
-
-
-
-//Route::get /admin/product/list
