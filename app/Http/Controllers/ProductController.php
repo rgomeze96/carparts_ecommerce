@@ -17,25 +17,6 @@ class ProductController extends Controller
         return view('product.show')->with("data",$data);
     }
 
-    public function create()
-    {
-        $data = []; //to be sent to the view
-        $data["title"] = "Create product";
-        $data["products"] = Product::all();
-
-        return view('product.create')->with("data",$data);
-    }
-
-    public function save(Request $request)
-    {   
-        Product::validateProduct($request);
-        //Product::create($request->only(["name","description","price","category","brand","warranty"]));
-
-        $product = Product::latest('id')->first();
-        $data = $product->getId();
-        return redirect('product/show/'.$data)->with('success','Item created successfully!');
-    }
-
     public function list()
     {
         $data = []; //to be sent to the view
@@ -51,9 +32,9 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect('product/list')->with('success','Element removed successfully!');
+        return redirect('product.list')->with('success','Element removed successfully!');
     }
-    public function add($id, Request $request)
+    public function addToCart($id, Request $request)
     {
         $products = $request->session()->get("products");
         $products[$id] = $id;
@@ -75,7 +56,7 @@ class ProductController extends Controller
         return view('product.showCart')->with("data",$data);
     }
 
-    public function delete(Request $request)
+    public function deleteAllCart(Request $request)
     {
         $request->session()->forget('products');
         return back();

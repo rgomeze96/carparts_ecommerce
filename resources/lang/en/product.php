@@ -1,6 +1,12 @@
 <?php
 
 return [
+    //Controller
+    'controller' => [
+        'created' => 'Item created successfully!',
+        'removed' => 'Element removed successfully!',
+    ],
+
     //Create
     'create' => [
         'product' => 'Create product',
@@ -10,11 +16,14 @@ return [
         'category' => 'Category',
         'brand' => 'Brand',
         'warranty' => 'Warranty',
+        'button' => 'Create',
     ],
     
-
     //List
-
+    'list' => [
+        'price' => 'Price:',
+        'addToCart' => 'Add to cart',
+    ],
 
     //Show
     'show' => [
@@ -24,5 +33,11 @@ return [
         'category' => 'Product category:',
         'brand' => 'Product brand:',
         'warranty' => 'Product warranty:',
+    ],
+
+    //Show cart
+    'showCart' => [
+        'price' => 'Price:',
+        'deleteAllCart' => 'Delete all cart',
     ],
 ];
