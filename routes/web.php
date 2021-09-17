@@ -13,8 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
-
 Auth::routes();
 
 Route::get('/index', 'App\Http\Controllers\HomeController@index')->name("home.index");
@@ -40,3 +38,5 @@ Route::get('/user/show/{id}', 'App\Http\Controllers\UserController@show')->name(
 
 //Language
 Route::get('/language/{lan}', 'App\Http\Controllers\HomeController@language')->name('home.language');
+
+//Testing
