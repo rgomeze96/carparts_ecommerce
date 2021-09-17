@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Interfaces\ImageStorage;
 
 class AdminProductController extends Controller
 {
@@ -31,9 +32,18 @@ class AdminProductController extends Controller
     public function save(Request $request)
     {   
         Product::validateProduct($request);
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request);
 
         return back()->with('success', __('product.controller.created') );
     }
+
+    /*public function saveImage(Request $request)
+    {   
+        $storeInterface = app(ImageStorage::class);
+        $storeInterface->store($request);
+        return back()->with('success','Image uploaded successfully!');
+    }*/
 
     public function list()
     {

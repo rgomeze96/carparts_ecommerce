@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->text('category');
             $table->text('brand');
             $table->text('warranty'); //Podría ser date
+            $table->text('image');
             $table->timestamps();
         });
     }
