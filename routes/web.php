@@ -40,3 +40,4 @@ Route::get('/user/show/{id}', 'App\Http\Controllers\UserController@show')->name(
 Route::get('/language/{lan}', 'App\Http\Controllers\HomeController@language')->name('home.language');
 
 //testing
+//testing 2222222222222222
