@@ -53,4 +53,32 @@ class ProductController extends Controller
 
         return redirect('product/list')->with('success','Element removed successfully!');
     }
+    public function add($id, Request $request)
+    {
+        $products = $request->session()->get("products");
+        $products[$id] = $id;
+        $request->session()->put('products', $products);
+        return back();
+    }
+
+    public function showCart(Request $request)
+    {
+        $data = []; //to be sent to the view
+        $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
+        
+        if($ids){
+            $data["products"]=Product::find(array_values($ids));
+        }
+        else{
+            $data["products"]=array(); 
+        }
+        return view('product.showCart')->with("data",$data);
+    }
+
+    public function delete(Request $request)
+    {
+        $request->session()->forget('products');
+        return back();
+    }
+
 }

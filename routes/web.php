@@ -38,4 +38,10 @@ Route::get('/user/show/{id}', 'App\Http\Controllers\UserController@show')->name(
 //Language
 Route::get('/language/{lan}', 'App\Http\Controllers\HomeController@language')->name('home.language');
 
+Route::get('/products/add/{id}', 'App\Http\Controllers\ProductController@add')->name('product.add');
+
+Route::get('/products/showCart', 'App\Http\Controllers\ProductController@showCart')->name('product.showCart');
+
+Route::get('/products/delete', 'App\Http\Controllers\ProductController@delete')->name('product.delete');
+
 //Route::get /admin/product/list

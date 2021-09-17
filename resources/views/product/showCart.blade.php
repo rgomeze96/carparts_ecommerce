@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<p><a href="{{ route('product.delete') }}">Delete all cart</a></p> 
 <div class="container">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach($data["products"] as $product)
@@ -10,7 +11,6 @@
                     <div class="card-body"> 
                         <h5 class="card-title fw-bold"><a href="{{ route('product.show', $product->getId()) }}" style="color:gray">{{ $product->getId() }} - {{ $product->getName() }}</a></h5>
                         <p class="card-text">Price: {{ $product->getSalePrice() }}</p>
-                        <p><a href="{{ route('product.add', ['id'=> $product->getId()]) }}">Add to cart</a></p>
                     </div>
                 </div>
             </div>
