@@ -44,4 +44,9 @@ class Order extends Model
     {
         $this->attributes['total'] = $total;
     }
+
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
 }

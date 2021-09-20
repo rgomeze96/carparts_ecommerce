@@ -112,15 +112,15 @@ class Product extends Model
         $this->attributes['image'] = $image;
     }
     
-    public function item()
+    public function items()
     {
         return $this->hasMany(Item::class);
     }
-    
+    /*
     public function reviews()
     {
         return $this->hasMany(Reviews::class);
-    }
+    }*/
     
 
 }

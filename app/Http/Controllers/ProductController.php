@@ -70,17 +70,19 @@ class ProductController extends Controller
         $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
         $total=0;
         if($ids){
-            $order= new Order();
+            $order = new Order();
             $order->setTotal(0);
             $order->save();
 
-            $products=Product::find(array_values($ids));
+            $products = Product::find(array_values($ids));
+
             foreach ($products as $product){
                 $item = new Item();
-                $item->setOrderId($product->getId());
+                $item->setOrderId($order->getId());
                 $item->setProductId($product->getId());
-                $total= $total + $product->getSalePrice();
+                $total = $total + $product->getSalePrice();
                 $item->setSubtotal($product->getSalePrice());
+                $item->setQuantity(1);
                 $item->save();
             }
 

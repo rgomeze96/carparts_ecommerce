@@ -17,6 +17,6 @@
         @endforeach
     </div>
     <p><a href="{{ route('product.deleteAllCart') }}">{{ __('product.showCart.deleteAllCart') }}</a></p> <br/><br/>
-    <p><a href="{{ route('product.buy') }}">{{ __('Buy') }}</a></p> 
+    <p><a href="{{ route('product.buy') }}">Buy</a></p> 
 </div>
 @endsection
