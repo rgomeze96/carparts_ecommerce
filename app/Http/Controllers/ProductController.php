@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\Item;
 
 class ProductController extends Controller
 {
@@ -60,6 +62,35 @@ class ProductController extends Controller
     {
         $request->session()->forget('products');
         return back();
+    }
+
+    public function buy(Request $request)
+    {
+        $data = []; //to be sent to the view
+        $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
+        $total=0;
+        if($ids){
+            $order= new Order();
+            $order->setTotal(0);
+            $order->save();
+
+            $products=Product::find(array_values($ids));
+            foreach ($products as $product){
+                $item = new Item();
+                $item->setOrderId($product->getId());
+                $item->setProductId($product->getId());
+                $total= $total + $product->getSalePrice();
+                $item->setSubtotal($product->getSalePrice());
+                $item->save();
+            }
+
+            $order->setTotal($total);
+            $order->save();
+        }  
+        else{  
+           
+        }
+        
     }
 
 }

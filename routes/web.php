@@ -29,6 +29,7 @@ Route::get('/product/show/{id}', 'App\Http\Controllers\ProductController@show')-
 Route::get('/products/add/{id}', 'App\Http\Controllers\ProductController@addToCart')->name('product.addToCart');
 Route::get('/products/showCart', 'App\Http\Controllers\ProductController@showCart')->name('product.showCart');
 Route::get('/products/delete', 'App\Http\Controllers\ProductController@deleteAllCart')->name('product.deleteAllCart');
+Route::get('/products/buy', 'App\Http\Controllers\ProductController@buy')->name('product.buy');
 
 //User
 Route::get('/user/create', 'App\Http\Controllers\UserController@create')->name("user.create");

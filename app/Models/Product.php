@@ -111,7 +111,7 @@ class Product extends Model
     {
         $this->attributes['image'] = $image;
     }
-    /*
+    
     public function item()
     {
         return $this->hasMany(Item::class);
@@ -121,6 +121,6 @@ class Product extends Model
     {
         return $this->hasMany(Reviews::class);
     }
-    */
+    
 
 }

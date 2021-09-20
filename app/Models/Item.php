@@ -62,7 +62,7 @@ class Item extends Model
     {
         $this->attributes['product_id'] = $product_id;
     }
-    /*
+    
     public function order()
     {
         return $this->belongsTo(Order::class);
@@ -71,6 +71,6 @@ class Item extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
-    }*/
+    }
 
 }
