@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name("home.index");
 
 Auth::routes();
 
@@ -39,8 +40,10 @@ Route::post('/user/save', 'App\Http\Controllers\UserController@save')->name("use
 //Route::get('/user/list', 'App\Http\Controllers\UserController@list')->name("user.list");
 Route::get('/user/show/{id}', 'App\Http\Controllers\UserController@show')->name("user.show");
 
+
 //Language
 Route::get('/language/{lan}', 'App\Http\Controllers\HomeController@language')->name('home.language');
+
 
 //testing
 //testing 2222222222222222
