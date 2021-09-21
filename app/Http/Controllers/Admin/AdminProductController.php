@@ -9,16 +9,6 @@ use App\Interfaces\ImageStorage;
 
 class AdminProductController extends Controller
 {
-    public function show($id)
-    {
-        $data = []; //to be sent to the view
-        $product = Product::findOrFail($id);
-
-        $data["title"] = $product->getName();
-        $data["product"] = $product;
-        
-        return view('product.show')->with("data", $data);
-    }
 
     public function create()
     {
@@ -43,7 +33,7 @@ class AdminProductController extends Controller
         $data = []; //to be sent to the view
 
         $data["title"] = "List of products";
-        $data["products"] = Product::all()->sortByDesc('id');
+        $data["products"] = Product::all();
 
         return view('admin.product.list')->with("data", $data);
     }
@@ -53,6 +43,31 @@ class AdminProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect('admin.product.list')->with('success', __('product.controller.removed'));
+        return back()->with('success', __('product.controller.removed'));
+    }
+
+    public function edit($id)
+    {
+        $data = []; //to be sent to the view
+        $product = Product::findOrFail($id);
+
+        $data["title"] = $product->getName();
+        $data["product"] = $product;
+        
+        return view('admin.product.edit')->with("data", $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+        $product->name = $request->input('name');
+        $product->description = $request->input('description');
+        $product->salePrice = $request->input('salePrice');
+        $product->category = $request->input('category');
+        $product->brand = $request->input('brand');
+        $product->warranty = $request->input('warranty');
+        $product->save();
+
+        return view('admin.product.list')->with('success', __('product.controller.created'));
     }
 }

@@ -7,35 +7,42 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             @include('util.message')
-            <div class="card">
-                <div class="card-header">List of products</div>
-                <div class="card-body">
-
-                    <ul>
-                        @foreach($data["products"] as $product)
-                            
-                                <li>
-                                    <b>{{ $product->getId() }}</b> - 
-                                    {{ $product->getName() }} : 
-                                    {{ $product->getSalePrice() }} USD | 
-                                    {{ $product->getCategory() }} |
-                                    {{ $product->getBrand() }} |
-                                    {{ $product->getWarranty() }}
-
-                                    <form method="POST" action="{{ route('admin.product.destroy', $product->getId()) }}">
-                                        @csrf
-                                        @method('delete')
-                                        <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete &quot;{{ $product->getName() }}&quot;?')">
-                                    </form>
-
-                                </li>                                    
+            
+                                </li>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Product name</th>
+                                        <th scope="col">Sale price</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">Brand</th>
+                                        <th scope="col">Warranty</th>
+                                        <th scope="col">Options</th>
+                                        </tr>
+                                    </thead>
+                                    @foreach($data["products"] as $product)
+                                        <tbody>
+                                            <tr>
+                                            <th scope="row">{{ $product->getId() }}</th>
+                                            <td>{{ $product->getName() }}</td>
+                                            <td>{{ $product->getSalePrice() }}</td>
+                                            <td>{{ $product->getCategory() }}</td>
+                                            <td>{{ $product->getBrand() }}</td>
+                                            <td>{{ $product->getWarranty() }}</td>
+                                            <td>
+                                                <form method="POST" action="{{ route('admin.product.destroy', $product->getId()) }}">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <input type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete &quot;{{ $product->getName() }}&quot;?')">
+                                                </form>
+                                                <br/>
+                                                <a href="{{ route('admin.product.edit', $product->getId()) }}"><input type="submit" value="Edit"></a>
+                                            </td>
+                                        </tbody>
+                                    @endforeach
+                                </table>                                    
                                                       
-                        @endforeach
-                    </ul>
-                    
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+
 //use App\Http\Controllers\ProductController;
 
 class Product extends Model
@@ -30,6 +31,21 @@ class Product extends Model
         ]);
 
         Product::create($request->only(["name","description","salePrice","category","brand","warranty", "image"]));
+    }
+
+    public static function updateProduct(Request $request)
+    {
+        $request->validate([
+            "name" => "required",
+            "description" => "required",
+            "salePrice" => "required|numeric|gt:0",
+            "category" => "required",
+            "brand" => "required",
+            "warranty" => "required",
+            "image" => "required|image",
+        ]);
+
+        Product::edit($request->only(["name","description","salePrice","category","brand","warranty", "image"]));
     }
 
     public function getId()
@@ -122,5 +138,4 @@ class Product extends Model
         return $this->hasMany(Reviews::class);
     }*/
     
-
 }
