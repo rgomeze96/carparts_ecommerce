@@ -176,4 +176,14 @@ class User extends Authenticatable
     {
         $this->attributes['balance'] = $balance;
     }
+
+    public function getRole()
+    {
+        return $this->attributes['role'];
+    }
+
+    public function setRole($role)
+    {
+        $this->attributes['role'] = $role;
+    }
 }
