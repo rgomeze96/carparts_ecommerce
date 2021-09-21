@@ -26,7 +26,7 @@ class Product extends Model
             "category" => "required",
             "brand" => "required",
             "warranty" => "required",
-            "image" => "required",
+            "image" => "required|image",
         ]);
 
         Product::create($request->only(["name","description","salePrice","category","brand","warranty", "image"]));

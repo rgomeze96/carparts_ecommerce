@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\User;
+
 class UserController extends Controller
 {
     public function show($id)
@@ -11,7 +13,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $data["title"] = $user->getName();
         $data["user"] = $user;
-        return view('user.show')->with("data",$data);
+        return view('user.show')->with("data", $data);
     }
 
     public function create()
@@ -20,7 +22,7 @@ class UserController extends Controller
         $data["title"] = "Crear user";
         $data["users"] = User::all();
 
-        return view('user.create')->with("data",$data);
+        return view('user.create')->with("data", $data);
     }
 
 
@@ -30,7 +32,7 @@ class UserController extends Controller
         
         $user=User::latest('id')->first();
         $data=$user->getId();
-        return redirect('user/show/'.$data)->with('success','user created successfuly!!');
+        return redirect('user/show/'.$data)->with('success', 'user created successfuly!!');
     }
 
     public function listar()
@@ -38,14 +40,14 @@ class UserController extends Controller
         $data = []; //to be sent to the view
         $data["title"] = "users list";
         $data["users"]= User::all()->sortByDesc('id');
-        return view('user.list')->with("data",$data);
+        return view('user.list')->with("data", $data);
     }
 
     public function destroy($id)
     {
         $user= User::findorfail($id);
         $user->delete();
-        return redirect('user/list')->with('success','User deleted successfuly');
+        return redirect('user.list')->with('success', 'User deleted successfuly');
 
     }
 }

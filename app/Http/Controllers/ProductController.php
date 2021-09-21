@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
@@ -16,7 +17,7 @@ class ProductController extends Controller
         $data["title"] = $product->getName();
         $data["product"] = $product;
         
-        return view('product.show')->with("data",$data);
+        return view('product.show')->with("data", $data);
     }
 
     public function list()
@@ -26,15 +27,7 @@ class ProductController extends Controller
         $data["title"] = "List of products";
         $data["products"] = Product::all()->sortByDesc('id');
 
-        return view('product.list')->with("data",$data);
-    }
-
-    public function destroy($id)
-    {
-        $product = Product::findOrFail($id);
-        $product->delete();
-
-        return redirect('product.list')->with('success','Element removed successfully!');
+        return view('product.list')->with("data", $data);
     }
     
     public function addToCart($id, Request $request)
@@ -50,13 +43,12 @@ class ProductController extends Controller
         $data = []; //to be sent to the view
         $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
         
-        if($ids){
+        if ($ids) {
             $data["products"]=Product::find(array_values($ids));
+        } else {
+            $data["products"]=array();
         }
-        else{
-            $data["products"]=array(); 
-        }
-        return view('product.showCart')->with("data",$data);
+        return view('product.showCart')->with("data", $data);
     }
 
     public function deleteAllCart(Request $request)
@@ -70,14 +62,14 @@ class ProductController extends Controller
         $data = []; //to be sent to the view
         $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
         $total=0;
-        if($ids){
+        if ($ids) {
             $order = new Order();
             $order->setTotal(0);
             $order->save();
 
             $products = Product::find(array_values($ids));
 
-            foreach ($products as $product){
+            foreach ($products as $product) {
                 $item = new Item();
                 $item->setOrderId($order->getId());
                 $item->setProductId($product->getId());
@@ -88,11 +80,6 @@ class ProductController extends Controller
 
             $order->setTotal($total);
             $order->save();
-        }  
-        else{  
-           
         }
-        
     }
-
 }
