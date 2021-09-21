@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class Item extends Model
 {
 
-    //attributes id, quantity, subtotal, order_id, product_id, created_at, updated_at
+    //attributes id, subtotal, order_id, product_id, created_at, updated_at
 
-    protected $fillable = ['id','quantity','subtotal'];
+    protected $fillable = ['id','subtotal'];
 
     public function getId()
     {
@@ -21,16 +21,6 @@ class Item extends Model
     public function setId($id)
     {
         $this->attributes['id'] = $id;
-    }
-
-    public function getQuantity()
-    {
-        return $this->attributes['quantity'];
-    }
-
-    public function setQuantity($quantity)
-    {
-        $this->attributes['quantity'] = $quantity;
     }
 
     public function getSubtotal()

@@ -52,7 +52,7 @@ class AdminProductController extends Controller
         $data["title"] = "List of products";
         $data["products"] = Product::all()->sortByDesc('id');
 
-        return view('product.list')->with("data",$data);
+        return view('admin.product.list')->with("data",$data);
     }
 
     public function destroy($id)
@@ -60,6 +60,6 @@ class AdminProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect('product.list')->with('success', __('product.controller.removed') );
+        return redirect('admin.product.list')->with('success', __('product.controller.removed') );
     }
 }

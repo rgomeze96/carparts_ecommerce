@@ -36,6 +36,7 @@ class ProductController extends Controller
 
         return redirect('product.list')->with('success','Element removed successfully!');
     }
+    
     public function addToCart($id, Request $request)
     {
         $products = $request->session()->get("products");
@@ -82,7 +83,6 @@ class ProductController extends Controller
                 $item->setProductId($product->getId());
                 $total = $total + $product->getSalePrice();
                 $item->setSubtotal($product->getSalePrice());
-                $item->setQuantity(1);
                 $item->save();
             }
 
