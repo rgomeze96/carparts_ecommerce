@@ -14,7 +14,6 @@
                 <div class="card-body">
                     <b>Client id:</b> {{ $user->getId() }}<br />
                     <b>Client name:</b> {{ $user->getName() }}<br /><br />
-                    <b>Client user:</b> {{ $user->getUser() }}<br /><br />
                     <b>Client password:</b> {{ $user->getPassword() }}<br /><br />
                     <b>Client email:</b> {{ $user->getEmail() }}<br /><br />
                     <b>Client address:</b> {{ $user->getAddress() }}<br /><br />

@@ -86,17 +86,6 @@ class User extends Authenticatable
         $this->attributes['name'] = $name;
     }
 
-    public function getUser()
-    {
-        return $this->attributes['user'];
-    }
-
-    public function setUser($user)
-    {
-        $this->attributes['user'] = $user;
-    }
-
-
     public function getPassword()
     {
         return $this->attributes['password'];
