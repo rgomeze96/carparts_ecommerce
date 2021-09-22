@@ -175,4 +175,21 @@ class User extends Authenticatable
     {
         $this->attributes['role'] = $role;
     }
+
+    public function getOrderId()
+    {
+        return $this->attributes['order_id'];
+    }
+
+    public function setOrderId($order_id)
+    {
+        $this->attributes['order_id'] = $order_id;
+    }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+
 }

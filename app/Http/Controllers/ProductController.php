@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Item;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     public function show($id)
@@ -65,8 +66,8 @@ class ProductController extends Controller
         if ($ids) {
             $order = new Order();
             $order->setTotal(0);
+            $order->setUserId(Auth::user()->getId());
             $order->save();
-
             $products = Product::find(array_values($ids));
 
             foreach ($products as $product) {
