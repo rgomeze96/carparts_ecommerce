@@ -4,49 +4,30 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\User;
 use App\Interfaces\ImageStorage;
 
-class AdminProductController extends Controller
+class AdminUserController extends Controller
 {
-
-    public function create()
-    {
-        $data = []; //to be sent to the view
-        $data["title"] = "Create product";
-        $data["products"] = Product::all();
-
-        return view('admin.product.create')->with("data", $data);
-    }
-
-    public function save(Request $request)
-    {
-        Product::validateProduct($request);
-        $storeInterface = app(ImageStorage::class);
-        $storeInterface->store($request);
-
-        return back()->with('success', __('product.controller.created'));
-    }
-
     public function list()
     {
         $data = []; //to be sent to the view
 
-        $data["title"] = "List of products";
-        $data["products"] = Product::all();
+        $data["title"] = "List of users";
+        $data["users"] = User::all();
 
-        return view('admin.product.list')->with("data", $data);
+        return view('admin.user.list')->with("data", $data);
     }
 
     public function destroy($id)
     {
-        $product = Product::findOrFail($id);
-        $product->delete();
+        $User = User::findOrFail($id);
+        $User->delete();
 
-        return back()->with('success', __('product.controller.removed'));
+        return back()->with('success', __('User.controller.removed'));
     }
 
-    public function edit($id)
+   /* public function edit($id)
     {
         $data = []; //to be sent to the view
         $product = Product::findOrFail($id);
@@ -69,5 +50,5 @@ class AdminProductController extends Controller
         $product->save();
 
         return view('admin.product.list')->with('success', __('product.controller.created'));
-    }
+    }*/
 }

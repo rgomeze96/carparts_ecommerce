@@ -86,17 +86,6 @@ class User extends Authenticatable
         $this->attributes['name'] = $name;
     }
 
-    public function getUser()
-    {
-        return $this->attributes['user'];
-    }
-
-    public function setUser($user)
-    {
-        $this->attributes['user'] = $user;
-    }
-
-
     public function getPassword()
     {
         return $this->attributes['password'];
@@ -176,4 +165,31 @@ class User extends Authenticatable
     {
         $this->attributes['balance'] = $balance;
     }
+
+    public function getRole()
+    {
+        return $this->attributes['role'];
+    }
+
+    public function setRole($role)
+    {
+        $this->attributes['role'] = $role;
+    }
+
+    public function getOrderId()
+    {
+        return $this->attributes['order_id'];
+    }
+
+    public function setOrderId($order_id)
+    {
+        $this->attributes['order_id'] = $order_id;
+    }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+
 }

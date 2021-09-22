@@ -20,14 +20,6 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-4 col-form-label text-md-right">User</label>
-
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="user" value="{{ old('user') }}">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right">Password</label>
 
                             <div class="col-md-6">

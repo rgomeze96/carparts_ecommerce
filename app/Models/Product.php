@@ -5,17 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+
 //use App\Http\Controllers\ProductController;
 
 class Product extends Model
 {
     use HasFactory;
 
-    //attributes id, name, description, salePrice, category, brand, warranty, created_at, updated_at
+    //attributes id, name, description, salePrice, category, brand, warranty, image, created_at, updated_at
 
     //methods validateProduct
 
-    protected $fillable = ['id','name','description','salePrice','category','brand','warranty'];
+    protected $fillable = ['id','name','description','salePrice','category','brand','warranty', 'image'];
 
     public static function validateProduct(Request $request)
     {
@@ -26,9 +27,25 @@ class Product extends Model
             "category" => "required",
             "brand" => "required",
             "warranty" => "required",
+            "image" => "required|image",
         ]);
 
-        Product::create($request->only(["name","description","salePrice","category","brand","warranty"]));
+        Product::create($request->only(["name","description","salePrice","category","brand","warranty", "image"]));
+    }
+
+    public static function updateProduct(Request $request)
+    {
+        $request->validate([
+            "name" => "required",
+            "description" => "required",
+            "salePrice" => "required|numeric|gt:0",
+            "category" => "required",
+            "brand" => "required",
+            "warranty" => "required",
+            "image" => "required|image",
+        ]);
+
+        Product::edit($request->only(["name","description","salePrice","category","brand","warranty", "image"]));
     }
 
     public function getId()
@@ -101,4 +118,24 @@ class Product extends Model
         $this->attributes['warranty'] = $warranty;
     }
 
+    public function getImage()
+    {
+        return $this->attributes['image'];
+    }
+
+    public function setImage($image)
+    {
+        $this->attributes['image'] = $image;
+    }
+    
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
+    /*
+    public function reviews()
+    {
+        return $this->hasMany(Reviews::class);
+    }*/
+    
 }
