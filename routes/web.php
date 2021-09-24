@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,11 +13,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name("home.index");
 
 Auth::routes();
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index");
-Route::get('/index', 'App\Http\Controllers\HomeController@index')->name("home.index");
 
 //Admin routes
 //user
@@ -29,6 +28,14 @@ Route::get('/admin/product/list', 'App\Http\Controllers\Admin\AdminProductContro
 Route::delete('/admin/product/destroy/{id}', 'App\Http\Controllers\Admin\AdminProductController@destroy')->name("admin.product.destroy");
 Route::get('/admin/product/edit/{id}', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
 Route::put('/admin/product/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
+
+// Tool Loan
+Route::get('/admin/toolloan/list', 'App\Http\Controllers\Admin\AdminToolLoanController@list')->name("admin.toolloan.list");
+Route::get('/admin/toolloan/edit/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@edit')->name("admin.toolloan.edit");
+Route::put('/admin/toolloan/update', 'App\Http\Controllers\Admin\AdminToolLoanController@update')->name("admin.toolloan.update");
+Route::delete('/admin/toolloan/destroy/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@destroy')->name("admin.toolloan.destroy");
+Route::get('/admin/toolloan/create', 'App\Http\Controllers\Admin\AdminToolLoanController@create')->name("admin.toolloan.create");
+Route::post('/admin/toolloan/save', 'App\Http\Controllers\Admin\AdminToolLoanController@save')->name("admin.toolloan.save");
 
 //User routes
 //Product

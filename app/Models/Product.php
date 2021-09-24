@@ -16,7 +16,7 @@ class Product extends Model
 
     //methods validateProduct
 
-    protected $fillable = ['id','name','description','salePrice','category','brand','warranty', 'image'];
+    protected $fillable = ['name','description','salePrice','category','brand','warranty', 'quantity', 'image'];
 
     public static function validateProduct(Request $request)
     {
@@ -27,12 +27,9 @@ class Product extends Model
             "category" => "required",
             "brand" => "required",
             "warranty" => "required",
-            "image" => "required|image",
+            "quantity" => "required"
         ]);
-
-        Product::create($request->only(["name","description","salePrice","category","brand","warranty", "image"]));
     }
-
     public static function updateProduct(Request $request)
     {
         $request->validate([
@@ -42,10 +39,11 @@ class Product extends Model
             "category" => "required",
             "brand" => "required",
             "warranty" => "required",
+            "quantity" => "required",
             "image" => "required|image",
         ]);
 
-        Product::edit($request->only(["name","description","salePrice","category","brand","warranty", "image"]));
+        Product::edit($request->only(["name","description","salePrice","category","brand","warranty","quantity", "image"]));
     }
 
     public function getId()
@@ -116,6 +114,15 @@ class Product extends Model
     public function setWarranty($warranty)
     {
         $this->attributes['warranty'] = $warranty;
+    }
+    public function getQuantity()
+    {
+        return $this->attributes['quantity'];
+    }
+
+    public function setQuantity($quantity)
+    {
+        $this->attributes['quantity'] = $quantity;
     }
 
     public function getImage()

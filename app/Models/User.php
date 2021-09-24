@@ -22,7 +22,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'user',
         'address',
         'age',
         'city',
@@ -34,7 +33,6 @@ class User extends Authenticatable
     {
         $request->validate([
             "name" => "required",
-            "user" => "required",
             "password" => "required",
             "email" => "required",
             "address" => "required",
@@ -45,7 +43,7 @@ class User extends Authenticatable
             'balance' => "required",
 
         ]);
-        User::create($request->only(["name","user","password","email","address","age","city","country","telephone","balance"]));
+        User::create($request->only(["name","password","email","address","age","city","country","telephone","balance"]));
     }
 
     /**
@@ -190,6 +188,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
-
-
 }

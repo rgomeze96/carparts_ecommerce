@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItemsTable extends Migration
+class CreateToolLoansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,16 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->float('subtotal');
-            $table->bigInteger('orderId')->unsigned();
-            $table->foreign('orderId')->references('id')->on('orders');
+        Schema::create('tool_loans', function (Blueprint $table) {
+            $table->id();
+            $table->bigInteger('userId')->unsigned();
+            $table->foreign('userId')->references('id')->on('users');
             $table->bigInteger('productId')->unsigned();
             $table->foreign('productId')->references('id')->on('products');
+            $table->text('description');
+            $table->float('depositAmount');
+            $table->date('loanDate');
+            $table->date('returnDate');
             $table->timestamps();
         });
     }
@@ -31,6 +34,6 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('tool_loans');
     }
 }

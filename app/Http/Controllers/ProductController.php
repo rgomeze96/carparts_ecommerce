@@ -66,7 +66,7 @@ class ProductController extends Controller
         if ($ids) {
             $order = new Order();
             $order->setTotal(0);
-            $order->setUserId(Auth::user()->getId());
+            $order->setUserId(Auth::id());
             $order->save();
             $products = Product::find(array_values($ids));
 

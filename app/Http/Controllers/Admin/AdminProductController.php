@@ -13,9 +13,8 @@ class AdminProductController extends Controller
     public function create()
     {
         $data = []; //to be sent to the view
-        $data["title"] = "Create product";
-        $data["products"] = Product::all();
-
+        $data["title"] = "Create Product";
+       
         return view('admin.product.create')->with("data", $data);
     }
 
@@ -24,15 +23,15 @@ class AdminProductController extends Controller
         Product::validateProduct($request);
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request);
-
-        return back()->with('success', __('product.controller.created'));
+        Product::create($request->only(["name","description","salePrice","category","brand","warranty", "quantity", "image"]));
+        return redirect()->route('admin.product.create')->with('success', __('product.controller.created'));
     }
 
     public function list()
     {
         $data = []; //to be sent to the view
 
-        $data["title"] = "List of products";
+        $data["title"] = "Product List";
         $data["products"] = Product::all();
 
         return view('admin.product.list')->with("data", $data);

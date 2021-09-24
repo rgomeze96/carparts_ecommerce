@@ -3,21 +3,20 @@
 return [
     //Controller
     'controller' => [
-        'created' => 'Item created successfully!',
-        'removed' => 'Element removed successfully!',
+        'created' => 'Tool Loan created successfully!',
+        'removed' => 'Tool Loan deleted successfully!',
     ],
 
-    //Create
+    //Create form
     'create' => [
-        'title' => 'Create New Product',
-        'productName' => 'Name',
-        'desc' => 'Description',
-        'salePrice' => 'Sale price',
-        'category' => 'Category',
-        'brand' => 'Brand',
-        'warranty' => 'Warranty',
-        'quantity' => 'Quantity',
-        'button' => 'Create Product',
+        'title' => 'Create New Tool Loan',
+        'userId' => 'User ID',
+        'productId' => 'Product ID',
+        'depositAmount' => 'Deposit Amount Required',
+        'loanDate' => 'Start date of loan',
+        'returnDate' => 'Date to return tool',
+        'desc' => 'Description of Loan',
+        'button' => 'Create New Tool Loan',
     ],
     
     //List
