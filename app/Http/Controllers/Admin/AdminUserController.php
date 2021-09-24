@@ -13,7 +13,7 @@ class AdminUserController extends Controller
     {
         $data = []; //to be sent to the view
 
-        $data["title"] = "List of users";
+        $data["title"] = "User List";
         $data["users"] = User::all();
 
         return view('admin.user.list')->with("data", $data);
