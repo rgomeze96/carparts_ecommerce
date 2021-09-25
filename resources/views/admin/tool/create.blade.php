@@ -27,9 +27,9 @@
                         <label for="depositAmount">{{ __('toolloan.create.depositAmount') }}</label>
                         <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Enter deposit amount required" name="depositAmount" value="{{ old('depositAmount') }}" />
                         <label for="loanDate">{{ __('toolloan.create.loanDate') }}</label>
-                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="loanDate" value="{{ old('loanDate') }}" />
+                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="loanDate" value="{{ old('loanDate') }}" />
                         <label for="returnDate">{{ __('toolloan.create.returnDate') }}</label>
-                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="returnDate" value="{{ old('returnDate') }}" />
+                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="returnDate" value="{{ old('returnDate') }}" />
                         <label for="description">{{ __('toolloan.create.desc') }}</label>
                         <textarea class="form-control col-md-6 mx-auto" name="description" rows="3" value="{{ old('description') }}"></textarea>
                         <button type="submit" class="btn btn-primary mt-2">Borrow Tool</button>

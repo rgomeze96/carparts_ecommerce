@@ -3,8 +3,8 @@
 return [
     //Controller
     'controller' => [
-        'created' => 'Item created successfully!',
-        'removed' => 'Element removed successfully!',
+        'created' => 'Product created successfully!',
+        'removed' => 'Product deleted successfully!',
     ],
 
     //Create
