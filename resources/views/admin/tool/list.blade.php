@@ -36,35 +36,37 @@
                         </button>
                     </td>
                     <div class="modal fade" id="modal-edit-{{ $loanedTool->getId() }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <form novalidate method="POST" style="text-align: center" action="{{ route('admin.toolloan.edit', $loanedTool->getId()) }}">
+                        <form novalidate method="POST" style="text-align: center" action="{{ route('admin.toolloan.update', $loanedTool->getId()) }}">
                             {{csrf_field()}}
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                <div class="modal-content mx-auto text-center border border-warning">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title mx-auto">
-                                            Update Tool Loan Information
-                                        </h5>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form class="mx-auto text-center" method="POST" action="{{ route('admin.toolloan.edit', $loanedTool->getId()) }}">
+                                    <div class="modal-content mx-auto text-center border border-warning">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title mx-auto">
+                                                {{ __('toolloan.edit.title') }}
+                                            </h5>
+                                        </div>
+                                        <div class="modal-body">
                                             @csrf
-                                            <label for="productId">{{ __('toolloan.create.productId') }}</label>
-                                            <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Current Product ID: {{ $loanedTool->getId() }}" name="productId" value="{{ old('productId') }}" />
-                                            <label for="depositAmount">{{ __('toolloan.create.depositAmount') }}</label>
-                                            <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Current Deposit Amount: " name="depositAmount" value="{{ old('depositAmount') }}" />
-                                            <label for="loanDate">{{ __('toolloan.create.loanDate') }}</label>
-                                            <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="loanDate" value="{{ old('loanDate') }}" />
-                                            <label for="returnDate">{{ __('toolloan.create.returnDate') }}</label>
-                                            <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="returnDate" value="{{ old('returnDate') }}" />
-                                            <label for="description">{{ __('toolloan.create.desc') }}</label>
-                                            <textarea class="form-control col-md-6 mx-auto" name="description" rows="3" value="{{ old('description') }}"></textarea>
-                                        </form>
+                                            <label for="productId">{{ __('toolloan.edit.userId') }}</label>
+                                            <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Current User ID: {{ $loanedTool->getId() }}" name="userId" value="{{ $loanedTool->getUserId() }}" />
+                                            <label for="productId">{{ __('toolloan.edit.productId') }}</label>
+                                            <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Current Product ID: {{ $loanedTool->getId() }}" name="productId" value="{{ $loanedTool->getProductId() }}" />
+                                            <label for="depositAmount">{{ __('toolloan.edit.depositAmount') }}</label>
+                                            <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Current Deposit Amount: " name="depositAmount" value="{{ $loanedTool->getDepositAmount() }}" />
+                                            <label for="loanDate">{{ __('toolloan.edit.loanDate') }}</label>
+                                            <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="loanDate" value="{{ $loanedTool->getLoanDate() }}" />
+                                            <label for="returnDate">{{ __('toolloan.edit.returnDate') }}</label>
+                                            <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="returnDate" value="{{ $loanedTool->getReturnDate() }}" />
+                                            <label for="description">{{ __('toolloan.edit.desc') }}</label>
+                                            <textarea class="form-control col-md-6 mx-auto" name="description" rows="3">{{ $loanedTool->getDescription() }}</textarea>
+
+                                        </div>
+                                        <div class="modal-footer mx-auto">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-warning">{{ __('toolloan.edit.button') }}</button>
+                                        </div>
                                     </div>
-                                    <div class="modal-footer mx-auto">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-warning">Update Tool Loan</button>
-                                    </div>
-                                </div>
+                                </form>
                             </div>
                         </form>
                     </div>
