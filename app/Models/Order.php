@@ -45,14 +45,24 @@ class Order extends Model
         $this->attributes['total'] = $total;
     }
 
-    public function getUserId()
+    public function getNumberItems()
     {
-        return $this->attributes['user_id'];
+        return $this->attributes['numberItems'];
     }
 
-    public function setUserId($user_id)
+    public function setNumberItems($numberItems)
     {
-        $this->attributes['user_id'] = $user_id;
+        $this->attributes['numberItems'] = $numberItems;
+    }
+
+    public function getUserId()
+    {
+        return $this->attributes['userId'];
+    }
+
+    public function setUserId($userId)
+    {
+        $this->attributes['userId'] = $userId;
     }
 
     public function items()

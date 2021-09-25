@@ -23,7 +23,7 @@ class AdminProductController extends Controller
         Product::validateProduct($request);
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request);
-        Product::create($request->only(["name","description","salePrice","category","brand","warranty", "quantity", "image"]));
+        Product::create($request->only(["name","description","salePrice","cost","category","brand","warranty", "quantity", "image"]));
         return redirect()->route('admin.product.create')->with('success', __('product.controller.created'));
     }
 
