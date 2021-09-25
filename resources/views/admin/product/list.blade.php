@@ -35,7 +35,7 @@
                         </button>
                     </td>
                     <div class="modal fade" id="modal-edit-{{ $product->getId() }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <form novalidate method="POST" style="text-align: center" action="{{ route('admin.product.edit', $product->getId()) }}">
+                        <form novalidate method="POST" style="text-align: center" action="{{ route('admin.product.update', $product->getId()) }}">
                             {{csrf_field()}}
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content mx-auto text-center border border-warning">

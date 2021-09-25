@@ -4,7 +4,8 @@ return [
     //Controller
     'controller' => [
         'created' => 'Tool Loan created successfully!',
-        'removed' => 'Tool Loan deleted successfully!',
+        'updated' => 'Tool Loan updated successfully!',
+        'deleted' => 'Tool Loan deleted successfully!',
     ],
 
     //Create form
@@ -17,6 +18,17 @@ return [
         'returnDate' => 'Date to return tool',
         'desc' => 'Description of Loan',
         'button' => 'Create New Tool Loan',
+    ],
+    //Edit form
+    'edit' => [
+        'title' => 'Modify Existing Tool Loan',
+        'userId' => 'Modify User ID',
+        'productId' => 'Modify Product ID',
+        'depositAmount' => 'Modify Deposit Amount',
+        'loanDate' => 'Modify Start date',
+        'returnDate' => 'Modify Return Date',
+        'desc' => 'Modify Description',
+        'button' => 'Modify Tool Loan',
     ],
     
     //List

@@ -41,7 +41,7 @@
                             Admin
                         </a>
                         <div class="dropdown-menu dropdown-menu-right bg-secondary" aria-labelledby="navbarDropdown">
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.create') }}">Create products</a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.create') }}">Create Product</a></li>
                             <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.toolloan.create') }}">Create Tool Loan</a></li>
                             <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.list') }}"> Product List</a></li>
                             <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.toolloan.list') }}">Tool Loan List</a></li>

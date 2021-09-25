@@ -26,18 +26,16 @@ Route::get('/admin/product/create', 'App\Http\Controllers\Admin\AdminProductCont
 Route::post('/admin/product/save', 'App\Http\Controllers\Admin\AdminProductController@save')->name("admin.product.save");
 Route::get('/admin/product/list', 'App\Http\Controllers\Admin\AdminProductController@list')->name("admin.product.list");
 Route::delete('/admin/product/destroy/{id}', 'App\Http\Controllers\Admin\AdminProductController@destroy')->name("admin.product.destroy");
-Route::get('/admin/product/edit/{id}', 'App\Http\Controllers\Admin\AdminProductController@edit')->name("admin.product.edit");
-Route::put('/admin/product/update', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
+Route::post('/admin/product/update/{id}', 'App\Http\Controllers\Admin\AdminProductController@update')->name("admin.product.update");
 
 // Tool Loan
 Route::get('/admin/toolloan/list', 'App\Http\Controllers\Admin\AdminToolLoanController@list')->name("admin.toolloan.list");
-Route::get('/admin/toolloan/edit/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@edit')->name("admin.toolloan.edit");
-Route::put('/admin/toolloan/update', 'App\Http\Controllers\Admin\AdminToolLoanController@update')->name("admin.toolloan.update");
-Route::delete('/admin/toolloan/destroy/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@destroy')->name("admin.toolloan.destroy");
 Route::get('/admin/toolloan/create', 'App\Http\Controllers\Admin\AdminToolLoanController@create')->name("admin.toolloan.create");
 Route::post('/admin/toolloan/save', 'App\Http\Controllers\Admin\AdminToolLoanController@save')->name("admin.toolloan.save");
+Route::post('/admin/toolloan/update/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@update')->name("admin.toolloan.update");
+Route::delete('/admin/toolloan/destroy/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@destroy')->name("admin.toolloan.destroy");
 
-//User routes
+//Client routes
 //Product
 Route::get('/product/list', 'App\Http\Controllers\ProductController@list')->name("product.list");
 Route::get('/product/show/{id}', 'App\Http\Controllers\ProductController@show')->name("product.show");
