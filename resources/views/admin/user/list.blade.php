@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         @include('util.message')
-        <table class="table table-striped bg-secondary text-light text-center">
+        <table class="table table-dark table-hover bg-secondary text-light text-center">
             <thead>
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
@@ -37,6 +37,7 @@
                         </form>
                         <br />
                     </td>
+                </tr>
             </tbody>
             @endforeach
         </table>
