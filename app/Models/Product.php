@@ -12,11 +12,11 @@ class Product extends Model
 {
     use HasFactory;
 
-    //attributes id, name, description, salePrice, category, brand, warranty, image, created_at, updated_at
+    //attributes id, name, description, salePrice, cost, category, brand, warranty, image, created_at, updated_at
 
     //methods validateProduct
 
-    protected $fillable = ['name','description','salePrice','category','brand','warranty', 'quantity', 'image'];
+    protected $fillable = ['name','description','salePrice','cost','category','brand','warranty', 'quantity', 'image'];
 
     public static function validateProduct(Request $request)
     {
@@ -24,26 +24,13 @@ class Product extends Model
             "name" => "required",
             "description" => "required",
             "salePrice" => "required|numeric|gt:0",
+            "cost" => "required|numeric|gt:0",
             "category" => "required",
             "brand" => "required",
             "warranty" => "required",
-            "quantity" => "required"
-        ]);
-    }
-    public static function updateProduct(Request $request)
-    {
-        $request->validate([
-            "name" => "required",
-            "description" => "required",
-            "salePrice" => "required|numeric|gt:0",
-            "category" => "required",
-            "brand" => "required",
-            "warranty" => "required",
-            "quantity" => "required",
+            "quantity" => "required|numeric|gt:0",
             "image" => "required|image",
         ]);
-
-        Product::edit($request->only(["name","description","salePrice","category","brand","warranty","quantity", "image"]));
     }
 
     public function getId()
@@ -84,6 +71,16 @@ class Product extends Model
     public function setSalePrice($salePrice)
     {
         $this->attributes['salePrice'] = $salePrice;
+    }
+
+    public function getCost()
+    {
+        return $this->attributes['cost'];
+    }
+
+    public function setCost($cost)
+    {
+        $this->attributes['cost'] = $cost;
     }
 
     public function getCategory()
