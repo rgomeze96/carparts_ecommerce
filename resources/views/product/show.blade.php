@@ -7,7 +7,6 @@
             <div class="card">
                 <div class="card-header">{{ $data["product"]->getName() }}</div>
                 <div class="card-body">
-
                     <b>{{ __('product.show.name') }}     </b> {{ $data["product"]->getName()        }}<br/>
                     <b>{{ __('product.show.desc') }}     </b> {{ $data["product"]->getDescription() }}<br/><br/>
                     <b>{{ __('product.show.salePrice') }}</b> {{ $data["product"]->getSalePrice()   }}<br/><br/>
