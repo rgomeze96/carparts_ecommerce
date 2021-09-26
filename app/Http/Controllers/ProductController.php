@@ -24,18 +24,24 @@ class ProductController extends Controller
     public function list()
     {
         $data = []; //to be sent to the view
-
         $data["title"] = "List of products";
-        $data["products"] = Product::all()->sortByDesc('id');
+        $data["products"] = Product::all();
 
         return view('product.list')->with("data", $data);
     }
     
-    public function addToCart($id, Request $request)
+    public function addToCart(Request $request, $id)
     {
         $products = $request->session()->get("products");
         $products[$id] = $id;
         $request->session()->put('products', $products);
+        return back();
+    }
+    
+    public function deleteFromCart(Request $request, $id)
+    {
+        $product = 'products'.'.'.$id;
+        $request->session()->forget($product);
         return back();
     }
 
@@ -45,9 +51,9 @@ class ProductController extends Controller
         $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
         
         if ($ids) {
-            $data["products"]=Product::find(array_values($ids));
+            $data["products"] = Product::find(array_values($ids));
         } else {
-            $data["products"]=array();
+            $data["products"] = array();
         }
         return view('product.showCart')->with("data", $data);
     }
@@ -62,10 +68,12 @@ class ProductController extends Controller
     {
         $data = []; //to be sent to the view
         $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
-        $total=0;
+        $total = 0;
+        $numberItems = 0;
         if ($ids) {
             $order = new Order();
             $order->setTotal(0);
+            $order->setNumberItems(0);
             $order->setUserId(Auth::id());
             $order->save();
             $products = Product::find(array_values($ids));
@@ -76,10 +84,12 @@ class ProductController extends Controller
                 $item->setProductId($product->getId());
                 $total = $total + $product->getSalePrice();
                 $item->setSubtotal($product->getSalePrice());
+                $numberItems = $numberItems + 1;
                 $item->save();
             }
 
             $order->setTotal($total);
+            $order->setNumberItems($numberItems);
             $order->save();
         }
     }

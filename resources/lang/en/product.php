@@ -5,6 +5,7 @@ return [
     'controller' => [
         'created' => 'Product created successfully!',
         'removed' => 'Product deleted successfully!',
+        'updated' => 'Product updated successfully!',
     ],
 
     //Create
@@ -46,14 +47,9 @@ return [
         'buttonEdit' => 'Edit',
         'buttonDelete' => 'Delete',
         'actions' => 'Actions',
-        'productNamePH' => 'Enter product name',
-        'descPH' => 'Enter product description',
-        'salePricePH' => 'Enter product sale price',
-        'costPH' => 'Enter product cost',
-        'categoryPH' => 'Enter product category',
-        'brandPH' => 'Enter product brand',
-        'warrantyPH' => 'Enter product warranty',
-        'quantityPH' => 'Enter product quantity',
+        'buttonUpdate' => 'Update Product',
+        'buttonClose' => 'Close',
+        'buttonDeletePro' => 'Delete Product',
     ],
     
     //List
@@ -70,11 +66,14 @@ return [
         'category' => 'Product category:',
         'brand' => 'Product brand:',
         'warranty' => 'Product warranty:',
+        'quantity' => 'Available:',
     ],
 
     //Show cart
     'showCart' => [
         'price' => 'Price:',
         'deleteAllCart' => 'Delete all cart',
+        'deleteFromCart' => 'Delete from cart',
+        'buy' => 'Buy',
     ],
 ];

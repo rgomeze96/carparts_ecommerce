@@ -65,11 +65,15 @@
                                                 <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter return date for loan" name="warranty" value="{{ $product->getWarranty() }}" />
                                                 <label for="quantity">{{ __('product.edit.quantity') }}</label>
                                                 <input class="form-control mb-2 col-md-8 mx-auto" type="number" min="1" placeholder="Enter return date for loan" name="quantity" value="{{ $product->getQuantity() }}" />
+                                                
+                                                <label class="mt-2" for="image">{{ __('product.edit.image') }}</label><br>
+                                                <input class="col-md-6 mt-3 mx-auto text-center" type="file" name="image" accept="image/*" value="{{ $product->getImagePath() }}" /><br><br>
+                                                <img class="card-img" src="{{$product->getImagePath()}}" alt="">
 
                                         </div>
                                         <div class="modal-footer mx-auto">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-warning">Update Product</button>
+                                            <button type="submit" class="btn btn-warning">{{ __('product.edit.buttonUpdate') }}</button>
                                         </div>
                                     </div>
                                 </form>
@@ -86,8 +90,8 @@
                                         Are you sure you want to delete the product: {{$product->getName()}}, with a quantity of {{$product->getQuantity()}} in inventory?
                                     </div>
                                     <div class="modal-footer mx-auto">
-                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-danger">Delete Product</button>
+                                        <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ __('product.edit.buttonClose') }}</button>
+                                        <button type="submit" class="btn btn-danger">{{ __('product.edit.buttonDeletePro')}}</button>
                                     </div>
                                 </div>
                             </div>
