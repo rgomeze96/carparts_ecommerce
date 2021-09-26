@@ -16,7 +16,7 @@ class Product extends Model
 
     //methods validateProduct
 
-    protected $fillable = ['name','description','salePrice','cost','category','brand','warranty', 'quantity', 'image'];
+    protected $fillable = ['name','description','salePrice','cost','category','brand','warranty', 'quantity', 'imagePath'];
 
     public static function validateProduct(Request $request)
     {
@@ -29,7 +29,7 @@ class Product extends Model
             "brand" => "required",
             "warranty" => "required",
             "quantity" => "required|numeric|gt:0",
-            "image" => "required|image",
+            "image" => "required",
         ]);
     }
 
@@ -122,14 +122,14 @@ class Product extends Model
         $this->attributes['quantity'] = $quantity;
     }
 
-    public function getImage()
+    public function getImagePath()
     {
-        return $this->attributes['image'];
+        return $this->attributes['imagePath'];
     }
 
-    public function setImage($image)
+    public function setImagePath($imagePath)
     {
-        $this->attributes['image'] = $image;
+        $this->attributes['imagePath'] = $imagePath;
     }
     
     public function items()

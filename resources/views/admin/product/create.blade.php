@@ -44,10 +44,9 @@
                         <label for="quantity">{{ __('product.create.quantity') }}</label>
                         <input class="form-control col-md-6 mx-auto" type="number" min="1" placeholder="Enter deposit amount required" name="quantity" value="{{ old('quantity') }}">
 
-                        <label for="image">{{ __('product.create.image') }}</label>
-                        <input class="form-control col-md-6 mt-3 mx-auto" type="file" placeholder="Enter deposit amount required" name="image" accept="image/*" value="{{ old('image') }}">
-
-                        <button type="submit" class="btn btn-primary mt-2">{{ __('product.create.button') }}</button>
+                        <label class="mt-2" for="image">{{ __('product.create.image') }}</label><br>
+                        <input class="col-md-6 mt-3 mx-auto text-center" type="file" name="image" accept="image/*" value="{{ old('image') }}"><br>
+                        <button type="submit" class="btn btn-primary mt-5">{{ __('product.create.button') }}</button>
                     </form>
                 </div>
             </div>
