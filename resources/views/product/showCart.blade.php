@@ -1,22 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class="container">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-3">
         @foreach($data["products"] as $product)
             <div class="col">
                 <div class="card">
-                    <img class="card-img-top" src="https://files.antena2.com/antena2/public/styles/imagen_despliegue/public/2019-04/whatsapp_image_2019-04-28_at_1.48.20_pm_0.jpeg?itok=g6od5RQE">
-                    <div class="card-body"> 
-                        <h5 class="card-title fw-bold"><a href="{{ route('product.show', $product->getId()) }}" style="color:gray">{{ $product->getId() }} - {{ $product->getName() }}</a></h5>
-                        <p class="card-text">{{ __('product.showCart.price') }} {{ $product->getSalePrice() }}</p>
+                    <div class="card-image">
+                        <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img" src="{{$product->getImagePath()}}" alt=""></a>
                     </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold"><a href="{{ route('product.show', $product->getId()) }}" style="color:gray">{{ $product->getName() }}</a></h5>
+                        <p class="card-text">{{ __('product.list.price') }} ${{number_format($product->getSalePrice(),2, '.', ',')}}</p>
+                        <a href="{{ route('product.deleteFromCart', $product->getId()) }}"><button class="btn btn-primary">{{ __('product.showCart.deleteFromCart') }}</button></a>
+                </div>
                 </div>
             </div>
         @endforeach
     </div>
-    <p><a href="{{ route('product.deleteAllCart') }}">{{ __('product.showCart.deleteAllCart') }}</a></p> <br/><br/>
-    <p><a href="{{ route('product.buy') }}">Buy</a></p> 
+    <br>
+    <p><a href="{{ route('product.buy') }}"><button class="btn btn-success">{{ __('product.showCart.buy') }}</button></a></p>
+    <p><a href="{{ route('product.deleteAllCart') }}"><button class="btn btn-danger">{{ __('product.showCart.deleteAllCart') }}</button></a></p>
 </div>
 @endsection
