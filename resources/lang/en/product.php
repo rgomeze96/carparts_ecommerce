@@ -51,6 +51,9 @@ return [
         'buttonUpdate' => 'Update Product',
         'buttonClose' => 'Close',
         'buttonDeletePro' => 'Delete Product',
+        'areYouSure'=>   'Are you sure you want to delete the product:',
+        'withA'=> ', with a quantity of',
+        'inIn'=> 'in inventory?',
     ],
     
     //List

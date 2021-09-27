@@ -89,6 +89,7 @@ class ProductController extends Controller
         $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
         $total = 0;
         $numberItems = 0;
+        $user=User::findOrFail(Auth::id());
         if ($ids) {
             $order = new Order();
             $order->setTotal(0);
@@ -106,7 +107,9 @@ class ProductController extends Controller
                 $numberItems = $numberItems + 1;
                 $item->save();
             }
-
+            $userBalance= $user->getBalance();
+            $user->setBalance($userBalance-$total);
+            $user->save();
             $order->setTotal($total);
             $order->setNumberItems($numberItems);
             $order->save();

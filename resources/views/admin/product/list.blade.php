@@ -87,7 +87,7 @@
                                 <div class="modal-content mx-auto text-center bg-secondary border border-danger text-light">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <div class="modal-body">
-                                        Are you sure you want to delete the product: {{$product->getName()}}, with a quantity of {{$product->getQuantity()}} in inventory?
+                                    {{ __('product.edit.areYouSure') }} {{$product->getName()}} {{ __('product.edit.withA') }} {{$product->getQuantity()}} {{ __('product.edit.inIn') }}
                                     </div>
                                     <div class="modal-footer mx-auto">
                                         <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ __('product.edit.buttonClose') }}</button>

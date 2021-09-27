@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-4 col-form-label text-md-right">address</label>
+                    <label class="col-md-4 col-form-label text-md-right">{{ __('user.create.address') }}</label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="address" value="{{ old('address') }}">
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-4 col-form-label text-md-right">age</label>
+                    <label class="col-md-4 col-form-label text-md-right">{{ __('user.create.age') }}</label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="age" value="{{ old('age') }}">
@@ -73,7 +73,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-4 col-form-label text-md-right">city</label>
+                    <label class="col-md-4 col-form-label text-md-right">{{ __('user.create.city') }}</label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="city" value="{{ old('city') }}">
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-4 col-form-label text-md-right">country</label>
+                    <label class="col-md-4 col-form-label text-md-right">{{ __('user.create.country') }}</label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="country" value="{{ old('country') }}">
@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-4 col-form-label text-md-right">telephone</label>
+                    <label class="col-md-4 col-form-label text-md-right">{{ __('user.create.telephone') }}</label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="telephone" value="{{ old('telephone') }}">
@@ -97,7 +97,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label class="col-md-4 col-form-label text-md-right">balance</label>
+                    <label class="col-md-4 col-form-label text-md-right">{{ __('user.create.balance') }}</label>
 
                     <div class="col-md-6">
                         <input type="text" class="form-control" name="balance" value="{{ old('balance') }}">
