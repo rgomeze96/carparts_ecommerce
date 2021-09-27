@@ -3,9 +3,9 @@
 return [
     //Controller
     'controller' => [
-        'created' => 'Tool Loan created successfully!',
-        'updated' => 'Tool Loan updated successfully!',
-        'deleted' => 'Tool Loan deleted successfully!',
+        'created' => 'Tool Loan was created successfully!',
+        'updated' => 'Tool Loan was updated successfully!',
+        'deleted' => 'Tool Loan was deleted successfully!',
     ],
 
     //Create form

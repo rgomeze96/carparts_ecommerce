@@ -33,7 +33,9 @@
                         <label for="exampleFormControlSelect2">Example multiple select</label>
                         <select multiple class="form-control col-md-6 mx-auto">
                             @foreach($data["products"] as $product)
+                            @if($product->getCategory() == "Tool")
                             <option>{{$product->getName()}}</option>
+                            @endif
                             @endforeach
                         </select>
                     <label for="depositAmount">{{ __('toolloan.create.depositAmount') }}</label>

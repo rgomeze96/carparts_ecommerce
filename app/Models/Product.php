@@ -12,11 +12,11 @@ class Product extends Model
 {
     use HasFactory;
 
-    //attributes id, name, description, salePrice, cost, category, brand, warranty, image, created_at, updated_at
+    //attributes id, name, description, sale_price, cost, category, brand, warranty, image_path, created_at, updated_at
 
     //methods validateProduct
 
-    protected $fillable = ['name','description','salePrice','cost','category','brand','warranty', 'quantity', 'imagePath'];
+    protected $fillable = ['name','description','sale_price','cost','category','brand','warranty', 'quantity', 'image_path'];
 
     public static function validateProduct(Request $request)
     {
@@ -65,12 +65,12 @@ class Product extends Model
 
     public function getSalePrice()
     {
-        return $this->attributes['salePrice'];
+        return $this->attributes['sale_price'];
     }
 
     public function setSalePrice($salePrice)
     {
-        $this->attributes['salePrice'] = $salePrice;
+        $this->attributes['sale_price'] = $salePrice;
     }
 
     public function getCost()
@@ -124,22 +124,22 @@ class Product extends Model
 
     public function getImagePath()
     {
-        return $this->attributes['imagePath'];
+        return $this->attributes['image_path'];
     }
 
     public function setImagePath($imagePath)
     {
-        $this->attributes['imagePath'] = $imagePath;
+        $this->attributes['image_path'] = $imagePath;
     }
     
     public function items()
     {
         return $this->hasMany(Item::class);
     }
-    /*
+    
     public function reviews()
     {
-        return $this->hasMany(Reviews::class);
-    }*/
+        return $this->hasMany(Review::class);
+    }
     
 }

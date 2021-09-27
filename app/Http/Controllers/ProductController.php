@@ -6,19 +6,38 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\Item;
-use App\Models\User;
+use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
     public function show($id)
     {
         $data = []; //to be sent to the view
-        $product = Product::findOrFail($id);
-
+        $product = Product::where('id', $id)->with('reviews.user')->first();
         $data["title"] = $product->getName();
         $data["product"] = $product;
         
         return view('product.show')->with("data", $data);
+    }
+    public function storeReview(Request $request, $id)
+    {
+        Review::validate($request);
+        $newReview = new Review;
+        $newReview->rating = $request->newReviewRating;
+        $newReview->review_text = $request->newReviewText;
+        $newReview->product_id = $id;
+        $newReview->user_id = Auth::id();
+        $newReview->save();
+        return redirect()->route('product.show', $id)->with('success', __('product.controller.reviewCreated'));
+    }
+    public function review($id)
+    {      
+        $data = []; //to be sent to the view
+        $product = Product::where('id', $id)->first();
+        $data["title"] = 'Review: '.$product->getName();
+        $data["product"] = $product;
+        
+        return view('product.review')->with("data", $data);
     }
 
     public function list()

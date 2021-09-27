@@ -3,9 +3,10 @@
 return [
     //Controller
     'controller' => [
-        'created' => 'Product created successfully!',
-        'removed' => 'Product deleted successfully!',
-        'updated' => 'Product updated successfully!',
+        'created' => 'Product was created successfully!',
+        'removed' => 'Product was deleted successfully!',
+        'updated' => 'Product was updated successfully!',
+        'reviewCreated' => 'Your review was successfully created!'
     ],
 
     //Create
@@ -69,7 +70,17 @@ return [
         'category' => 'Product category:',
         'brand' => 'Product brand:',
         'warranty' => 'Product warranty:',
-        'quantity' => 'Available:',
+        'quantity' => 'Quantity available:',
+        'customer' => 'Customer',
+        'reviewTitle' => 'Customer Reviews',
+        'rating' => 'Customer Rating',
+        'experience' => 'Customer Experience',
+        'storeReviewButton' => 'Leave a Review',
+        'storeReviewTitle' => 'Leave a review for:',
+        'newReviewRating' => 'Your Rating',
+        'newReviewRatingHelp' => 'Enter a number 1-5, 5 being a great review',
+        'newReviewText' => 'Your Experience',
+        'saveReviewButton' => 'Save Review'
     ],
 
     //Show cart

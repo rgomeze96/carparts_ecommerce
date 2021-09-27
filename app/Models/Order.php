@@ -47,26 +47,31 @@ class Order extends Model
 
     public function getNumberItems()
     {
-        return $this->attributes['numberItems'];
+        return $this->attributes['number_items'];
     }
 
     public function setNumberItems($numberItems)
     {
-        $this->attributes['numberItems'] = $numberItems;
+        $this->attributes['number_items'] = $numberItems;
     }
 
     public function getUserId()
     {
-        return $this->attributes['userId'];
+        return $this->attributes['user_id'];
     }
 
     public function setUserId($userId)
     {
-        $this->attributes['userId'] = $userId;
+        $this->attributes['user_id'] = $userId;
     }
 
     public function items()
     {
         return $this->hasMany(Item::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    } 
 }

@@ -184,8 +184,8 @@ class User extends Authenticatable
         $this->attributes['order_id'] = $order_id;
     }
 
-    public function order()
+    public function reviews()
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(Review::class);
     }
 }

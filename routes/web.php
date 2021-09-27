@@ -48,6 +48,10 @@ Route::get('/product/showCart/remove/{id}', 'App\Http\Controllers\ProductControl
 Route::get('/product/delete', 'App\Http\Controllers\ProductController@deleteAllCart')->name('product.deleteAllCart');
 Route::get('/product/buy', 'App\Http\Controllers\ProductController@buy')->name('product.buy');
 
+// Product Reviews
+Route::get('/review/create/{id}', 'App\Http\Controllers\ProductController@review')->name('product.writeReview');
+Route::post('/review/storeReview/{id}', 'App\Http\Controllers\ProductController@storeReview')->name('product.storeReview');
+
 //User
 Route::get('/user/create', 'App\Http\Controllers\UserController@create')->name("user.create");
 Route::post('/user/save', 'App\Http\Controllers\UserController@save')->name("user.save");
