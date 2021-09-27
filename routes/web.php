@@ -21,7 +21,8 @@ Route::get('/', 'App\Http\Controllers\HomeController@index')->name("home.index")
 //user
 Route::delete('/admin/user/destroy/{id}', 'App\Http\Controllers\Admin\AdminUserController@destroy')->name("admin.user.destroy");
 Route::get('/admin/user/list', 'App\Http\Controllers\Admin\AdminUserController@list')->name("admin.user.list");
-
+Route::post('/admin/user/update/{id}', 'App\Http\Controllers\Admin\AdminUserController@update')->name("admin.user.update");
+Route::post('/admin/user/save', 'App\Http\Controllers\AdminUserController@save')->name("admin.user.save");
 //Product
 Route::get('/admin/product/list', 'App\Http\Controllers\Admin\AdminProductController@list')->name("admin.product.list");
 Route::get('/admin/product/create', 'App\Http\Controllers\Admin\AdminProductController@create')->name("admin.product.create");
