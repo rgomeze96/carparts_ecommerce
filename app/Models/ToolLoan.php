@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class ToolLoan extends Model
 {
-    //attributes id, userId, productId, productName, description, depositAmount, cost, startDate, returnDate
-    protected $fillable = ["userId", "productId", "productName", "description", "depositAmount", "loanDate", "returnDate"];
+    //attributes id, user_id, product_id, product_name, description, deposit_amount, cost, loan_date, return_date
+    protected $fillable = ["user_id", "product_id", "product_name", "description", "deposit_amount", "loan_date", "return_date"];
 
     // validate form to create a Tool Loan
     public static function validate(Request $request)
@@ -16,7 +16,7 @@ class ToolLoan extends Model
         $request->validate([
             "userId" => "required",
             "productId" => "required",
-            "depositAmount" => "required|numeric|gt:0",
+            "deposit_amount" => "required|numeric|gt:0",
             "loanDate" => "required|date",
             "returnDate" => "required|date"
         ]);
@@ -35,22 +35,22 @@ class ToolLoan extends Model
     // get the id of the user that loaned the tool
     public function getUserId()
     {
-        return $this->attributes['userId'];
+        return $this->attributes['user_id'];
     }
     // set the id of the user that loaned the tool
     public function setUserId($userId)
     {
-        $this->attributes['userId'] = $userId;
+        $this->attributes['user_id'] = $userId;
     }
     // get the id of the product that was loaned
     public function getProductId()
     {
-        return $this->attributes['productId'];
+        return $this->attributes['product_id'];
     }
     // set the id of the product that was loaned
     public function setProductId($productId)
     {
-        $this->attributes['productId'] = $productId;
+        $this->attributes['product_id'] = $productId;
     }
     // get the description of the Tool Loan
     public function getDescription()
@@ -65,31 +65,31 @@ class ToolLoan extends Model
     // get the deposit amount required to loan the tool
     public function getDepositAmount()
     {
-        return $this->attributes['depositAmount'];
+        return $this->attributes['deposit_amount'];
     }
     // set the deposit amount required to loan the tool
     public function setDepositAmount($depositAmount)
     {
-        $this->attributes['depositAmount'] = $depositAmount;
+        $this->attributes['deposit_amount'] = $depositAmount;
     }
     // get the date that the tool is being loaned
     public function getLoanDate()
     {
-        return $this->attributes['loanDate'];
+        return $this->attributes['loan_date'];
     }
     // set the date that the tool is is being loaned
     public function setLoanDate($loanDate)
     {
-        $this->attributes['loanDate'] = $loanDate;
+        $this->attributes['loan_date'] = $loanDate;
     }
     // get the date that the tool is to be returned
     public function getReturnDate()
     {
-        return $this->attributes['returnDate'];
+        return $this->attributes['return_date'];
     }
     // set the date that the tool is to be returned
     public function setReturnData($returnDate)
     {
-        $this->attributes['returnDate'] = $returnDate;
+        $this->attributes['return_date'] = $returnDate;
     }
 }

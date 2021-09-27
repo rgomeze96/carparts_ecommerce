@@ -7,7 +7,7 @@
             <div class="col">
                 <div class="card">
                     <div class="card-image">
-                        <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img" src="{{$product->getImagePath()}}" alt=""></a>
+                        <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img" src="{{$product->getImagePath()}}" alt="{{$product->getId()}}"></a>
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fw-bold"><a href="{{ route('product.show', $product->getId()) }}" style="color:gray">{{ $product->getName() }}</a></h5>

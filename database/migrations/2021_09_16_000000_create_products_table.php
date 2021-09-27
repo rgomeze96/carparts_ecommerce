@@ -17,13 +17,13 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->text('name');
             $table->text('description');            
-            $table->float('salePrice');
+            $table->float('sale_price');
             $table->float('cost');
             $table->text('category');
             $table->text('brand');
             $table->text('warranty');
             $table->integer('quantity');
-            $table->text('imagePath');
+            $table->text('image_path');
             $table->timestamps();
         });
     }

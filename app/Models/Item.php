@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class Item extends Model
 {
 
-    //attributes id, subtotal, orderId, productId, created_at, updated_at
+    //attributes id, subtotal, order_id, product_id, created_at, updated_at
 
     protected $fillable = ['id','subtotal'];
 
@@ -35,22 +35,22 @@ class Item extends Model
 
     public function getOrderId()
     {
-        return $this->attributes['orderId'];
+        return $this->attributes['order_id'];
     }
 
     public function setOrderId($orderId)
     {
-        $this->attributes['orderId'] = $orderId;
+        $this->attributes['order_id'] = $orderId;
     }
 
     public function getProductId()
     {
-        return $this->attributes['productId'];
+        return $this->attributes['product_id'];
     }
 
     public function setProductId($productId)
     {
-        $this->attributes['productId'] = $productId;
+        $this->attributes['product_id'] = $productId;
     }
     
     public function order()

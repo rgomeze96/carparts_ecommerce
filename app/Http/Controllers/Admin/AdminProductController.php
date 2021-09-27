@@ -39,13 +39,13 @@ class AdminProductController extends Controller
         $newProduct = new Product;
         $newProduct->name = $request->name;
         $newProduct->description = $request->description;
-        $newProduct->salePrice = $request->salePrice;
+        $newProduct->sale_price = $request->salePrice;
         $newProduct->cost = $request->cost;
         $newProduct->category = $request->category;
         $newProduct->brand = $request->brand;
         $newProduct->warranty = $request->warranty;
         $newProduct->quantity = $request->quantity;
-        $newProduct->imagePath = $imagePath;
+        $newProduct->image_path = $imagePath;
         $newProduct->save();
         //Product::create($request->only(["name","description","salePrice","cost","category","brand","warranty", "quantity", $imagePath]));
         return redirect()->route('admin.product.create')->with('success', __('product.controller.created'));

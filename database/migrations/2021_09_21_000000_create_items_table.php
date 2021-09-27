@@ -16,10 +16,10 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->float('subtotal');
-            $table->bigInteger('orderId')->unsigned();
-            $table->foreign('orderId')->references('id')->on('orders');
-            $table->bigInteger('productId')->unsigned();
-            $table->foreign('productId')->references('id')->on('products');
+            $table->bigInteger('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders');
+            $table->bigInteger('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products');
             $table->timestamps();
         });
     }
