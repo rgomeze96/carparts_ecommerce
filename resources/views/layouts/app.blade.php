@@ -23,7 +23,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container-fluid">
-            <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index') }}">CarPart Home</a>
+            <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index') }}">{{ __('layout.title') }}</a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -32,7 +32,7 @@
                 <ul class="navbar-nav ml-auto">
                     @guest
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('register') }}">Register</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('register') }}">{{ __('layout.register') }}</a></li>
 
                     @else
                     @if (Auth::user()->getRole() == "admin")
@@ -41,11 +41,11 @@
                             Admin
                         </a>
                         <div class="dropdown-menu dropdown-menu-right bg-secondary" aria-labelledby="navbarDropdown">
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.create') }}">Create Product</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.toolloan.create') }}">Create Tool Loan</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.list') }}"> Product List</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.toolloan.list') }}">Tool Loan List</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.user.list') }}">User List</a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.create') }}">{{ __('layout.createPro') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.toolloan.create') }}">{{ __('layout.createTool') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.list') }}"> {{ __('layout.productList') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.toolloan.list') }}">{{ __('layout.toolList') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.user.list') }}">{{ __('layout.userList') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
                         </div>
@@ -55,8 +55,8 @@
                     @else
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('product.list') }}">Products</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('product.showCart') }}">Show Cart</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('product.showCart') }}">{{ __('layout.showCart') }}</a></li>
                     @endif
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf

@@ -159,7 +159,7 @@ class User extends Authenticatable
         return $this->attributes['balance'];
     }
 
-    public function setBlance($balance)
+    public function setBalance($balance)
     {
         $this->attributes['balance'] = $balance;
     }
