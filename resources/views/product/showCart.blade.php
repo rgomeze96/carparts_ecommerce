@@ -20,6 +20,8 @@
             </div>
             <h5>{{$product->getName()}}</h5>
             <h5>${{number_format($product->getSalePrice(),2, '.', ',')}}</h5>
+            <a href="{{ route('product.deleteFromCart', $product->getId()) }}"><button class="btn btn-outline-secondary">{{ __('product.showCart.deleteFromCart') }}</button></a>
+            <hr class="border-secondary">
             @endforeach
             @if(count($data["products"]) > 0)
             <h3 class="text-primary">{{ __('product.showCart.total') }} ${{number_format($data["products"]->sum('sale_price'),2, '.', ',')}}</h3>
