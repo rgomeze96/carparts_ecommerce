@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    //attributes id, name, email, password, user, address, age, city, country, telephone, balance, created_at, updated_at
+    //attributes id, name, email, password, user, address, age, city, country, telephone, balance, role, created_at, updated_at
     protected $fillable = [
         'name',
         'email',
@@ -28,6 +27,7 @@ class User extends Authenticatable
         'country',
         'telephone',
         'balance',
+        'role'
     ];
     public static function validateUser(Request $request)
     {
@@ -43,7 +43,6 @@ class User extends Authenticatable
             'balance' => "required",
 
         ]);
-        User::create($request->only(["name","password","email","address","age","city","country","telephone","balance"]));
     }
 
     /**
@@ -141,7 +140,7 @@ class User extends Authenticatable
 
     public function setCountry($country)
     {
-        $this->attributes['age'] = $country;
+        $this->attributes['country'] = $country;
     }
 
     public function getTelephone()
@@ -172,16 +171,6 @@ class User extends Authenticatable
     public function setRole($role)
     {
         $this->attributes['role'] = $role;
-    }
-
-    public function getOrderId()
-    {
-        return $this->attributes['order_id'];
-    }
-
-    public function setOrderId($order_id)
-    {
-        $this->attributes['order_id'] = $order_id;
     }
 
     public function reviews()

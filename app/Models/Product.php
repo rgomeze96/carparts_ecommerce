@@ -16,7 +16,8 @@ class Product extends Model
 
     //methods validateProduct
 
-    protected $fillable = ['name','description','sale_price','cost','category','brand','warranty', 'quantity', 'image_path'];
+    protected $fillable = ['name','description','sale_price','cost','category','brand','warranty', 'quantity',
+        'image_path'];
 
     public static function validateProduct(Request $request)
     {
@@ -28,8 +29,7 @@ class Product extends Model
             "category" => "required",
             "brand" => "required",
             "warranty" => "required",
-            "quantity" => "required|numeric|gt:0",
-            "image" => "required",
+            "quantity" => "required|numeric|gt:0"
         ]);
     }
 

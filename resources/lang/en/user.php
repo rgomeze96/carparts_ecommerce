@@ -14,7 +14,7 @@ return [
         'userName' => 'Name',
         'password' => 'Password',
         'email' => 'Email',
-        'address' => 'Adress',
+        'address' => 'Address',
         'age' => 'Age',
         'city' => 'City',
         'country' => 'Country',
@@ -33,7 +33,8 @@ return [
 
     //Edit
     'edit' => [
-        'title' => 'Update User Information',
+        'title' => 'List of Users',
+        'modifyTitle' => 'Update User Information',
         'id' => 'ID',
         'userName' => 'Name',
         'email' => 'Email',
@@ -50,6 +51,9 @@ return [
         'buttonClose' => 'Close',
         'buttonDeleteUser' => 'Delete User',
         'areYouSure' => 'Are you sure you want to delete the user:',
+        'clientRole' => 'Client',
+        'adminRole' => 'Admin',
+        'role' => 'Permission',
     ],
     
     //Show
