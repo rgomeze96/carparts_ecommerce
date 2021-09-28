@@ -21,32 +21,26 @@
                 <form class="mx-auto text-center" method="POST" action="{{ route('admin.toolloan.save') }}">
                     @csrf
                     <label for="userId">{{ __('toolloan.create.userId') }}</label>
-                    <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Enter user ID" name="userId" value="{{ old('userId') }}" />
-                        <label for="exampleFormControlSelect2">Example multiple select</label>
-                        <select multiple class="form-control col-md-6 mx-auto">
-                            @foreach($data["users"] as $user)
-                            <option>{{$user->getName()}}</option>
-                            @endforeach
-                        </select>
-                    <label for="productId">{{ __('toolloan.create.productId') }}</label>
-                    <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Enter product ID" name="productId" value="{{ old('productId') }}" />
-                        <label for="exampleFormControlSelect2">Example multiple select</label>
-                        <select multiple class="form-control col-md-6 mx-auto">
-                            @foreach($data["products"] as $product)
-                            @if($product->getCategory() == "Tool")
-                            <option>{{$product->getName()}}</option>
-                            @endif
-                            @endforeach
-                        </select>
-                    <label for="depositAmount">{{ __('toolloan.create.depositAmount') }}</label>
-                    <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Enter deposit amount required" name="depositAmount" value="{{ old('depositAmount') }}" />
-                    <label for="loanDate">{{ __('toolloan.create.loanDate') }}</label>
-                    <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="loanDate" value="{{ old('loanDate') }}" />
-                    <label for="returnDate">{{ __('toolloan.create.returnDate') }}</label>
-                    <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="returnDate" value="{{ old('returnDate') }}" />
-                    <label for="description">{{ __('toolloan.create.desc') }}</label>
+                    <select multiple class="form-control col-md-6 mx-auto" name="userId" id="userId">
+                        @foreach($data["users"] as $user)
+                        <option value="{{$user->getId()}}">{{$user->getName()}}</option>
+                        @endforeach
+                    </select>
+                    <label class="mt-2" for="productId">{{ __('toolloan.create.productId') }}</label>
+                    <select class="form-control col-md-6 mx-auto text-center" name="productId">
+                        @foreach($data["tools"] as $tool)
+                        <option value="{{$tool->getId()}}">{{$tool->getName()}}</option>
+                        @endforeach
+                    </select>
+                    <label class="mt-2" for="description">{{ __('toolloan.create.desc') }}</label>
                     <textarea class="form-control col-md-6 mx-auto" name="description" rows="3" value="{{ old('description') }}"></textarea>
-                    <button type="submit" class="btn btn-primary mt-2">Borrow Tool</button>
+                    <label class="mt-2" for="depositAmount">{{ __('toolloan.create.depositAmount') }}</label>
+                    <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Enter deposit amount required" name="depositAmount" value="{{ old('depositAmount') }}" />
+                    <label class="mt-2" for="loanDate">{{ __('toolloan.create.loanDate') }}</label>
+                    <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="loanDate" value="{{ old('loanDate') }}" />
+                    <label class="mt-2" for="returnDate">{{ __('toolloan.create.returnDate') }}</label>
+                    <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="returnDate" value="{{ old('returnDate') }}" />
+                    <button type="submit" class="btn btn-primary mt-2">{{ __('toolloan.create.button') }}</button>
                 </form>
             </div>
         </div>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ToolLoan extends Model
 {
     //attributes id, user_id, product_id, product_name, description, deposit_amount, cost, loan_date, return_date
-    protected $fillable = ["user_id", "product_id", "product_name", "description", "deposit_amount", "loan_date", "return_date"];
+    protected $fillable = ["user_id", "product_id", "description", "deposit_amount", "loan_date", "return_date"];
 
     // validate form to create a Tool Loan
     public static function validate(Request $request)
@@ -16,7 +16,19 @@ class ToolLoan extends Model
         $request->validate([
             "userId" => "required",
             "productId" => "required",
-            "deposit_amount" => "required|numeric|gt:0",
+            "description" => "required",
+            "depositAmount" => "required|numeric|gt:0",
+            "loanDate" => "required|date",
+            "returnDate" => "required|date"
+        ]);
+    }
+    public static function modifyValidate(Request $request)
+    {
+        $request->validate([
+            "userId" => "required",
+            "productId" => "required",
+            "description" => "required",
+            "depositAmount" => "required",
             "loanDate" => "required|date",
             "returnDate" => "required|date"
         ]);

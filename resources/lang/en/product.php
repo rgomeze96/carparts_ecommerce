@@ -6,12 +6,16 @@ return [
         'created' => 'Product was created successfully!',
         'removed' => 'Product was deleted successfully!',
         'updated' => 'Product was updated successfully!',
-        'reviewCreated' => 'Your review was successfully created!'
+        'reviewCreated' => 'Your review was successfully created!',
+        'listOfProductWith' => 'Products with: ',
+        'inName' => ' - in the name',
+        'allProducts' => 'List of all products',
+        'listOfProductsWith' => 'List of products with: '
     ],
 
     //Create
     'create' => [
-        'title' => 'Create New Product',
+        'title' => 'Create a New Product',
         'productName' => 'Name',
         'desc' => 'Description',
         'salePrice' => 'Sale Price',
@@ -34,7 +38,8 @@ return [
 
     //Edit
     'edit' => [
-        'title' => 'Update Product Information',
+        'title' => 'List of Products',
+        'modifyTitle' => 'Update Product Information',
         'id' => 'ID',
         'productName' => 'Name',
         'desc' => 'Description',
@@ -60,6 +65,7 @@ return [
     'list' => [
         'price' => 'Price:',
         'addToCart' => 'Add to cart',
+        'findOnName' => 'Filter by name'
     ],
 
     //Show
@@ -86,8 +92,14 @@ return [
     //Show cart
     'showCart' => [
         'price' => 'Price:',
-        'deleteAllCart' => 'Delete all cart',
+        'deleteAllCart' => 'Delete all items in cart',
         'deleteFromCart' => 'Delete from cart',
-        'buy' => 'Buy',
+        'buy' => 'Purchase Items',
+        'total' => 'Total Price of Cart: ',
+        'emptyCart' => 'Your cart is empty, you can find a product to add, ',
+        'here' => 'here',
+        'yourCart' => 'Your cart with',
+        'product' => 'product',
+        'balance' => 'Your available balance is: '
     ],
 ];

@@ -22,9 +22,9 @@
 
 <body id="page-top">
     <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-        <div class="container-fluid">
-            <a class="navbar-brand js-scroll-trigger" href="{{ route('home.index') }}">{{ __('layout.title') }}</a>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
+            <a class="navbar-brand" href="{{ route('home.index') }}"> <img class="rounded rounded-circle" style="max-width: 125px; max-height: 70px" src="/storage/tokyo_logo.png"> </a>
             <button class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 Menu
                 <i class="fas fa-bars"></i>
@@ -51,8 +51,6 @@
                                                         document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
                         </div>
                     </span>
-
-
                     @else
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">{{ __('Logout') }}</a></li>
@@ -65,9 +63,9 @@
                     @endguest
                 </ul>
             </div>
-        </div>
-    </nav>
-    <div id="main-content" style="padding-top: 85px; padding-bottom: 5px">
+        </nav>
+    </div>
+    <div id="main-content" style="padding-top: 105px; padding-bottom: 5px">
         @yield('content')
     </div>
     <!-- Copyright -->

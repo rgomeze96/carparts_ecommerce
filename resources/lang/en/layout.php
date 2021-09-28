@@ -2,7 +2,7 @@
 
 return [
 
-    'portfolio' => 'Portfolio',
+    'portfolio' => 'Popular Products',
     'title' => 'CarPart Home',
     'register' => 'Register',
     'createPro' => 'Create product',

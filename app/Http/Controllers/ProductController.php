@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Order;
 use App\Models\Item;
 use App\Models\Review;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 class ProductController extends Controller
 {
@@ -31,7 +32,7 @@ class ProductController extends Controller
         return redirect()->route('product.show', $id)->with('success', __('product.controller.reviewCreated'));
     }
     public function review($id)
-    {      
+    {
         $data = []; //to be sent to the view
         $product = Product::where('id', $id)->first();
         $data["title"] = 'Review: '.$product->getName();
@@ -40,12 +41,22 @@ class ProductController extends Controller
         return view('product.review')->with("data", $data);
     }
 
-    public function list()
+    public function list(Request $request)
     {
         $data = []; //to be sent to the view
-        $data["title"] = "List of products";
-        $data["products"] = Product::all();
-
+        if ($request->has('nameFilter')) {
+            $data["title"] =  __('product.controller.listOfProductsWith').
+                $request->nameFilter.__('product.controller.inName');
+            $nameFilter = $request->nameFilter;
+            $request->nameFilter.__('product.controller.inName');
+            $data["products"] = Product::where('name', 'like', "%$nameFilter%")->get();
+        } elseif ($request->has('categoryFilter')) {
+            $data["title"] = "Tools Available for Rent";
+            $data["products"] = Product::where('category', $request->categoryFilter)->get();
+        } else {
+            $data["title"] =  __('product.controller.allProducts');
+            $data["products"] = Product::all();
+        }
         return view('product.list')->with("data", $data);
     }
     
@@ -68,7 +79,7 @@ class ProductController extends Controller
     {
         $data = []; //to be sent to the view
         $ids = $request->session()->get("products"); //obtenemos ids de productos guardados en session
-        
+        $data["user"] = User::find(Auth::id());
         if ($ids) {
             $data["products"] = Product::find(array_values($ids));
         } else {
@@ -101,18 +112,20 @@ class ProductController extends Controller
             foreach ($products as $product) {
                 $item = new Item();
                 $item->setOrderId($order->getId());
-                $item->setProductId($product->getId());
+                $item->setProductName($product->getName());
                 $total = $total + $product->getSalePrice();
                 $item->setSubtotal($product->getSalePrice());
                 $numberItems = $numberItems + 1;
                 $item->save();
             }
-            $userBalance= $user->getBalance();
+            $userBalance = $user->getBalance();
             $user->setBalance($userBalance-$total);
             $user->save();
             $order->setTotal($total);
             $order->setNumberItems($numberItems);
             $order->save();
+            $request->session()->forget('products');
+            return redirect()->route('product.showCart')->with('success', __('product.controller.buySuccessful'));
         }
     }
 }

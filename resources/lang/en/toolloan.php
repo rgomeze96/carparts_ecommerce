@@ -10,27 +10,46 @@ return [
 
     //Create form
     'create' => [
-        'title' => 'Create New Tool Loan',
+        'title' => 'Create a New Tool Loan',
         'userId' => 'User ID',
-        'productId' => 'Product ID',
+        'productId' => 'Select Tool to Loan',
         'depositAmount' => 'Deposit Amount Required',
         'loanDate' => 'Start date of loan',
         'returnDate' => 'Date to return tool',
         'desc' => 'Description of Loan',
-        'button' => 'Create New Tool Loan',
+        'button' => 'Create Tool Loan',
     ],
     //Edit form
     'edit' => [
-        'title' => 'Modify Existing Tool Loan',
-        'userId' => 'Modify User ID',
-        'productId' => 'Modify Product ID',
-        'depositAmount' => 'Modify Deposit Amount',
+        'title' => 'List of Tools on Loan',
+        'modifyTitle' => 'Modify Existing Tool Loan',
+        'userName' => 'User',
+        'productId' => 'Product ID',
+        'depositAmount' => 'Deposit',
         'loanDate' => 'Modify Start date',
         'returnDate' => 'Modify Return Date',
         'desc' => 'Modify Description',
         'button' => 'Modify Tool Loan',
+        'loanId' => 'ID',
+        'toolName' => 'Tool Name',
+        'loanStart' => 'Start Date',
+        'loanEnd' => 'End Date',
+        'description' => 'Description',
+        'actions' => 'Actions',
+        'editButton' => 'Edit',
+        'deleteButton' => 'Delete',
+        'modifyProductId' => 'Modify Tool',
+        'modifyDepositAmount' => 'Modify Deposit Amount',
+        'confirmEdit' => 'Update Tool Loan',
+        'closeButton' => 'Close',
+        'modifyUserId' => 'Modify User',
+        'userHelp' => 'Current user is highlighted',
+        'deleteMessage' => 'Are you sure you want to delete the tool loan with ID: ',
+        'confirmDelete' => 'Delete Tool Loan',
+        'selectNew' => 'Select new tool',
+
     ],
-    
+
     //List
     'list' => [
         'price' => 'Price:',
