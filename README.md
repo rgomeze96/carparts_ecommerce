@@ -26,7 +26,7 @@ composer update
     DB_USERNAME=root
     DB_PASSWORD=
 ```
-    - Puedes ponerle otro nombre a la base de datos pero recuerda cambiarlo en _.env_
+- Puedes ponerle otro nombre a la base de datos pero recuerda cambiarlo en _.env_
 
 6. Ve a tu terminal y sitúate en la ruta donde se encuentre situado el proyecto. Luego ejecuta el siguiente comando para crear las migraciones a la base de datos:
 
