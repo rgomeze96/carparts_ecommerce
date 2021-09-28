@@ -44,5 +44,4 @@ php artisan storage:link
 RUTA INICIAL: http://localhost/carparts_ecommerce/public/
 
 ## Remota
-Para acceder al proyecto vaya al siguiente link:
-(link aquí)
+Para acceder al proyecto vaya al siguiente link: http://34.132.143.252/carparts_ecommerce/public/
