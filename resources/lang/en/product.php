@@ -100,6 +100,8 @@ return [
         'here' => 'here',
         'yourCart' => 'Your cart with',
         'product' => 'product',
-        'balance' => 'Your available balance is: '
+        'balance' => 'Your available balance is: ',
+        'yourCart' => 'Your cart with ',
+        'product' => ' product'
     ],
 ];
