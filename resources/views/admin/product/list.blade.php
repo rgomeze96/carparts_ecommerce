@@ -79,7 +79,7 @@
 
                                             <label class="mt-2" for="image">{{ __('product.create.image') }}</label><br>
                                             <input class="col-md-6 mt-3 mx-auto text-center" type="file" name="image" accept="image/*" value="{{ old('imagePath') }}"><br>
-                                            <img class="card-img" src="{{$product->getImagePath()}}" alt="">
+                                            <img class="card-img" src="{{asset($product->getImagePath())}}" alt="">
 
                                         </div>
                                         <div class="modal-footer mx-auto">

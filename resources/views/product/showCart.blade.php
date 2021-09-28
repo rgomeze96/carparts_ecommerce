@@ -15,7 +15,7 @@
             @foreach($data["products"] as $product)
             <div class="row mx-auto">
                 <a class="mx-auto" href="{{ route('product.show', $product->getId()) }}">
-                    <img style="max-height: 250px; max-width: 250px" class="rounded rounded-circle" src="{{$product->getImagePath()}}" alt="{{$product->getId()}}">
+                    <img style="max-height: 250px; max-width: 250px" class="rounded rounded-circle" src="{{asset($product->getImagePath())}}" alt="{{$product->getId()}}">
                 </a>
             </div>
             <h5>{{$product->getName()}}</h5>

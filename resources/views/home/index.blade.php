@@ -22,7 +22,7 @@
                         <h5>{{$product->getName()}}</h5>
                     </div>
                     <div class="card-img">
-                    <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img" style="height: 20vw;" src="{{ $product->getImagePath() }}" alt="" /></a>
+                    <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img" style="height: 20vw;" src="{{ asset($product->getImagePath()) }}" alt="" /></a>
                     </div>
                     <div class="card-body text-center">
                         ${{number_format($product->getSalePrice(),2, '.', ',')}}
