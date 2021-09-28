@@ -43,15 +43,15 @@ class AdminProductController extends Controller
             $imagePath = "";
         }
         $newProduct = new Product;
-        $newProduct->name = $request->name;
-        $newProduct->description = $request->description;
-        $newProduct->sale_price = $request->salePrice;
-        $newProduct->cost = $request->cost;
-        $newProduct->category = $request->category;
-        $newProduct->brand = $request->brand;
-        $newProduct->warranty = $request->warranty;
-        $newProduct->quantity = $request->quantity;
-        $newProduct->image_path = $imagePath;
+        $newProduct->setName($request->name);
+        $newProduct->setDescription($request->description);
+        $newProduct->setSalePrice($request->salePrice);
+        $newProduct->setCost($request->cost);
+        $newProduct->setCategory($request->category);
+        $newProduct->setBrand($request->brand) ;
+        $newProduct->setWarranty($request->warranty) ;
+        $newProduct->setQuantity($request->quantity) ;
+        $newProduct->setImagePath($imagePath) ;
         $newProduct->save();
         
         //Product::create($request->only(["name","description","salePrice","cost","category","brand","warranty", "quantity", $imagePath]));
@@ -71,14 +71,15 @@ class AdminProductController extends Controller
             $imagePath = "/storage/". $request->name .".".$image->getClientOriginalExtension();
             $productToUpdate->setImagePath($imagePath);
         }
-        $productToUpdate->name = $request->name;
-        $productToUpdate->description = $request->description;
-        $productToUpdate->sale_price = $request->salePrice;
-        $productToUpdate->cost = $request->cost;
-        $productToUpdate->category = $request->category;
-        $productToUpdate->brand = $request->brand;
-        $productToUpdate->warranty = $request->warranty;
-        $productToUpdate->quantity = $request->quantity;
+        $productToUpdate->setName($request->name);
+        $productToUpdate->setDescription($request->description);
+        $productToUpdate->setSalePrice($request->salePrice);
+        $productToUpdate->setCost($request->cost);
+        $productToUpdate->setCategory($request->category);
+        $productToUpdate->setBrand($request->brand) ;
+        $productToUpdate->setWarranty($request->warranty) ;
+        $productToUpdate->setQuantity($request->quantity) ;
+        $productToUpdate->setImagePath($imagePath) ;
         $productToUpdate->save();
         return redirect()->route('admin.product.list')->with('success', __('product.controller.updated'));
     }

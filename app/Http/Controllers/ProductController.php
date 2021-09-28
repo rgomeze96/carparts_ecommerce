@@ -9,6 +9,7 @@ use App\Models\Item;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+
 class ProductController extends Controller
 {
     public function show($id)
@@ -24,10 +25,10 @@ class ProductController extends Controller
     {
         Review::validate($request);
         $newReview = new Review;
-        $newReview->rating = $request->newReviewRating;
-        $newReview->review_text = $request->newReviewText;
-        $newReview->product_id = $id;
-        $newReview->user_id = Auth::id();
+        $newReview->setRating($request->newReviewRating);
+        $newReview->setReviewText($request->newReviewText);
+        $newReview->setProductId($id);
+        $newReview->setUserId(Auth::id());
         $newReview->save();
         return redirect()->route('product.show', $id)->with('success', __('product.controller.reviewCreated'));
     }
