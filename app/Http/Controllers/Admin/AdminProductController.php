@@ -77,9 +77,8 @@ class AdminProductController extends Controller
         $productToUpdate->setCost($request->cost);
         $productToUpdate->setCategory($request->category);
         $productToUpdate->setBrand($request->brand) ;
-        $productToUpdate->setWarranty($request->warranty) ;
-        $productToUpdate->setQuantity($request->quantity) ;
-        $productToUpdate->setImagePath($imagePath) ;
+        $productToUpdate->setWarranty($request->warranty);
+        $productToUpdate->setQuantity($request->quantity);
         $productToUpdate->save();
         return redirect()->route('admin.product.list')->with('success', __('product.controller.updated'));
     }
