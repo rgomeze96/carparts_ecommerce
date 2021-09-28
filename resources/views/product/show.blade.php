@@ -9,7 +9,7 @@
             <div class="card border-primary">
 
                 <div class="card-image">
-                    <img style="max-height: 600px;" class="card-img" src="{{$data['product']->getImagePath()}}" alt="{{$data['product']->getId()}}">
+                    <img style="max-height: 600px;" class="card-img" src="{{ asset($data['product']->getImagePath()) }}" alt="{{$data['product']->getId()}}">
                 </div>
                 <div class="card-header text-center border-primary">
                     <h3>{{ $data["product"]->getName() }}</h3>
