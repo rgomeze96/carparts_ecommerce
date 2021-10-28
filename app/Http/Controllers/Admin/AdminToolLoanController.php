@@ -1,14 +1,14 @@
 <?php
 
-
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\User;
-use Illuminate\Http\Request;
-
 use App\Models\ToolLoan;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminToolLoanController extends Controller
 {
@@ -19,7 +19,11 @@ class AdminToolLoanController extends Controller
         $data["loanedTools"] = ToolLoan::orderByDesc('id')->get();
         $data["users"] = User::where('role', 'client')->get();
         $data["tools"] = Product::where('category', 'Tool')->get();
-        return view('admin.tool.list')->with("data", $data);
+        if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
+            return view('admin.product.list')->with("data", $data);
+        } else {
+            return redirect()->route('home.index')->with('error', __('auth.unauthorized'));
+        }
     }
     public function create()
     {
@@ -30,7 +34,6 @@ class AdminToolLoanController extends Controller
 
         return view('admin.tool.create')->with("data", $data);
     }
-
     public function save(Request $request)
     {
         ToolLoan::validate($request);
@@ -46,7 +49,6 @@ class AdminToolLoanController extends Controller
         //    "returnDate"]));
         return redirect()->route('admin.toolloan.create')->with('success', __('toolloan.controller.created'));
     }
-
     public function update(Request $request, $id)
     {
         ToolLoan::modifyValidate($request);
@@ -64,7 +66,6 @@ class AdminToolLoanController extends Controller
         $toolLoanToUpdate->save();
         return redirect()->route('admin.toolloan.list')->with('success', __('toolloan.controller.updated'));
     }
-
     public function show($id)
     {
         $data = []; //to be sent to the view

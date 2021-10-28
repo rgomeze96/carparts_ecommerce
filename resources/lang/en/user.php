@@ -3,7 +3,7 @@
 return [
     //Controller
     'controller' => [
-        'created' => 'User created successfully!',
+        'created' => 'Welcome to CarPart.com! Your account was created successfully, you can now login',
         'removed' => 'User deleted successfully!',
         'updated' => 'User updated successfully!',
     ],
@@ -58,13 +58,19 @@ return [
     
     //Show
     'show' => [
-        'name' => 'User name:',
-        'email' => 'User email:',
-        'address' => 'User address:',
-        'age' => 'User age:',
-        'city' => 'User city:',
-        'country' => 'User country:',
-        'telephone' => 'Telephone:',
-        'balance' => 'Balance:',
+        'accountInfo' => 'My Account Information',
+        'address' => 'Address',
+        'age' => 'Age',
+        'buttonClose' => 'Close',
+        'buttonUpdate' => 'Update Account',
+        'city' => 'City',
+        'country' => 'Country',
+        'email' => 'Email',
+        'modifyAccount' => 'Modify Account Information',
+        'modifyAccountButton' => 'Modify Info',
+        'modifyTitle' => 'Update Account Information',
+        'name' => 'Name',
+        'telephone' => 'Telephone',
+        'userName' => 'Name'
     ],
 ];

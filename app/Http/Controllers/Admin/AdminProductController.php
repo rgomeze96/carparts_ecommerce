@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 use App\Models\Product;
-use App\Interfaces\ImageStorage;
 use App\Models\ToolLoan;
+use App\Models\User;
+
+use App\Interfaces\ImageStorage;
 
 class AdminProductController extends Controller
 {
@@ -19,7 +24,11 @@ class AdminProductController extends Controller
         $data["products"] = Product::all();
         $data["loanedTools"] = ToolLoan::all();
 
-        return view('admin.product.list')->with("data", $data);
+        if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
+            return view('admin.product.list')->with("data", $data);
+        } else {
+            return redirect()->route('home.index')->with('error', __('auth.unauthorized'));
+        }
     }
 
     public function create()
@@ -27,7 +36,11 @@ class AdminProductController extends Controller
         $data = []; //to be sent to the view
         $data["title"] = "Create Product";
        
-        return view('admin.product.create')->with("data", $data);
+        if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
+            return view('admin.product.create')->with("data", $data);
+        } else {
+            return redirect()->route('home.index')->with('error', __('auth.unauthorized'));
+        }
     }
 
     public function save(Request $request)
@@ -60,7 +73,6 @@ class AdminProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        
         Product::validateProduct($request);
         $storeInterface = app(ImageStorage::class);
         $storeInterface->store($request);
@@ -89,5 +101,5 @@ class AdminProductController extends Controller
         $product->delete();
 
         return back()->with('success', __('product.controller.removed'));
-    }  
+    }
 }

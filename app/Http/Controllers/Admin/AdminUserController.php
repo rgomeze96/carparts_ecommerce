@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+
 use App\Models\User;
-use App\Interfaces\ImageStorage;
 use App\Models\ToolLoan;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminUserController extends Controller
 {
@@ -18,7 +20,11 @@ class AdminUserController extends Controller
         $data["users"] = User::all();
         $data["loanedTools"] = ToolLoan::all();
 
-        return view('admin.user.list')->with("data", $data);
+        if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
+            return view('admin.user.list')->with("data", $data);
+        } else {
+            return redirect()->route('home.index')->with('error', __('auth.unauthorized'));
+        }
     }
 
     public function update(Request $request, $id)

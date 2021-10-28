@@ -14,9 +14,9 @@
 
         @foreach($data["products"] as $product)
         <div class="col">
-            <div class="card">
+            <div class="card mt-2">
                 <div class="card-image">
-                    <a href="{{ route('product.show', $product->getId()) }}"><img style="height: 20vw;" class="card-img" src="{{ asset($product->getImagePath()) }}" alt="{{$product->getId()}}"></a>
+                    <a href="{{ route('product.show', $product->getId()) }}"><img style="height: 170px;" class="card-img" src="{{ asset($product->getImagePath()) }}" alt="{{$product->getId()}}"></a>
                 </div>
                 <div class="card-body text-center">
                     <h5 class="card-title"><a href="{{ route('product.show', $product->getId()) }}">{{ $product->getName() }}</a></h5>

@@ -1,0 +1,12 @@
+finish modify my account
+add the capability to change the password of accounts in the admin modify users
+
+preguntas segunda entrega
+
+y desplegarlo en la parte superior de la cabecera de la app
+
+inversión de imagen es suficiente?
+
+campo de contrasena si se borra 
+
+donde enviaste la tabla de entrega 1

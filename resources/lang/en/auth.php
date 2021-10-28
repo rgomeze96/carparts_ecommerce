@@ -12,9 +12,15 @@ return [
     | these language lines according to your application's requirements.
     |
     */
-
+    'confirmPassword' => 'Confirm Password',
+    'email' => 'Email',
     'failed' => 'These credentials do not match our records.',
-    'password' => 'The provided password is incorrect.',
+    'login' => 'Login',
+    'name' => 'Name',
+    'password' => 'Password',
+    'register' => 'Register',
+    'rememberMe' => 'Remember Me',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-    'Register' => 'Register'
+    'unauthorized' => 'You are not authorized to access this page.'
+    
 ];
