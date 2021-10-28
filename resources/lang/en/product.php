@@ -96,12 +96,10 @@ return [
         'deleteFromCart' => 'Delete from cart',
         'buy' => 'Purchase Items',
         'total' => 'Total Price of Cart: ',
-        'emptyCart' => 'Your cart is empty, you can find a product to add, ',
+        'emptyCart' => 'Your cart is empty, you can find a product to add ',
         'here' => 'here',
         'yourCart' => 'Your cart with',
         'product' => 'product',
         'balance' => 'Your available balance is: ',
-        'yourCart' => 'Your cart with ',
-        'product' => ' product'
     ],
 ];

@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+@include('util.message')
 <!-- Portfolio Section-->
 <section class="page-section portfolio" id="portfolio">
     <div class="container">
         <!-- Portfolio Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">{{ __('home.portfolio') }}</h2>
+        <h2 class="text-center text-uppercase text-secondary mb-0">{{ __('home.portfolio') }}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
@@ -22,7 +23,8 @@
                         <h5>{{$product->getName()}}</h5>
                     </div>
                     <div class="card-img">
-                    <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img" style="height: 20vw;" src="{{ asset($product->getImagePath()) }}" alt="" /></a>
+                        <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img"
+                                style="height: 170px;" src="{{ asset($product->getImagePath()) }}" alt="" /></a>
                     </div>
                     <div class="card-body text-center">
                         ${{number_format($product->getSalePrice(),2, '.', ',')}}
@@ -37,7 +39,7 @@
 <section class="page-section bg-primary text-white mb-0" id="about">
     <div class="container">
         <!-- About Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-white">{{ __('home.toolTitle') }}</h2>
+        <h2 class="text-center text-uppercase text-white">{{ __('home.toolTitle') }}</h2>
         <!-- Icon Divider-->
         <div class="divider-custom divider-light">
             <div class="divider-custom-line"></div>
@@ -47,10 +49,10 @@
         <!-- About Section Content-->
         <div class="row">
             <div class="col-lg-4 ml-auto">
-                <p class="lead">{{ __('home.toolPara1') }}</p>
+                <p class="lead">{{ __('home.toolParagraph1') }}</p>
             </div>
             <div class="col-lg-4 mr-auto">
-                <p class="lead">{{ __('home.toolPara2') }}</p>
+                <p class="lead">{{ __('home.toolParagraph2') }}</p>
             </div>
         </div>
         <!-- About Section Button-->

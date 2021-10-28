@@ -15,12 +15,12 @@ class AddInfoToUsers extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('role')->default('client');
-            $table-> string('address');
-            $table-> integer('age');
-            $table-> string('city');
-            $table-> string('country');
-            $table-> string('telephone');
-            $table-> integer('balance');
+            $table-> string('address')->nullable();
+            $table-> integer('age')->nullable();
+            $table-> string('city')->nullable();
+            $table-> string('country')->nullable();
+            $table-> string('telephone')->nullable();
+            $table-> integer('balance')->default(1000);
         });
     }
 
