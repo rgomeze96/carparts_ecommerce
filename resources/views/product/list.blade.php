@@ -19,9 +19,10 @@
             </form>
 
         </div>
-        <div class="col mx-auto">
+        
+        <div class="col mx-auto ">
             <form novalidate method="GET" style="text-align: center"
-                action="{{ route('product.list',['nameFilter' => request()->nameFilter, 'categoryFilter' => request()->categoryFilter]) }}">
+                action="{{ route('product.list', ['nameFilter' => request()->nameFilter, 'categoryFilter' => request()->categoryFilter]) }}">
                 {{csrf_field()}}
                 <label hidden for="nameFilter"></label>
                 <input onchange="this.form.submit()" type="text" id="nameFilter" name="nameFilter"
