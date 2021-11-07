@@ -2597,7 +2597,7 @@ fieldset:disabled a.btn {
 .btn-warning:hover {
   color: #212529;
   background-color: #e0a800;
-  border-color: #d39e00;
+  border-color: #2c3e50;
 }
 .btn-warning:focus, .btn-warning.focus {
   color: #212529;
@@ -2627,7 +2627,7 @@ fieldset:disabled a.btn {
 .btn-danger:hover {
   color: #fff;
   background-color: #c82333;
-  border-color: #bd2130;
+  border-color: #fff;
 }
 .btn-danger:focus, .btn-danger.focus {
   color: #fff;

@@ -77,12 +77,8 @@
                                     href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('product.showCart') }}">{{ __('layout.myCart') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.list') }}">
-                                    {{ __('layout.productList') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('user.show', Auth::id()) }}">{{ __('layout.myAccount') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.user.list') }}">{{ __('layout.userList') }}</a></li>
                         </div>
                     </span>
                     @else
@@ -116,7 +112,7 @@
         @yield('content')
     </div>
     <!-- Copyright -->
-    <div class="footer-copyright bg-secondary text-light text-center py-3">© 2021 Copyright:
+    <div class="bg-secondary text-light text-center py-3">© 2021 Copyright:
         <a href="{{route('home.index')}}"> CarPart.com</a>
     </div>
     <!-- Copyright -->

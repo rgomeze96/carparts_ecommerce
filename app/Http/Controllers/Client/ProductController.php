@@ -46,19 +46,21 @@ class ProductController extends Controller
     public function list(Request $request)
     {
         $data = []; //to be sent to the view
-        if ($request->has('nameFilter')) {
+        $nameFilter = $request->input('nameFilter');
+        $categoryFilter = $request->input('categoryFilter');
+        $products = Product::query();
+        if (isset($nameFilter)) {
+            $products = $products->where('name', 'like', "%$nameFilter%");
             $data["title"] =  __('product.controller.listOfProductsWith').
-                $request->nameFilter.__('product.controller.inName');
-            $nameFilter = $request->nameFilter;
-            $request->nameFilter.__('product.controller.inName');
-            $data["products"] = Product::where('name', 'like', "%$nameFilter%")->get();
-        } elseif ($request->has('categoryFilter')) {
-            $data["title"] = "Tools Available for Rent";
-            $data["products"] = Product::where('category', $request->categoryFilter)->get();
+                $nameFilter.__('product.controller.inName');
+        } elseif (isset($categoryFilter)) {
+            $products = $products->where('category', $categoryFilter);
+            $data["title"] = __('product.controller.toolsForRent');
         } else {
             $data["title"] =  __('product.controller.allProducts');
-            $data["products"] = Product::all();
         }
+        $results = $products->get();
+        $data["products"] = $results;
         return view('product.list')->with("data", $data);
     }
     

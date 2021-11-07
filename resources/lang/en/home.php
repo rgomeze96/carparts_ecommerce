@@ -1,8 +1,9 @@
 <?php
 
 return [
-
+    'brand' => 'Brand',
     'portfolio' => 'Popular Products',
+    'price' => 'Price',
     'toolButton' => 'Tools Available for Rent',
     'toolTitle' => 'Tool loan service',
     'toolParagraph1' => 'Get the job done the right way, we have most of the specialized tools needed to 

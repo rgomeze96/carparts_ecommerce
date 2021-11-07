@@ -3,14 +3,14 @@
 return [
     //Controller
     'controller' => [
+        'allProducts' => 'List of all Products',
         'created' => 'Product was created successfully!',
-        'removed' => 'Product was deleted successfully!',
-        'updated' => 'Product was updated successfully!',
-        'reviewCreated' => 'Your review was successfully created!',
-        'listOfProductWith' => 'Products with: ',
         'inName' => ' - in the name',
-        'allProducts' => 'List of all products',
-        'listOfProductsWith' => 'List of products with: '
+        'listOfProductsWith' => 'List of products with: ',
+        'removed' => 'Product was deleted successfully!',
+        'reviewCreated' => 'Your review was successfully created!',
+        'updated' => 'Product was updated successfully!',
+        'toolsForRent' => 'Tools Available for Rent'
     ],
 
     //Create
@@ -63,9 +63,11 @@ return [
     
     //List
     'list' => [
-        'price' => 'Price:',
         'addToCart' => 'Add to cart',
-        'findOnName' => 'Filter by name'
+        'brand' => 'Brand',
+        'price' => 'Price',
+        'filters' => 'Filters',
+        'findOnName' => 'Filter by name',
     ],
 
     //Show

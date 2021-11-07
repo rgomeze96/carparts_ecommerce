@@ -20,7 +20,7 @@ class AdminToolLoanController extends Controller
         $data["users"] = User::where('role', 'client')->get();
         $data["tools"] = Product::where('category', 'Tool')->get();
         if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
-            return view('admin.product.list')->with("data", $data);
+            return view('admin.tool.list')->with("data", $data);
         } else {
             return redirect()->route('home.index')->with('error', __('auth.unauthorized'));
         }

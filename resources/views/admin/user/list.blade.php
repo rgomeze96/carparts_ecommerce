@@ -5,6 +5,7 @@
     <h3>{{ __('user.edit.title') }}</h3>
     @include('util.message')
     <div class="row">
+    <div class="table-responsive">
         <table class="table table-dark table-hover bg-secondary text-light text-center">
             <thead>
                 <th scope="col">{{ __('user.edit.id') }}</th>
@@ -123,6 +124,7 @@
             </tbody>
             @endforeach
         </table>
+    </div>
     </div>
 </div>
 @endsection
