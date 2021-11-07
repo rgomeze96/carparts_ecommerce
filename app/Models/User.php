@@ -29,9 +29,21 @@ class User extends Authenticatable
     public static function validateUser(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:2',
             'password' => 'required|min:4|confirmed',
             'email' => 'required',
+        ]);
+    }
+
+    public static function validateUpdateUser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'address' => 'min:5|nullable',
+            'email' => 'required',
+            'city' => 'min:2|nullable',
+            'country' => 'min:2|nullable',
+            'telephone' => 'min:7|nullable'
         ]);
     }
 

@@ -30,6 +30,35 @@ class UserController extends Controller
         return redirect()->route('login')->with('success', __('user.controller.created'));
     }
 
+    public function update(Request $request, $id)
+    {
+        User::validateUpdateUser($request);
+        $userToUpdate = User::findOrFail($id);
+        if ($request->name != $userToUpdate->getName()) {
+            $userToUpdate->setName($request->name);
+        }
+        if ($request->email != $userToUpdate->getEmail()) {
+            $userToUpdate->setEmail($request->email);
+        }
+        if ($request->address && $request->address != $userToUpdate->getAddress()) {
+            $userToUpdate->setAddress($request->address);
+        }
+        if ($request->age && $request->age != $userToUpdate->getAge()) {
+            $userToUpdate->setAge($request->age);
+        }
+        if ($request->city && $request->city != $userToUpdate->getCity()) {
+            $userToUpdate->setCity($request->city);
+        }
+        if ($request->country && $request->country != $userToUpdate->getCountry()) {
+            $userToUpdate->setCountry($request->country);
+        }
+        if ($request->telephone && $request->telephone != $userToUpdate->getTelephone()) {
+            $userToUpdate->setTelephone($request->telephone);
+        }
+        $userToUpdate->save();
+        return redirect()->route('user.show', $userToUpdate->getId())->with('success', __('user.controller.updated'));
+    }
+
     public function destroy($id)
     {
         $user= User::findorfail($id);

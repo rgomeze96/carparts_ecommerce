@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    <div class="card border-secondary">
-        <div class="card-header text-center">{{ __('auth.register') }}</div>
+    <div class="card border-secondary m-2">
+        <div class="card-header text-center border-secondary"><h5>{{ __('auth.register') }}</h5></div>
         <div class="card-body">
             <form class="text-center" method="POST" action="{{ route('user.save') }}">
                 @csrf

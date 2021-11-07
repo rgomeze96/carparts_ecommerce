@@ -17,17 +17,22 @@
         <div class="row">
             <!-- Portfolio Item 1-->
             @foreach($data['products'] as $product)
-            <div class="col-md-6 col-lg-4 mb-5">
-                <div class="card text-secondary font-weight-bold border-primary">
+            <div class="col-md-4 mb-5">
+                <div class="card text-secondary font-weight-bold border-secondary">
                     <div class="card-header text-center bg-light">
-                        <h5>{{$product->getName()}}</h5>
+                        <h5><a class="text-secondary"
+                                href="{{ route('product.show', $product->getId()) }}">{{ $product->getName() }}</a></h5>
+                                <div>{{__('home.brand')}}: {{$product->getBrand()}}</div>
                     </div>
                     <div class="card-img">
                         <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img"
-                                style="height: 170px;" src="{{ asset($product->getImagePath()) }}" alt="" /></a>
+                                style="height: 180px;" src="{{ asset($product->getImagePath()) }}" alt="" /></a>
                     </div>
                     <div class="card-body text-center">
-                        ${{number_format($product->getSalePrice(),2, '.', ',')}}
+                        <h5>{{__('home.price')}}: ${{number_format($product->getSalePrice(),2, '.', ',')}}</h5><br>
+                        
+                        <a href="{{ route('product.addToCart', $product->getId()) }}"><button
+                                class="btn btn-primary">{{ __('product.list.addToCart') }}</button></a>
                     </div>
                 </div>
             </div>
