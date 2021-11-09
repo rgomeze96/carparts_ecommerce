@@ -13,13 +13,13 @@ return [
     |
     */
     'confirmPassword' => 'Confirmar Contraseña',
-    'email' => 'Email',
+    'email' => 'Correo Electrónico',
     'failed' => 'Estas credenciales no coinciden con nuestros registros.',
-    'login' => 'Ingresar',
+    'login' => 'Iniciar Sesión',
     'name' => 'Nombre',
     'password' => 'Contraseña',
-    'register' => 'Registro',
-    'rememberMe' => 'Recuerdame',
+    'register' => 'Registrar',
+    'rememberMe' => 'Recuérdame',
     'throttle' => 'Demasiados intentos de inicio de sesión. Vuelva a intentarlo en :seconds segundos.',
     'unauthorized' => 'No tiene permisos para acceder a esta página.'
     

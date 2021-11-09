@@ -19,26 +19,7 @@
             </form>
 
         </div>
-        <div class="col mx-auto">
-            <form novalidate method="GET" style="text-align: center"
-                action="{{ route('product.list', ['nameFilter' => request()->nameFilter, 'categoryFilter' => request()->categoryFilter]) }}">
-                {{csrf_field()}}
-                <label hidden for="nameFilter"></label>
-                <input onchange="this.form.submit()" type="text" id="nameFilter" name="nameFilter"
-                    class="form-control text-center mx-auto" placeholder="{{ __('product.list.findOnName') }}"
-                    value="{{ request()->input('nameFilter') }}">
-            </form>
-        </div>
-        <div class="col mx-auto">
-            <form novalidate method="GET" style="text-align: center"
-                action="{{ route('product.list', ['nameFilter' => request()->nameFilter]) }}">
-                {{csrf_field()}}
-                <label hidden for="nameFilter"></label>
-                <input onchange="this.form.submit()" type="text" id="nameFilter" name="nameFilter"
-                    class="form-control text-center mx-auto" placeholder="{{ __('product.list.findOnName') }}"
-                    value="{{ request()->input('nameFilter') }}">
-            </form>
-        </div>
+
     </div>
 
     <hr class="border-secondary">
