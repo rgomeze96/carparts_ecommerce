@@ -48,19 +48,27 @@ class ProductController extends Controller
         $data = []; //to be sent to the view
         $nameFilter = $request->input('nameFilter');
         $categoryFilter = $request->input('categoryFilter');
+        $brandFilter = $request->input('brandFilter');
+        return $brandFilter;
         $products = Product::query();
+        $data["title"] = "";
         if (isset($nameFilter)) {
             $products = $products->where('name', 'like', "%$nameFilter%");
             $data["title"] =  __('product.controller.listOfProductsWith').
                 $nameFilter.__('product.controller.inName');
         } elseif (isset($categoryFilter)) {
             $products = $products->where('category', $categoryFilter);
-            $data["title"] = __('product.controller.toolsForRent');
+            $data["title"] = $data["title"] . __('product.controller.toolsForRent');
+        } elseif (isset($brandFilter)) {
+            $products = $products->where('brand', $brandFilter);
+            $data["title"] = "filtered by brands";
         } else {
             $data["title"] =  __('product.controller.allProducts');
         }
-        $results = $products->get();
-        $data["products"] = $results;
+        $filterResults = $products->get();
+        $brands = $products->get('brand');
+        $data["products"] = $filterResults;
+        $data["brands"] = $brands;
         return view('product.list')->with("data", $data);
     }
     

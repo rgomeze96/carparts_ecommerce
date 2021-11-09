@@ -65,6 +65,7 @@ return [
     'list' => [
         'addToCart' => 'Añadir al carrito',
         'brand' => 'Marca',
+        'brandFilter' => 'Filter by Brand',
         'price' => 'Precio',
         'filters' => 'Filtros',
         'findOnName' => 'Filtrar por nombre',

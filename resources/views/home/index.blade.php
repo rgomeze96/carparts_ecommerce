@@ -22,7 +22,7 @@
                     <div class="card-header text-center bg-light">
                         <h5><a class="text-secondary"
                                 href="{{ route('product.show', $product->getId()) }}">{{ $product->getName() }}</a></h5>
-                                <div>{{__('home.brand')}}: {{$product->getBrand()}}</div>
+                        <div>{{__('home.brand')}}: {{$product->getBrand()}}</div>
                     </div>
                     <div class="card-img">
                         <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img"
@@ -30,7 +30,7 @@
                     </div>
                     <div class="card-body text-center">
                         <h5>{{__('home.price')}}: ${{number_format($product->getSalePrice(),2, '.', ',')}}</h5><br>
-                        
+
                         <a href="{{ route('product.addToCart', $product->getId()) }}"><button
                                 class="btn btn-primary">{{ __('product.list.addToCart') }}</button></a>
                     </div>

@@ -65,6 +65,7 @@ return [
     'list' => [
         'addToCart' => 'Add to cart',
         'brand' => 'Brand',
+        'brandFilter' => 'Filter by Brand',
         'price' => 'Price',
         'filters' => 'Filters',
         'findOnName' => 'Filter by name',
@@ -72,23 +73,25 @@ return [
 
     //Show
     'show' => [
-        'name' => 'Product name:',
-        'desc' => 'Product description:',
-        'salePrice' => 'Product sale price:',
-        'category' => 'Product category:',
         'brand' => 'Product brand:',
-        'warranty' => 'Product warranty:',
-        'quantity' => 'Quantity available:',
+        'category' => 'Product category:',
         'customer' => 'Customer',
-        'reviewTitle' => 'Customer Reviews',
-        'rating' => 'Customer Rating',
+        'desc' => 'Product description:',
         'experience' => 'Customer Experience',
-        'storeReviewButton' => 'Leave a Review',
-        'storeReviewTitle' => 'Leave a review for:',
+        'loginButton' => 'Login Here',
+        'loginToReview' => 'Please login in order to leave a review',
+        'name' => 'Product name:',
         'newReviewRating' => 'Your Rating',
         'newReviewRatingHelp' => 'Enter a number 1-5, 5 being a great review',
         'newReviewText' => 'Your Experience',
-        'saveReviewButton' => 'Save Review'
+        'quantity' => 'Quantity available:',
+        'rating' => 'Customer Rating',
+        'reviewTitle' => 'Customer Reviews',
+        'salePrice' => 'Product sale price:',
+        'saveReviewButton' => 'Save Review',
+        'storeReviewButton' => 'Leave a Review',
+        'storeReviewTitle' => 'Leave a review for:',
+        'warranty' => 'Product warranty:',
     ],
 
     //Show cart
