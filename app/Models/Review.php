@@ -13,10 +13,12 @@ class Review extends Model
     // validate form to createa review
     public static function validate(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             "newReviewRating" => "required|numeric",
             "newReviewText" => "required"
-        ]);
+            ]
+        );
     }
 
     // get the id of the tool loan

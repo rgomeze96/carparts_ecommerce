@@ -13,14 +13,16 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
-        Schema::create('items', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('order_id')->unsigned();
-            $table->foreign('order_id')->references('id')->on('orders');
-            $table->text('product_name');
-            $table->float('subtotal');
-            $table->timestamps();
-        });
+        Schema::create(
+            'items', function (Blueprint $table) {
+                $table->bigIncrements('id');
+                $table->bigInteger('order_id')->unsigned();
+                $table->foreign('order_id')->references('id')->on('orders');
+                $table->text('product_name');
+                $table->float('subtotal');
+                $table->timestamps();
+            }
+        );
     }
 
     /**

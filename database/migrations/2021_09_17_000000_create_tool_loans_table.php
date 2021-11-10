@@ -13,18 +13,20 @@ class CreateToolLoansTable extends Migration
      */
     public function up()
     {
-        Schema::create('tool_loans', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('product_id')->unsigned();
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->text('description');
-            $table->float('deposit_amount');
-            $table->date('loan_date');
-            $table->date('return_date');
-            $table->timestamps();
-        });
+        Schema::create(
+            'tool_loans', function (Blueprint $table) {
+                $table->id();
+                $table->bigInteger('user_id')->unsigned();
+                $table->foreign('user_id')->references('id')->on('users');
+                $table->bigInteger('product_id')->unsigned();
+                $table->foreign('product_id')->references('id')->on('products');
+                $table->text('description');
+                $table->float('deposit_amount');
+                $table->date('loan_date');
+                $table->date('return_date');
+                $table->timestamps();
+            }
+        );
     }
 
     /**

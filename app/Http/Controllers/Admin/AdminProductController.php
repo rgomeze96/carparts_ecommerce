@@ -61,10 +61,10 @@ class AdminProductController extends Controller
         $newProduct->setSalePrice($request->salePrice);
         $newProduct->setCost($request->cost);
         $newProduct->setCategory($request->category);
-        $newProduct->setBrand($request->brand) ;
-        $newProduct->setWarranty($request->warranty) ;
-        $newProduct->setQuantity($request->quantity) ;
-        $newProduct->setImagePath($imagePath) ;
+        $newProduct->setBrand($request->brand);
+        $newProduct->setWarranty($request->warranty);
+        $newProduct->setQuantity($request->quantity);
+        $newProduct->setImagePath($imagePath);
         $newProduct->save();
         
         //Product::create($request->only(["name","description","salePrice","cost","category","brand","warranty", "quantity", $imagePath]));
@@ -88,7 +88,7 @@ class AdminProductController extends Controller
         $productToUpdate->setSalePrice($request->salePrice);
         $productToUpdate->setCost($request->cost);
         $productToUpdate->setCategory($request->category);
-        $productToUpdate->setBrand($request->brand) ;
+        $productToUpdate->setBrand($request->brand);
         $productToUpdate->setWarranty($request->warranty);
         $productToUpdate->setQuantity($request->quantity);
         $productToUpdate->save();

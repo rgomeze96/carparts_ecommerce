@@ -13,25 +13,29 @@ class ToolLoan extends Model
     // validate form to create a Tool Loan
     public static function validate(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             "userId" => "required",
             "productId" => "required",
             "description" => "required",
             "depositAmount" => "required|numeric|gt:0",
             "loanDate" => "required|date",
             "returnDate" => "required|date"
-        ]);
+            ]
+        );
     }
     public static function modifyValidate(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             "userId" => "required",
             "productId" => "required",
             "description" => "required",
             "depositAmount" => "required",
             "loanDate" => "required|date",
             "returnDate" => "required|date"
-        ]);
+            ]
+        );
     }
 
     // get the id of the tool loan

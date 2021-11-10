@@ -13,15 +13,17 @@ class AddInfoToUsers extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('client');
-            $table-> string('address')->nullable();
-            $table-> integer('age')->nullable();
-            $table-> string('city')->nullable();
-            $table-> string('country')->nullable();
-            $table-> string('telephone')->nullable();
-            $table-> integer('balance')->default(1000);
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->string('role')->default('client');
+                $table-> string('address')->nullable();
+                $table-> integer('age')->nullable();
+                $table-> string('city')->nullable();
+                $table-> string('country')->nullable();
+                $table-> string('telephone')->nullable();
+                $table-> integer('balance')->default(1000);
+            }
+        );
     }
 
     /**
@@ -31,14 +33,16 @@ class AddInfoToUsers extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['role']);
-            $table->dropColumn(['address']);
-            $table->dropColumn(['age']);
-            $table->dropColumn(['city']);
-            $table->dropColumn(['country']);
-            $table->dropColumn(['telephone']);
-            $table->dropColumn(['balance']);
-        });
+        Schema::table(
+            'users', function (Blueprint $table) {
+                $table->dropColumn(['role']);
+                $table->dropColumn(['address']);
+                $table->dropColumn(['age']);
+                $table->dropColumn(['city']);
+                $table->dropColumn(['country']);
+                $table->dropColumn(['telephone']);
+                $table->dropColumn(['balance']);
+            }
+        );
     }
 }
