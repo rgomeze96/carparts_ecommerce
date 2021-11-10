@@ -11,14 +11,13 @@ class Language
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure                 $next
      * @return mixed
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Session()->has('applocale'))
-        {
+        if (Session()->has('applocale')) {
             App::setLocale(Session()->get('applocale'));
         }
         return $next($request);

@@ -18,9 +18,11 @@ class Order extends Model
 
     public static function validateOrder(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             "total" => "required|numeric|gt:0",
-        ]);
+            ]
+        );
 
         Product::create($request->only(["total"]));
     }

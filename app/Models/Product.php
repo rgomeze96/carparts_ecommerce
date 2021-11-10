@@ -21,7 +21,8 @@ class Product extends Model
 
     public static function validateProduct(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             "name" => "required",
             "description" => "required",
             "salePrice" => "required|numeric|gt:0",
@@ -30,7 +31,8 @@ class Product extends Model
             "brand" => "required",
             "warranty" => "required",
             "quantity" => "required|numeric|gt:0"
-        ]);
+            ]
+        );
     }
 
     public function getId()
