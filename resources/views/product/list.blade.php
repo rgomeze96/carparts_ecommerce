@@ -17,9 +17,19 @@
                     class="form-control text-center mx-auto" placeholder="{{ __('product.list.findOnName') }}"
                     value="{{ request()->input('nameFilter') }}">
             </form>
-
         </div>
-
+        <div class="col mx-auto">
+            <form novalidate method="GET" style="text-align: center"
+                action="{{ route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter]) }}">
+                {{csrf_field()}}
+                <select onchange="this.form.submit()" class="form-control" id="brandFilter" name="brandFilter">
+                    <option selected>Filter by Brand</option>
+                    @foreach($data["brands"] as $brand)
+                        <option value="{{$brand->getBrand()}}">{{$brand->getBrand()}}</option>
+                    @endforeach
+                </select>
+            </form>
+        </div>
     </div>
 
     <hr class="border-secondary">
