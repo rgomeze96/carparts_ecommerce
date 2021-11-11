@@ -67,7 +67,6 @@ class AdminProductController extends Controller
         $newProduct->setImagePath($imagePath);
         $newProduct->save();
         
-        //Product::create($request->only(["name","description","salePrice","cost","category","brand","warranty", "quantity", $imagePath]));
         return redirect()->route('admin.product.create')->with('success', __('product.controller.created'));
     }
 

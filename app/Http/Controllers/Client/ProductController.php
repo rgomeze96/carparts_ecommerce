@@ -10,6 +10,7 @@ use App\Models\Item;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -49,24 +50,28 @@ class ProductController extends Controller
         $nameFilter = $request->input('nameFilter');
         $categoryFilter = $request->input('categoryFilter');
         $brandFilter = $request->input('brandFilter');
-        return $brandFilter;
+        
         $products = Product::query();
+        $brands = $products->get('brand');
         $data["title"] = "";
         if (isset($nameFilter)) {
             $products = $products->where('name', 'like', "%$nameFilter%");
             $data["title"] =  __('product.controller.listOfProductsWith').
                 $nameFilter.__('product.controller.inName');
-        } elseif (isset($categoryFilter)) {
+        }
+        if (isset($categoryFilter)) {
             $products = $products->where('category', $categoryFilter);
             $data["title"] = $data["title"] . __('product.controller.toolsForRent');
-        } elseif (isset($brandFilter)) {
+        }
+        if (isset($brandFilter)) {
             $products = $products->where('brand', $brandFilter);
             $data["title"] = "filtered by brands";
-        } else {
+        }
+        if (!isset($nameFilter) && !isset($brandFilter) && !isset($categoryFilter)) {
             $data["title"] =  __('product.controller.allProducts');
         }
         $filterResults = $products->get();
-        $brands = $products->get('brand');
+        
         $data["products"] = $filterResults;
         $data["brands"] = $brands;
         return view('product.list')->with("data", $data);
