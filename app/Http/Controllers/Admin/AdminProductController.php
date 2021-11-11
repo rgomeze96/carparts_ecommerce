@@ -61,10 +61,10 @@ class AdminProductController extends Controller
         $newProduct->setSalePrice($request->salePrice);
         $newProduct->setCost($request->cost);
         $newProduct->setCategory($request->category);
-        $newProduct->setBrand($request->brand);
-        $newProduct->setWarranty($request->warranty);
-        $newProduct->setQuantity($request->quantity);
-        $newProduct->setImagePath($imagePath);
+        $newProduct->setBrand($request->brand) ;
+        $newProduct->setWarranty($request->warranty) ;
+        $newProduct->setQuantity($request->quantity) ;
+        $newProduct->setImagePath($imagePath) ;
         $newProduct->save();
         
         return redirect()->route('admin.product.create')->with('success', __('product.controller.created'));

@@ -2,6 +2,7 @@
 
 return [
     'admin' => 'Admin',
+    'bitcoin' => 'Check Recent Bitcoin Value',
     'copyright' => '© 2021 Copyright:',
     'createPro' => 'Create product',
     'createTool' => 'Create Tool Loan',
