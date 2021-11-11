@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>@yield('title', 'Home')</title>
+    <title><?php echo $__env->yieldContent('title', 'Home'); ?></title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="{{ asset('/storage/tokyo_logo.png') }}" />
+    <link rel="icon" type="image/x-icon" href="<?php echo e(asset('/storage/tokyo_logo.png')); ?>" />
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
@@ -17,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
         type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="{{ asset('/css/styles.css') }}" rel="stylesheet" />}
-    <link href="{{ asset('/css/custom-styles.css') }}" rel="stylesheet" />
+    <link href="<?php echo e(asset('/css/styles.css')); ?>" rel="stylesheet" />}
+    <link href="<?php echo e(asset('/css/custom-styles.css')); ?>" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -26,101 +26,105 @@
     <!-- Navigation-->
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
-            <a class="navbar-brand" href="{{ route('home.index') }}"> <img class="rounded rounded-circle"
+            <a class="navbar-brand" href="<?php echo e(route('home.index')); ?>"> <img class="rounded rounded-circle"
                     style="max-width: 125px; max-height: 70px" src="/storage/tokyo_logo.png"> </a>
             <button
                 class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
                 type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
-                {{ __('layout.menu')}}
+                <?php echo e(__('layout.menu')); ?>
+
 
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    @guest
+                    <?php if(auth()->guard()->guest()): ?>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('login') }}">{{ __('layout.login') }}</a></li>
+                            href="<?php echo e(route('login')); ?>"><?php echo e(__('layout.login')); ?></a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('register') }}">{{ __('layout.register') }}</a></li>
+                            href="<?php echo e(route('register')); ?>"><?php echo e(__('layout.register')); ?></a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li>
+                            href="<?php echo e(route('product.list')); ?>"><?php echo e(__('layout.products')); ?></a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('bitcoin.index') }}">{{ __('layout.bitcoin') }}</a></li>
-                    @else
-                    @if (Auth::user()->getRole() == "admin")
+                            href="<?php echo e(route('bitcoin.index')); ?>"><?php echo e(__('layout.bitcoin')); ?></a></li>
+                    <?php else: ?>
+                    <?php if(Auth::user()->getRole() == "admin"): ?>
                     <span style="position: relative">
                         <a style="text-decoration: none" id="navbarDropdown" class="nav-link dropdown-toggle text-light"
                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{__('layout.admin')}}
+                            <?php echo e(__('layout.admin')); ?>
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right bg-secondary" aria-labelledby="navbarDropdown">
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.product.create') }}">{{ __('layout.createPro') }}</a></li>
+                                    href="<?php echo e(route('admin.product.create')); ?>"><?php echo e(__('layout.createPro')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.toolloan.create') }}">{{ __('layout.createTool') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.list') }}">
-                                    {{ __('layout.productList') }}</a></li>
+                                    href="<?php echo e(route('admin.toolloan.create')); ?>"><?php echo e(__('layout.createTool')); ?></a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="<?php echo e(route('admin.product.list')); ?>">
+                                    <?php echo e(__('layout.productList')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.toolloan.list') }}">{{ __('layout.toolList') }}</a></li>
+                                    href="<?php echo e(route('admin.toolloan.list')); ?>"><?php echo e(__('layout.toolList')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.user.list') }}">{{ __('layout.userList') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('logout') }}"
+                                    href="<?php echo e(route('admin.user.list')); ?>"><?php echo e(__('layout.userList')); ?></a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="<?php echo e(route('logout')); ?>"
                                     onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">{{ __('layout.logout') }}</a></li>
+                                                        document.getElementById('logout-form').submit();"><?php echo e(__('layout.logout')); ?></a></li>
                         </div>
                     </span>
                     <span style="position: relative">
                         <a style="text-decoration: none" id="navbarDropdown" class="nav-link dropdown-toggle text-light"
                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{__('layout.navigate')}}
+                            <?php echo e(__('layout.navigate')); ?>
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right bg-secondary" aria-labelledby="navbarDropdown">
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li>
+                                    href="<?php echo e(route('product.list')); ?>"><?php echo e(__('layout.products')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('product.showCart') }}">{{ __('layout.myCart') }}</a></li>
+                                    href="<?php echo e(route('product.showCart')); ?>"><?php echo e(__('layout.myCart')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('user.show', Auth::id()) }}">{{ __('layout.myAccount') }}</a></li>
+                                    href="<?php echo e(route('user.show', Auth::id())); ?>"><?php echo e(__('layout.myAccount')); ?></a></li>
                                     <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('bitcoin.index')}}">{{ __('layout.bitcoin') }}</a></li>
+                                    href="<?php echo e(route('bitcoin.index')); ?>"><?php echo e(__('layout.bitcoin')); ?></a></li>
                         </div>
                     </span>
-                    @else
+                    <?php else: ?>
                     <span style="position: relative">
                         <a style="text-decoration: none" id="navbarDropdown" class="nav-link dropdown-toggle text-light"
                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{__('layout.navigate')}}
+                            <?php echo e(__('layout.navigate')); ?>
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right bg-secondary" aria-labelledby="navbarDropdown">
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li>
+                                    href="<?php echo e(route('product.list')); ?>"><?php echo e(__('layout.products')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('product.showCart') }}">{{ __('layout.myCart') }}</a></li>
+                                    href="<?php echo e(route('product.showCart')); ?>"><?php echo e(__('layout.myCart')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('user.show', Auth::id()) }}">{{ __('layout.myAccount') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('logout') }}"
+                                    href="<?php echo e(route('user.show', Auth::id())); ?>"><?php echo e(__('layout.myAccount')); ?></a></li>
+                            <li class="dropdown-item"><a class="nav-link" href="<?php echo e(route('logout')); ?>"
                                     onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">{{ __('layout.logout') }}</a></li>
+                                                        document.getElementById('logout-form').submit();"><?php echo e(__('layout.logout')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('bitcoin.index')}}">{{ __('layout.bitcoin') }}</a></li>
+                                    href="<?php echo e(route('bitcoin.index')); ?>"><?php echo e(__('layout.bitcoin')); ?></a></li>
                         </div>
                     </span>
-                    @endif
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
+                    <?php endif; ?>
+                    <form id="logout-form" action="<?php echo e(route('logout')); ?>" method="POST" class="d-none">
+                        <?php echo csrf_field(); ?>
                     </form>
-                    @endguest
+                    <?php endif; ?>
                 </ul>
             </div>
         </nav>
     </div>
     <div id="main-content" style="padding-top: 105px;">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div>
     <!-- Copyright -->
     <div class="bg-secondary text-light text-center py-3">© 2021 Copyright:
-        <a href="{{route('home.index')}}"> CarPart.com</a>
+        <a href="<?php echo e(route('home.index')); ?>"> CarPart.com</a>
     </div>
     <!-- Copyright -->
     <!-- Bootstrap core JS-->
@@ -130,7 +134,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src=""></script>
     <!-- Core theme JS-->
-    <script src="{{ asset('/js/scripts.js') }}"></script>
+    <script src="<?php echo e(asset('/js/scripts.js')); ?>"></script>
 </body>
 
-</html>
+</html><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/layouts/app.blade.php ENDPATH**/ ?>

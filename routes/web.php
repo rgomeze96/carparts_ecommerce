@@ -17,7 +17,8 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 Route::get('/', 'App\Http\Controllers\Client\HomeController@index')->name("home.index");
 
-
+//Chart
+Route::get('chart', 'App\Http\Controllers\Client\HomeController@index');
 
 //Client routes
 //Product
@@ -30,6 +31,8 @@ Route::get('/product/showCart/remove/{id}', 'App\Http\Controllers\Client\Product
 Route::get('/product/delete', 'App\Http\Controllers\Client\ProductController@deleteAllCart')
 ->name('product.deleteAllCart');
 Route::get('/product/buy', 'App\Http\Controllers\Client\ProductController@buy')->name('product.buy');
+//Bitcoin
+Route::get('/checkBitcoinPrices', 'App\Http\Controllers\Client\BitcoinController@index')->name('bitcoin.index');
 
 // Product Reviews
 Route::get('/review/create/{id}', 'App\Http\Controllers\Client\ProductController@review')->name('product.writeReview');
