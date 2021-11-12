@@ -23,6 +23,7 @@ class AdminProductController extends Controller
         $data["title"] = "Product Management";
         $data["products"] = Product::all();
         $data["loanedTools"] = ToolLoan::all();
+        $data["customers"] = User::where('role', 'client')->get();
 
         if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
             return view('admin.product.manage')->with("data", $data);

@@ -37,6 +37,7 @@ class AdminToolLoanController extends Controller
     public function save(Request $request)
     {
         ToolLoan::validate($request);
+        return $request;
         $newToolLoan = new ToolLoan;
         $newToolLoan->setUserId($request->userId);
         $newToolLoan->setProductId($request->productId);

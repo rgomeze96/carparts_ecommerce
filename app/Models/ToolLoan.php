@@ -17,7 +17,6 @@ class ToolLoan extends Model
             [
             "userId" => "required",
             "productId" => "required",
-            "description" => "required",
             "depositAmount" => "required|numeric|gt:0",
             "loanDate" => "required|date",
             "returnDate" => "required|date"

@@ -11,14 +11,14 @@ return [
 
     //Create form
     'create' => [
-        'button' => 'Create Tool Loan',
+        'createButton' => 'Loan Tool',
         'depositAmount' => 'Deposit Amount Required',
         'desc' => 'Description of Loan',
         'loanDate' => 'Start date of loan',
         'productId' => 'Select Tool to Loan',
         'returnDate' => 'Date to return tool',
         'title' => 'Create a New Tool Loan',
-        'userId' => 'User ID',
+        'user' => 'User',
     ],
     //Edit form
     'edit' => [
