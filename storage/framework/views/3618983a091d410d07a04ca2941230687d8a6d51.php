@@ -29,7 +29,7 @@
             <?php echo e(csrf_field()); ?>
 
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content mx-auto text-center bg-light border border-danger text-secondary">
+                <div class="modal-content mx-auto text-center bg-light border-success text-secondary">
                     <div class="modal-body">
                     <h5>
                     <?php echo e(__('product.create.title')); ?>
@@ -78,7 +78,7 @@
                             value="<?php echo e(old('imagePath')); ?>"><br>
                     </div>
                     <div class="modal-footer mx-auto">
-                        <button type="button" class="btn btn-outline-primary"
+                        <button type="button" class="btn btn-secondary"
                             data-dismiss="modal"><?php echo e(__('product.edit.buttonClose')); ?></button>
                         <button type="submit" class="btn btn-success"><?php echo e(__('product.create.button')); ?></button>
                     </div>

@@ -67,7 +67,7 @@ class AdminProductController extends Controller
         $newProduct->setImagePath($imagePath) ;
         $newProduct->save();
         
-        return redirect()->route('admin.product.create')->with('success', __('product.controller.created'));
+        return redirect()->route('admin.product.manage')->with('success', __('product.controller.created'));
     }
 
     public function update(Request $request, $id)
