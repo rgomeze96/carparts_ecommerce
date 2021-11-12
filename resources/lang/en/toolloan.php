@@ -17,7 +17,7 @@ return [
         'loanDate' => 'Start date of loan',
         'productId' => 'Select Tool to Loan',
         'returnDate' => 'Date to return tool',
-        'title' => 'Create a New Tool Loan',
+        'title' => 'Loan Tool',
         'user' => 'User',
     ],
     //Edit form

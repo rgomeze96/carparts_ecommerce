@@ -31,7 +31,11 @@
                     <td>{{ $user->getCity() }}</td>
                     <td>{{ $user->getCountry() }}</td>
                     <td>{{ $user->getTelephone() }}</td>
+                    @if($user->getRole() == 'admin')
+                    <td class="text-danger">{{ $user->getRole() }}</td>
+                    @else
                     <td>{{ $user->getRole() }}</td>
+                    @endif
                     <td>${{number_format($user->getBalance(),2, '.', ',')}}</td>
                     <td>
                         <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#modal-edit-{{ $user->getId() }}">

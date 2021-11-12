@@ -10,25 +10,41 @@
         </div>
         <div class="col mx-auto">
             <form novalidate method="GET" style="text-align: center"
-                action="{{ route('product.list', ['nameFilter' => request()->nameFilter]) }}">
+                action="{{ route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter, 'catgoryFilter' => request()->categoryFilter]) }}">
                 {{csrf_field()}}
                 <label hidden for="nameFilter"></label>
                 <input onchange="this.form.submit()" type="text" id="nameFilter" name="nameFilter"
-                    class="form-control text-center mx-auto" placeholder="{{ __('product.list.findOnName') }}"
+                    class="form-control text-center mx-auto" placeholder="{{ __('product.list.filterByName') }}"
                     value="{{ request()->input('nameFilter') }}">
             </form>
         </div>
         <div class="col mx-auto">
             <form novalidate method="GET" style="text-align: center"
-                action="{{ route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter]) }}">
+                action="{{ route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter, 'catgoryFilter' => request()->categoryFilter]) }}">
                 {{csrf_field()}}
                 <select onchange="this.form.submit()" class="form-control" id="brandFilter" name="brandFilter">
-                    <option selected>Filter by Brand</option>
+                    <option selected>{{__('product.list.filterByBrand')}}</option>
                     @foreach($data["brands"] as $brand)
                     <option value="{{$brand->getBrand()}}">{{$brand->getBrand()}}</option>
                     @endforeach
                 </select>
             </form>
+        </div>
+        <div class="col mx-auto">
+            <form novalidate method="GET" style="text-align: center"
+                action="{{ route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter, 'catgoryFilter' => request()->categoryFilter]) }}">
+                {{csrf_field()}}
+                <select onchange="this.form.submit()" class="form-control" id="cateogryFilter" name="categoryFilter">
+                    <option selected>{{__('product.list.filterByCategory')}}</option>
+                    @foreach($data["categories"] as $category)
+                    <option value="{{$category->getCategory()}}">{{$category->getCategory()}}</option>
+                    @endforeach
+                </select>
+            </form>
+        </div>
+        <div class="col">
+        <a href="{{ route('product.list')}}"><button
+                            class="btn btn-secondary">{{ __('product.list.getRidOfFilters') }}</button></a>
         </div>
     </div>
     <hr class="border-secondary">

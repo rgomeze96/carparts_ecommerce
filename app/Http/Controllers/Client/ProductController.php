@@ -52,7 +52,8 @@ class ProductController extends Controller
         $brandFilter = $request->input('brandFilter');
         
         $products = Product::query();
-        $brands = $products->get('brand');
+        $brands = $products->distinct()->get('brand')->sortBy('brand');
+        $categories = $products->distinct()->get('category')->sortBy('category');
         $data["title"] = "";
         if (isset($nameFilter)) {
             $products = $products->where('name', 'like', "%$nameFilter%");
@@ -61,19 +62,19 @@ class ProductController extends Controller
         }
         if (isset($categoryFilter)) {
             $products = $products->where('category', $categoryFilter);
-            $data["title"] = $data["title"] . __('product.controller.toolsForRent');
+            $data["title"] = __('product.controller.listOfProductsByCategory').$categoryFilter;
         }
         if (isset($brandFilter)) {
             $products = $products->where('brand', $brandFilter);
-            $data["title"] = "filtered by brands";
+            $data["title"] = __('product.controller.listOfProductsByBrand').$brandFilter;
         }
         if (!isset($nameFilter) && !isset($brandFilter) && !isset($categoryFilter)) {
             $data["title"] =  __('product.controller.allProducts');
         }
         $filterResults = $products->get();
-        
         $data["products"] = $filterResults;
         $data["brands"] = $brands;
+        $data["categories"] = $categories;
         return view('product.list')->with("data", $data);
     }
     
