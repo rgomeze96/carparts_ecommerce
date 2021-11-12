@@ -23,9 +23,9 @@
                 <form class="mx-auto text-center" method="POST" action="{{ route('admin.product.save') }}"
                     enctype="multipart/form-data">
                     @csrf
-                    <label for="name">{{ __('product.create.productName') }}</label>
+                    <label for="productName">{{ __('product.create.productName') }}</label>
                     <input class="form-control mb-2 col-md-6 mx-auto" type="text"
-                        placeholder="{{ __('product.create.productNamePH') }}" name="name" value="{{ old('name') }}" />
+                        placeholder="{{ __('product.create.productNamePH') }}" name="productName" value="{{ old('productName') }}" />
 
                     <label for="description">{{ __('product.create.desc') }}</label>
                     <textarea class="form-control mb-2 col-md-6 mx-auto" type="text"

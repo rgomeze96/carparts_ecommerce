@@ -33,7 +33,6 @@
                 type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
                 {{ __('layout.menu')}}
-
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -54,17 +53,13 @@
                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{__('layout.admin')}}
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right bg-secondary" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item text-light"><a class="nav-link"
+                                    href="{{ route('admin.product.manage') }}">{{ __('layout.managePro') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.product.create') }}">{{ __('layout.createPro') }}</a></li>
+                                    href="{{ route('admin.toolloan.manage') }}">{{ __('layout.toolManagement') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.toolloan.create') }}">{{ __('layout.createTool') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="{{ route('admin.product.list') }}">
-                                    {{ __('layout.productList') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.toolloan.list') }}">{{ __('layout.toolList') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.user.list') }}">{{ __('layout.userList') }}</a></li>
+                                    href="{{ route('admin.user.manage') }}">{{ __('layout.manageUsers') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">{{ __('layout.logout') }}</a></li>

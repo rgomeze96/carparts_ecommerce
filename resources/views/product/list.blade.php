@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid text-center">
-    <h3>{{$data["title"]}}</h3>
+    <h1>{{$data["title"]}}</h1>
     <hr class="border-secondary">
     <div class="row">
         <div class="col-md-2 mt-2">
@@ -25,35 +25,35 @@
                 <select onchange="this.form.submit()" class="form-control" id="brandFilter" name="brandFilter">
                     <option selected>Filter by Brand</option>
                     @foreach($data["brands"] as $brand)
-                        <option value="{{$brand->getBrand()}}">{{$brand->getBrand()}}</option>
+                    <option value="{{$brand->getBrand()}}">{{$brand->getBrand()}}</option>
                     @endforeach
                 </select>
             </form>
         </div>
     </div>
-
     <hr class="border-secondary">
     <div class="row m-2">
-        @foreach($data['products'] as $product)
-        <div class="col-md-4 mb-5">
-            <div class="card text-secondary font-weight-bold border-secondary">
-                <div class="card-header text-center bg-light">
-                    <h5><a class="text-secondary"
-                            href="{{ route('product.show', $product->getId()) }}">{{ $product->getName() }}</a></h5>
-                    <div>{{__('product.list.brand')}}: {{$product->getBrand()}}</div>
+        <div class="container">
+            @foreach($data['products'] as $product)
+            <div class="row shadow-lg rounded rounded-pill">
+                <div class="col-md-6 mt-2 mb-2">
+                    <a href="{{ route('product.show', $product->getId()) }}"><img class="rounded rounded-pill shadow-lg"
+                            style="height: 185px; max-width: 200px" src="{{ asset($product->getImagePath()) }}"
+                            alt="{{$product->getId()}}" /></a>
                 </div>
-                <div class="card-img">
-                    <a href="{{ route('product.show', $product->getId()) }}"><img class="card-img"
-                            style="height: 185px;" src="{{ asset($product->getImagePath()) }}" alt="" /></a>
-                </div>
-                <div class="card-body text-center">
-                    <h5>{{__('product.list.price')}}: ${{number_format($product->getSalePrice(),2, '.', ',')}}</h5><br>
+                <div class="col-md-6 mt-2 mb-2">
+                    <h4><a class="text-secondary"
+                            href="{{ route('product.show', $product->getId()) }}">{{ $product->getName() }}</a></h4>
+
+                    <h5>{{__('product.list.price')}}: ${{number_format($product->getSalePrice(),2, '.', ',')}}</h5>
+                    <h5>{{__('product.list.brand')}}: {{$product->getBrand()}}</h5><br>
                     <a href="{{ route('product.addToCart', $product->getId()) }}"><button
                             class="btn btn-primary">{{ __('product.list.addToCart') }}</button></a>
                 </div>
             </div>
+            <br>
+            @endforeach
         </div>
-        @endforeach
     </div>
 </div>
 @endsection

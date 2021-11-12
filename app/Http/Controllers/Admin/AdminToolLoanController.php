@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminToolLoanController extends Controller
 {
-    public function list()
+    public function manage()
     {
         $data = [];
-        $data["title"] = "Loaned Tools List";
+        $data["title"] = "Tool Loan Management";
         $data["loanedTools"] = ToolLoan::orderByDesc('id')->get();
         $data["users"] = User::where('role', 'client')->get();
         $data["tools"] = Product::where('category', 'Tool')->get();
         if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
-            return view('admin.tool.list')->with("data", $data);
+            return view('admin.tool.manage')->with("data", $data);
         } else {
             return redirect()->route('home.index')->with('error', __('auth.unauthorized'));
         }

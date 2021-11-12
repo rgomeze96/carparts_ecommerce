@@ -16,16 +16,16 @@ use App\Interfaces\ImageStorage;
 class AdminProductController extends Controller
 {
 
-    public function list()
+    public function manage()
     {
         $data = []; //to be sent to the view
 
-        $data["title"] = "Product List";
+        $data["title"] = "Product Management";
         $data["products"] = Product::all();
         $data["loanedTools"] = ToolLoan::all();
 
         if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
-            return view('admin.product.list')->with("data", $data);
+            return view('admin.product.manage')->with("data", $data);
         } else {
             return redirect()->route('home.index')->with('error', __('auth.unauthorized'));
         }
@@ -51,12 +51,12 @@ class AdminProductController extends Controller
         if ($request->image) {
             $image = $request->image;
             $imagePath = "";
-            $imagePath = "/storage/". $request->name .".".$image->getClientOriginalExtension();
+            $imagePath = "/storage/". $request->productName .".".$image->getClientOriginalExtension();
         } else {
             $imagePath = "";
         }
         $newProduct = new Product;
-        $newProduct->setName($request->name);
+        $newProduct->setName($request->productName);
         $newProduct->setDescription($request->description);
         $newProduct->setSalePrice($request->salePrice);
         $newProduct->setCost($request->cost);
@@ -79,10 +79,10 @@ class AdminProductController extends Controller
         if ($request->image) {
             $image = $request->image;
             $imagePath = "";
-            $imagePath = "/storage/". $request->name .".".$image->getClientOriginalExtension();
+            $imagePath = "/storage/". $request->productName .".".$image->getClientOriginalExtension();
             $productToUpdate->setImagePath($imagePath);
         }
-        $productToUpdate->setName($request->name);
+        $productToUpdate->setName($request->productName);
         $productToUpdate->setDescription($request->description);
         $productToUpdate->setSalePrice($request->salePrice);
         $productToUpdate->setCost($request->cost);

@@ -18,8 +18,8 @@
             <!-- Portfolio Item 1-->
             @foreach($data['products'] as $product)
             <div class="col-md-4 mb-5">
-                <div class="card text-secondary font-weight-bold border-secondary">
-                    <div class="card-header text-center bg-light">
+                <div class="card text-secondary font-weight-bold">
+                    <div class="card-header text-center bg-light border-secondary">
                         <h5><a class="text-secondary"
                                 href="{{ route('product.show', $product->getId()) }}">{{ $product->getName() }}</a></h5>
                         <div>{{__('home.brand')}}: {{$product->getBrand()}}</div>
