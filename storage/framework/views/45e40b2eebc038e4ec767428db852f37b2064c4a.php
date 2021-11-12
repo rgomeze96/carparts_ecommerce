@@ -2,7 +2,7 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid text-center">
-    <h3><?php echo e($data["title"]); ?></h3>
+    <h1><?php echo e($data["title"]); ?></h1>
     <hr class="border-secondary">
     <div class="row">
         <div class="col-md-2 mt-2">
@@ -27,35 +27,35 @@
                 <select onchange="this.form.submit()" class="form-control" id="brandFilter" name="brandFilter">
                     <option selected>Filter by Brand</option>
                     <?php $__currentLoopData = $data["brands"]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="<?php echo e($brand->getBrand()); ?>"><?php echo e($brand->getBrand()); ?></option>
+                    <option value="<?php echo e($brand->getBrand()); ?>"><?php echo e($brand->getBrand()); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </form>
         </div>
     </div>
-
     <hr class="border-secondary">
     <div class="row m-2">
-        <?php $__currentLoopData = $data['products']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="col-md-4 mb-5">
-            <div class="card text-secondary font-weight-bold border-secondary">
-                <div class="card-header text-center bg-light">
-                    <h5><a class="text-secondary"
-                            href="<?php echo e(route('product.show', $product->getId())); ?>"><?php echo e($product->getName()); ?></a></h5>
-                    <div><?php echo e(__('product.list.brand')); ?>: <?php echo e($product->getBrand()); ?></div>
+        <div class="container">
+            <?php $__currentLoopData = $data['products']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="row shadow-lg rounded rounded-pill">
+                <div class="col-md-6 mt-2 mb-2">
+                    <a href="<?php echo e(route('product.show', $product->getId())); ?>"><img class="rounded rounded-pill shadow-lg"
+                            style="height: 185px; max-width: 200px" src="<?php echo e(asset($product->getImagePath())); ?>"
+                            alt="<?php echo e($product->getId()); ?>" /></a>
                 </div>
-                <div class="card-img">
-                    <a href="<?php echo e(route('product.show', $product->getId())); ?>"><img class="card-img"
-                            style="height: 185px;" src="<?php echo e(asset($product->getImagePath())); ?>" alt="" /></a>
-                </div>
-                <div class="card-body text-center">
-                    <h5><?php echo e(__('product.list.price')); ?>: $<?php echo e(number_format($product->getSalePrice(),2, '.', ',')); ?></h5><br>
+                <div class="col-md-6 mt-2 mb-2">
+                    <h4><a class="text-secondary"
+                            href="<?php echo e(route('product.show', $product->getId())); ?>"><?php echo e($product->getName()); ?></a></h4>
+
+                    <h5><?php echo e(__('product.list.price')); ?>: $<?php echo e(number_format($product->getSalePrice(),2, '.', ',')); ?></h5>
+                    <h5><?php echo e(__('product.list.brand')); ?>: <?php echo e($product->getBrand()); ?></h5><br>
                     <a href="<?php echo e(route('product.addToCart', $product->getId())); ?>"><button
                             class="btn btn-primary"><?php echo e(__('product.list.addToCart')); ?></button></a>
                 </div>
             </div>
+            <br>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 </div>
 <?php $__env->stopSection(); ?>

@@ -18,8 +18,8 @@
             <!-- Portfolio Item 1-->
             <?php $__currentLoopData = $data['products']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <div class="col-md-4 mb-5">
-                <div class="card text-secondary font-weight-bold border-secondary">
-                    <div class="card-header text-center bg-light">
+                <div class="card text-secondary font-weight-bold">
+                    <div class="card-header text-center bg-light border-secondary">
                         <h5><a class="text-secondary"
                                 href="<?php echo e(route('product.show', $product->getId())); ?>"><?php echo e($product->getName()); ?></a></h5>
                         <div><?php echo e(__('home.brand')); ?>: <?php echo e($product->getBrand()); ?></div>

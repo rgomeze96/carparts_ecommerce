@@ -34,7 +34,6 @@
                 aria-expanded="false" aria-label="Toggle navigation">
                 <?php echo e(__('layout.menu')); ?>
 
-
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -56,17 +55,13 @@
                             <?php echo e(__('layout.admin')); ?>
 
                         </a>
-                        <div class="dropdown-menu dropdown-menu-right bg-secondary" aria-labelledby="navbarDropdown">
+                        <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+                            <li class="dropdown-item text-light"><a class="nav-link"
+                                    href="<?php echo e(route('admin.product.manage')); ?>"><?php echo e(__('layout.managePro')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="<?php echo e(route('admin.product.create')); ?>"><?php echo e(__('layout.createPro')); ?></a></li>
+                                    href="<?php echo e(route('admin.toolloan.manage')); ?>"><?php echo e(__('layout.toolManagement')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="<?php echo e(route('admin.toolloan.create')); ?>"><?php echo e(__('layout.createTool')); ?></a></li>
-                            <li class="dropdown-item"><a class="nav-link" href="<?php echo e(route('admin.product.list')); ?>">
-                                    <?php echo e(__('layout.productList')); ?></a></li>
-                            <li class="dropdown-item"><a class="nav-link"
-                                    href="<?php echo e(route('admin.toolloan.list')); ?>"><?php echo e(__('layout.toolList')); ?></a></li>
-                            <li class="dropdown-item"><a class="nav-link"
-                                    href="<?php echo e(route('admin.user.list')); ?>"><?php echo e(__('layout.userList')); ?></a></li>
+                                    href="<?php echo e(route('admin.user.manage')); ?>"><?php echo e(__('layout.manageUsers')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link" href="<?php echo e(route('logout')); ?>"
                                     onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();"><?php echo e(__('layout.logout')); ?></a></li>

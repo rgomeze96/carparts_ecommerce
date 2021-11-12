@@ -46,20 +46,19 @@ Route::get('/user/show/{id}', 'App\Http\Controllers\Client\UserController@show')
 Route::post('/user/update/{id}', 'App\Http\Controllers\Client\UserController@update')
         ->name("user.update");
 
-
+//---------------------------------------------------------------------------------------------------------------------------
 //Admin routes
 //user
 Route::delete('/admin/user/destroy/{id}', 'App\Http\Controllers\Admin\AdminUserController@destroy')
         ->name("admin.user.destroy");
-Route::get('/admin/user/list', 'App\Http\Controllers\Admin\AdminUserController@list')->name("admin.user.list");
+Route::get('/admin/user/manage', 'App\Http\Controllers\Admin\AdminUserController@manage')->name("admin.user.manage");
 Route::post('/admin/user/update/{id}', 'App\Http\Controllers\Admin\AdminUserController@update')
         ->name("admin.user.update");
 Route::post('/admin/user/save', 'App\Http\Controllers\AdminUserController@save')->name("admin.user.save");
 
 //Product
-Route::get('/admin/product/list', 'App\Http\Controllers\Admin\AdminProductController@list')->name("admin.product.list");
-Route::get('/admin/product/create', 'App\Http\Controllers\Admin\AdminProductController@create')
-        ->name("admin.product.create");
+Route::get('/admin/product/manage', 'App\Http\Controllers\Admin\AdminProductController@manage')
+        ->name("admin.product.manage");
 Route::post('/admin/product/save', 'App\Http\Controllers\Admin\AdminProductController@save')
         ->name("admin.product.save");
 Route::post('/admin/product/update/{id}', 'App\Http\Controllers\Admin\AdminProductController@update')
@@ -68,10 +67,9 @@ Route::delete('/admin/product/destroy/{id}', 'App\Http\Controllers\Admin\AdminPr
         ->name("admin.product.destroy");
 
 // Tool Loan
-Route::get('/admin/toolloan/list', 'App\Http\Controllers\Admin\AdminToolLoanController@list')
-->name("admin.toolloan.list");
-Route::get('/admin/toolloan/create', 'App\Http\Controllers\Admin\AdminToolLoanController@create')
-->name("admin.toolloan.create");
+Route::get('/admin/toolloan/manage', 'App\Http\Controllers\Admin\AdminToolLoanController@manage')
+->name("admin.toolloan.manage");
+
 Route::post('/admin/toolloan/save', 'App\Http\Controllers\Admin\AdminToolLoanController@save')
 ->name("admin.toolloan.save");
 Route::post('/admin/toolloan/update/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@update')

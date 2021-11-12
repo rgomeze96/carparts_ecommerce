@@ -16,12 +16,75 @@
     </div>
     <?php endif; ?>
     <div class="row">
-    <div class="ml-auto mb-2 mr-2">
+        <div class="ml-auto mb-2 mr-2">
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-add-product">
                 <?php echo e(__('product.edit.buttonAdd')); ?>
 
             </button>
         </div>
+    </div>
+    <div class="modal fade" id="modal-add-product" tabindex="-1" role="dialog">
+        <form class="mx-auto text-center" method="POST" action="<?php echo e(route('admin.product.save')); ?>"
+            enctype="multipart/form-data">
+            <?php echo e(csrf_field()); ?>
+
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content mx-auto text-center bg-light border border-danger text-secondary">
+                    <div class="modal-body">
+                    <h5>
+                    <?php echo e(__('product.create.title')); ?>
+
+                    </h5>
+                        <label for="productName"><?php echo e(__('product.create.productName')); ?></label>
+                        <input class="form-control mb-2 col-md-6 mx-auto" type="text"
+                            placeholder="<?php echo e(__('product.create.productNamePH')); ?>" name="productName"
+                            value="<?php echo e(old('productName')); ?>" />
+
+                        <label for="description"><?php echo e(__('product.create.desc')); ?></label>
+                        <textarea class="form-control mb-2 col-md-6 mx-auto" type="text"
+                            placeholder="<?php echo e(__('product.create.descPH')); ?>" name="description" rows="3"
+                            value="<?php echo e(old('description')); ?>" /></textarea>
+
+                        <label for="salePrice"><?php echo e(__('product.create.salePrice')); ?></label>
+                        <input class="form-control mb-2 col-md-6 mx-auto" type="text"
+                            placeholder="<?php echo e(__('product.create.salePricePH')); ?>" name="salePrice"
+                            value="<?php echo e(old('salePrice')); ?>" />
+
+                        <label for="cost"><?php echo e(__('product.create.cost')); ?></label>
+                        <input class="form-control mb-2 col-md-6 mx-auto" type="text"
+                            placeholder="<?php echo e(__('product.create.costPH')); ?>" name="cost" value="<?php echo e(old('cost')); ?>" />
+
+                        <label for="category"><?php echo e(__('product.create.category')); ?></label>
+                        <input class="form-control mb-2 col-md-6 mx-auto" type="text"
+                            placeholder="<?php echo e(__('product.create.categoryPH')); ?>" name="category"
+                            value="<?php echo e(old('category')); ?>" />
+
+                        <label for="brand"><?php echo e(__('product.create.brand')); ?></label>
+                        <input class="form-control col-md-6 mx-auto" type="text"
+                            placeholder="<?php echo e(__('product.create.brandPH')); ?>" name="brand" value="<?php echo e(old('brand')); ?>">
+
+                        <label for="warranty"><?php echo e(__('product.create.warranty')); ?></label>
+                        <input class="form-control col-md-6 mx-auto" type="text"
+                            placeholder="<?php echo e(__('product.create.warrantyPH')); ?>" name="warranty"
+                            value="<?php echo e(old('warranty')); ?>">
+
+                        <label for="quantity"><?php echo e(__('product.create.quantity')); ?></label>
+                        <input class="form-control col-md-6 mx-auto" type="number" min="1"
+                            placeholder="<?php echo e(__('product.create.quantityPH')); ?>" name="quantity"
+                            value="<?php echo e(old('quantity')); ?>">
+
+                        <label class="mt-2" for="image"><?php echo e(__('product.create.image')); ?></label><br>
+                        <input class="col-md-6 mt-3 mx-auto text-center" type="file" name="image" accept="image/*"
+                            value="<?php echo e(old('imagePath')); ?>"><br>
+                    </div>
+                    <div class="modal-footer mx-auto">
+                        <button type="button" class="btn btn-outline-primary"
+                            data-dismiss="modal"><?php echo e(__('product.edit.buttonClose')); ?></button>
+                        <button type="submit" class="btn btn-success"><?php echo e(__('product.create.button')); ?></button>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="row">
         <table class="table table-dark table-hover bg-secondary text-light text-center">
@@ -158,4 +221,4 @@
         </table>
     </div>
     <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/product/list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/product/manage.blade.php ENDPATH**/ ?>

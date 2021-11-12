@@ -23,9 +23,9 @@
                 <form class="mx-auto text-center" method="POST" action="<?php echo e(route('admin.product.save')); ?>"
                     enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
-                    <label for="name"><?php echo e(__('product.create.productName')); ?></label>
+                    <label for="productName"><?php echo e(__('product.create.productName')); ?></label>
                     <input class="form-control mb-2 col-md-6 mx-auto" type="text"
-                        placeholder="<?php echo e(__('product.create.productNamePH')); ?>" name="name" value="<?php echo e(old('name')); ?>" />
+                        placeholder="<?php echo e(__('product.create.productNamePH')); ?>" name="productName" value="<?php echo e(old('productName')); ?>" />
 
                     <label for="description"><?php echo e(__('product.create.desc')); ?></label>
                     <textarea class="form-control mb-2 col-md-6 mx-auto" type="text"

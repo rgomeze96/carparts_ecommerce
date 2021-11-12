@@ -22,7 +22,7 @@ class Product extends Model
     public static function validateProduct(Request $request)
     {
         $request->validate([
-            "name" => "required",
+            "productName" => "required",
             "description" => "required",
             "salePrice" => "required|numeric|gt:0",
             "cost" => "required|numeric|gt:0",
