@@ -14,6 +14,60 @@
     </div>
     <?php endif; ?>
     <div class="row">
+        <div class="ml-auto mb-2 mr-2">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-add-toolloan">
+                <?php echo e(__('toolloan.edit.buttonAdd')); ?>
+
+            </button>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-add-toolloan" tabindex="-1" role="dialog">
+    <form class="mx-auto text-center" method="POST" action="<?php echo e(route('admin.toolloan.save')); ?>">
+            <?php echo e(csrf_field()); ?>
+
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content mx-auto text-center bg-light border-success text-secondary">
+                <div class="modal-body">
+                    <h5>
+                    <?php echo e(__('toolloan.create.title')); ?>
+
+                    </h5>
+                    <label for="userId"><?php echo e(__('toolloan.create.user')); ?></label>
+                <select multiple class="form-control col-md-6 mx-auto" name="userId" id="userId">
+                    <?php $__currentLoopData = $data["users"]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($user->getId()); ?>"><?php echo e($user->getName()); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <label class="mt-2" for="productId"><?php echo e(__('toolloan.create.productId')); ?></label>
+                <select class="form-control col-md-6 mx-auto text-center" name="productId">
+                    <?php $__currentLoopData = $data["tools"]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $tool): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($tool->getId()); ?>"><?php echo e($tool->getName()); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+                <label class="mt-2" for="description"><?php echo e(__('toolloan.create.desc')); ?></label>
+                <textarea class="form-control col-md-6 mx-auto" name="description" rows="3"
+                    value="<?php echo e(old('description')); ?>"></textarea>
+                <label class="mt-2" for="depositAmount"><?php echo e(__('toolloan.create.depositAmount')); ?></label>
+                <input class="form-control mb-2 col-md-6 mx-auto" type="text"
+                    placeholder="Enter deposit amount required" name="depositAmount"
+                    value="<?php echo e(old('depositAmount')); ?>" />
+                <label class="mt-2" for="loanDate"><?php echo e(__('toolloan.create.loanDate')); ?></label>
+                <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="loanDate"
+                    value="<?php echo e(old('loanDate')); ?>" />
+                <label class="mt-2" for="returnDate"><?php echo e(__('toolloan.create.returnDate')); ?></label>
+                <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="returnDate"
+                    value="<?php echo e(old('returnDate')); ?>" />
+                    </div>
+                    <div class="modal-footer mx-auto">
+                        <button type="button" class="btn btn-secondary"
+                            data-dismiss="modal"><?php echo e(__('product.edit.buttonClose')); ?></button>
+                        <button type="submit" class="btn btn-success"><?php echo e(__('product.create.button')); ?></button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row">
         <table class="table table-dark table-hover bg-secondary text-light text-center">
             <thead>
                 <th scope="col"><?php echo e(__('toolloan.edit.loanId')); ?></th>

@@ -31,10 +31,10 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content mx-auto text-center bg-light border-success text-secondary">
                     <div class="modal-body">
-                    <h5>
-                    <?php echo e(__('product.create.title')); ?>
+                        <h5>
+                            <?php echo e(__('product.create.title')); ?>
 
-                    </h5>
+                        </h5>
                         <label for="productName"><?php echo e(__('product.create.productName')); ?></label>
                         <input class="form-control mb-2 col-md-6 mx-auto" type="text"
                             placeholder="<?php echo e(__('product.create.productNamePH')); ?>" name="productName"
@@ -114,10 +114,19 @@
                             <?php echo e(__('product.edit.buttonEdit')); ?>
 
                         </button>
+
                         <?php if($data["loanedTools"]->where('product_id', $product->getId())->count() == 0): ?>
                         <button type="button" class="btn btn-outline-danger ml-1" data-toggle="modal"
                             data-target="#modal-delete-<?php echo e($product->getId()); ?>">
                             <?php echo e(__('product.edit.buttonDelete')); ?>
+
+                        </button>
+                        <?php endif; ?>
+                        <br>
+                        <?php if($product->getCategory() == "Tool"): ?>
+                        <button type="button" class="btn btn-outline-light mt-1" data-toggle="modal"
+                            data-target="#modal-add-toolloan">
+                            <?php echo e(__('toolloan.create.createButton')); ?>
 
                         </button>
                         <?php endif; ?>
@@ -185,6 +194,53 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal fade" id="modal-add-toolloan" tabindex="-1" role="dialog">
+                        <form class="mx-auto text-center" method="POST" action="<?php echo e(route('admin.toolloan.save')); ?>">
+                            <?php echo e(csrf_field()); ?>
+
+                            <input type="hidden" name="productId" value="<?php echo e($product->getId()); ?>">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content mx-auto text-center bg-light border-success text-secondary">
+                                    <div class="modal-body">
+                                        <h5>
+                                            <?php echo e(__('toolloan.create.title')); ?>
+
+                                        </h5>
+                                        <label for="userId"><?php echo e(__('toolloan.create.user')); ?></label>
+                                        <select required multiple class="form-control col-md-6 mx-auto" name="userId"
+                                            id="userId">
+                                            <?php $__currentLoopData = $data["customers"]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $customer): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($customer->getId()); ?>"><?php echo e($customer->getName()); ?></option>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </select>
+                                        <label class="mt-2" for="description"><?php echo e(__('toolloan.create.desc')); ?></label>
+                                        <textarea class="form-control col-md-6 mx-auto" name="description" rows="3"
+                                            value="<?php echo e(old('description')); ?>"></textarea>
+                                        <label class="mt-2"
+                                            for="depositAmount"><?php echo e(__('toolloan.create.depositAmount')); ?></label><br>
+                                        <small><?php echo e(__('product.edit.cost')); ?>:
+                                            $<?php echo e(number_format($product->getCost(),2, '.', ',')); ?></small>
+                                        <input class="form-control col-md-6 mx-auto" type="text"
+                                            placeholder="<?php echo e(__('toolloan.create.depositAmount')); ?>" name="depositAmount"
+                                            value="<?php echo e(old('depositAmount')); ?>" />
+                                        <label class="mt-2" for="loanDate"><?php echo e(__('toolloan.create.loanDate')); ?></label>
+                                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="loanDate"
+                                            value="<?php echo e(old('loanDate')); ?>" />
+                                        <label class="mt-2"
+                                            for="returnDate"><?php echo e(__('toolloan.create.returnDate')); ?></label>
+                                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="returnDate"
+                                            value="<?php echo e(old('returnDate')); ?>" />
+                                    </div>
+                                    <div class="modal-footer mx-auto">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal"><?php echo e(__('product.edit.buttonClose')); ?></button>
+                                        <button type="submit"
+                                            class="btn btn-success"><?php echo e(__('product.create.button')); ?></button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>

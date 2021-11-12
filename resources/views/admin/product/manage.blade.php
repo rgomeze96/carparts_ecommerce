@@ -29,9 +29,9 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content mx-auto text-center bg-light border-success text-secondary">
                     <div class="modal-body">
-                    <h5>
-                    {{ __('product.create.title') }}
-                    </h5>
+                        <h5>
+                            {{ __('product.create.title') }}
+                        </h5>
                         <label for="productName">{{ __('product.create.productName') }}</label>
                         <input class="form-control mb-2 col-md-6 mx-auto" type="text"
                             placeholder="{{ __('product.create.productNamePH') }}" name="productName"
@@ -110,10 +110,18 @@
                             data-target="#modal-edit-{{ $product->getId() }}">
                             {{ __('product.edit.buttonEdit') }}
                         </button>
+
                         @if($data["loanedTools"]->where('product_id', $product->getId())->count() == 0)
                         <button type="button" class="btn btn-outline-danger ml-1" data-toggle="modal"
                             data-target="#modal-delete-{{ $product->getId() }}">
                             {{ __('product.edit.buttonDelete') }}
+                        </button>
+                        @endif
+                        <br>
+                        @if($product->getCategory() == "Tool")
+                        <button type="button" class="btn btn-outline-light mt-1" data-toggle="modal"
+                            data-target="#modal-add-toolloan">
+                            {{ __('toolloan.create.createButton') }}
                         </button>
                         @endif
                     </td>
@@ -178,6 +186,51 @@
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal fade" id="modal-add-toolloan" tabindex="-1" role="dialog">
+                        <form class="mx-auto text-center" method="POST" action="{{ route('admin.toolloan.save') }}">
+                            {{csrf_field()}}
+                            <input type="hidden" name="productId" value="{{ $product->getId() }}">
+                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                <div class="modal-content mx-auto text-center bg-light border-success text-secondary">
+                                    <div class="modal-body">
+                                        <h5>
+                                            {{ __('toolloan.create.title') }}
+                                        </h5>
+                                        <label for="userId">{{ __('toolloan.create.user') }}</label>
+                                        <select required multiple class="form-control col-md-6 mx-auto" name="userId"
+                                            id="userId">
+                                            @foreach($data["customers"] as $customer)
+                                            <option value="{{$customer->getId()}}">{{$customer->getName()}}</option>
+                                            @endforeach
+                                        </select>
+                                        <label class="mt-2" for="description">{{ __('toolloan.create.desc') }}</label>
+                                        <textarea class="form-control col-md-6 mx-auto" name="description" rows="3"
+                                            value="{{ old('description') }}"></textarea>
+                                        <label class="mt-2"
+                                            for="depositAmount">{{ __('toolloan.create.depositAmount') }}</label><br>
+                                        <small>{{ __('product.edit.cost') }}:
+                                            ${{number_format($product->getCost(),2, '.', ',')}}</small>
+                                        <input class="form-control col-md-6 mx-auto" type="text"
+                                            placeholder="{{ __('toolloan.create.depositAmount') }}" name="depositAmount"
+                                            value="{{ old('depositAmount') }}" />
+                                        <label class="mt-2" for="loanDate">{{ __('toolloan.create.loanDate') }}</label>
+                                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="loanDate"
+                                            value="{{ old('loanDate') }}" />
+                                        <label class="mt-2"
+                                            for="returnDate">{{ __('toolloan.create.returnDate') }}</label>
+                                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" name="returnDate"
+                                            value="{{ old('returnDate') }}" />
+                                    </div>
+                                    <div class="modal-footer mx-auto">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">{{ __('product.edit.buttonClose') }}</button>
+                                        <button type="submit"
+                                            class="btn btn-success">{{ __('product.create.button') }}</button>
+                                    </div>
+                                </div>
                             </div>
                         </form>
                     </div>
