@@ -43,15 +43,13 @@
                 <form class="mx-auto text-center" method="POST"
                     action="<?php echo e(route('user.update', $data['user']->getId())); ?>">
                     <div class="modal-content mx-auto text-center border border-warning">
-                        <div class="modal-header">
+                        <div class="modal-body">
                             <h5 class="modal-title mx-auto">
                                 <?php echo e(__('user.show.modifyTitle')); ?>
 
                             </h5>
-                        </div>
-                        <div class="modal-body">
                             <?php echo csrf_field(); ?>
-                            <label for="name"><?php echo e(__('user.show.userName')); ?></label>
+                            <label class="mt-1" for="name"><?php echo e(__('user.show.userName')); ?></label>
                             <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter user ID"
                                 name="name" value="<?php echo e($data['user']->getName()); ?>" />
 

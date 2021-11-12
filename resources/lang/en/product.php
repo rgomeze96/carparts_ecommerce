@@ -6,6 +6,8 @@ return [
         'allProducts' => 'List of all Products',
         'created' => 'Product was created successfully!',
         'inName' => ' - in the name',
+        'listOfProductsByBrand' => 'Products made by: ',
+        'listOfProductsByCategory' => 'Products in the category: ',
         'listOfProductsWith' => 'List of products with: ',
         'removed' => 'Product was deleted successfully!',
         'reviewCreated' => 'Your review was successfully created!',
@@ -66,10 +68,14 @@ return [
     'list' => [
         'addToCart' => 'Add to cart',
         'brand' => 'Brand',
-        'brandFilter' => 'Filter by Brand',
-        'price' => 'Price',
+        'filter' => 'Apply Filters',
         'filters' => 'Filters',
+        'filterByBrand' => 'Filter by brand',
+        'filterByCategory' => 'Filter by category',
+        'filterByName' => 'Filter by name',
+
         'findOnName' => 'Filter by name',
+        'price' => 'Price',
     ],
 
     //Show

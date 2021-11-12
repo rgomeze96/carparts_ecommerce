@@ -10,27 +10,44 @@
         </div>
         <div class="col mx-auto">
             <form novalidate method="GET" style="text-align: center"
-                action="<?php echo e(route('product.list', ['nameFilter' => request()->nameFilter])); ?>">
+                action="<?php echo e(route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter, 'catgoryFilter' => request()->categoryFilter])); ?>">
                 <?php echo e(csrf_field()); ?>
 
                 <label hidden for="nameFilter"></label>
                 <input onchange="this.form.submit()" type="text" id="nameFilter" name="nameFilter"
-                    class="form-control text-center mx-auto" placeholder="<?php echo e(__('product.list.findOnName')); ?>"
+                    class="form-control text-center mx-auto" placeholder="<?php echo e(__('product.list.filterByName')); ?>"
                     value="<?php echo e(request()->input('nameFilter')); ?>">
             </form>
         </div>
         <div class="col mx-auto">
             <form novalidate method="GET" style="text-align: center"
-                action="<?php echo e(route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter])); ?>">
+                action="<?php echo e(route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter, 'catgoryFilter' => request()->categoryFilter])); ?>">
                 <?php echo e(csrf_field()); ?>
 
                 <select onchange="this.form.submit()" class="form-control" id="brandFilter" name="brandFilter">
-                    <option selected>Filter by Brand</option>
+                    <option selected><?php echo e(__('product.list.filterByBrand')); ?></option>
                     <?php $__currentLoopData = $data["brands"]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <option value="<?php echo e($brand->getBrand()); ?>"><?php echo e($brand->getBrand()); ?></option>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </select>
             </form>
+        </div>
+        <div class="col mx-auto">
+            <form novalidate method="GET" style="text-align: center"
+                action="<?php echo e(route('product.list', ['nameFilter' => request()->nameFilter, 'brandFilter' => request()->brandFilter, 'catgoryFilter' => request()->categoryFilter])); ?>">
+                <?php echo e(csrf_field()); ?>
+
+                <select onchange="this.form.submit()" class="form-control" id="cateogryFilter" name="categoryFilter">
+                    <option selected><?php echo e(__('product.list.filterByCategory')); ?></option>
+                    <?php $__currentLoopData = $data["categories"]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($category->getCategory()); ?>"><?php echo e($category->getCategory()); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+            </form>
+        </div>
+        <div class="col">
+        <a href="<?php echo e(route('product.list')); ?>"><button
+                            class="btn btn-secondary"><?php echo e(__('product.list.getRidOfFilters')); ?></button></a>
         </div>
     </div>
     <hr class="border-secondary">

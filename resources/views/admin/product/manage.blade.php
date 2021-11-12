@@ -197,7 +197,7 @@
                                 <div class="modal-content mx-auto text-center bg-light border-success text-secondary">
                                     <div class="modal-body">
                                         <h5>
-                                            {{ __('toolloan.create.title') }}
+                                            {{ __('toolloan.create.title') }}: {{$product->getName()}}
                                         </h5>
                                         <label for="userId">{{ __('toolloan.create.user') }}</label>
                                         <select required multiple class="form-control col-md-6 mx-auto" name="userId"

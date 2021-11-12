@@ -206,7 +206,7 @@
                                 <div class="modal-content mx-auto text-center bg-light border-success text-secondary">
                                     <div class="modal-body">
                                         <h5>
-                                            <?php echo e(__('toolloan.create.title')); ?>
+                                            <?php echo e(__('toolloan.create.title')); ?>: <?php echo e($product->getName()); ?>
 
                                         </h5>
                                         <label for="userId"><?php echo e(__('toolloan.create.user')); ?></label>

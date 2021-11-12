@@ -41,14 +41,12 @@
                 <form class="mx-auto text-center" method="POST"
                     action="{{ route('user.update', $data['user']->getId()) }}">
                     <div class="modal-content mx-auto text-center border border-warning">
-                        <div class="modal-header">
+                        <div class="modal-body">
                             <h5 class="modal-title mx-auto">
                                 {{ __('user.show.modifyTitle') }}
                             </h5>
-                        </div>
-                        <div class="modal-body">
                             @csrf
-                            <label for="name">{{ __('user.show.userName') }}</label>
+                            <label class="mt-1" for="name">{{ __('user.show.userName') }}</label>
                             <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter user ID"
                                 name="name" value="{{ $data['user']->getName() }}" />
 

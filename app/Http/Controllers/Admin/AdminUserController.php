@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminUserController extends Controller
 {
-    public function list()
+    public function manage()
     {
         $data = []; //to be sent to the view
 
@@ -21,7 +21,7 @@ class AdminUserController extends Controller
         $data["loanedTools"] = ToolLoan::all();
 
         if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
-            return view('admin.user.list')->with("data", $data);
+            return view('admin.user.manage')->with("data", $data);
         } else {
             return redirect()->route('home.index')->with('error', __('auth.unauthorized'));
         }
