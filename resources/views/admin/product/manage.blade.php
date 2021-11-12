@@ -75,7 +75,7 @@
                             value="{{ old('imagePath') }}"><br>
                     </div>
                     <div class="modal-footer mx-auto">
-                        <button type="button" class="btn btn-outline-primary"
+                        <button type="button" class="btn btn-secondary"
                             data-dismiss="modal">{{ __('product.edit.buttonClose') }}</button>
                         <button type="submit" class="btn btn-success">{{ __('product.create.button') }}</button>
                     </div>
