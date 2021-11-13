@@ -6,10 +6,21 @@
 <div class="container">
     <!-- Portfolio Grid Items-->
     <div class="row">
-        <?php echo $bitcoinChart->container(); ?>
 
-        <?php echo $bitcoinChart->script(); ?>
-
+    <table class="table table-dark table-hover bg-secondary text-light text-center">
+            <thead>
+                <th scope="col"><?php echo e(__('bitcoin.date')); ?></th>
+                <th scope="col"><?php echo e(__('bitcoin.price')); ?></th>
+            </thead>
+            <tbody>
+                <?php for($i = 0; $i < $data["numberOfResults"]; $i++): ?>
+                <tr>
+                    <td><?php echo e($data["dates"][$i]); ?></td>
+                    <td>$<?php echo e(number_format($data["prices"][$i],2, '.', ',')); ?></td>                 
+                </tr>
+                <?php endfor; ?>
+            </tbody>
+        </table>
     </div>
 </div>
 

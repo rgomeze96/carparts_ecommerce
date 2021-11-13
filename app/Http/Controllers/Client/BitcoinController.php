@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Charts\BitcoinChart;
 use Illuminate\Support\Facades\Http;
-
 
 class BitcoinController extends Controller
 {
@@ -21,18 +19,9 @@ class BitcoinController extends Controller
             $labels[$i] = $decodedData[$i]["date"];
             $prices[$i] = $decodedData[$i]["close"];
         }
-        $chart = new BitcoinChart;
-        $chart->labels($labels);
-        $chart->dataset('Closing Price of Bitcoin in USD', 'line', $prices)->options([
-            'fill' => 'true',
-            'borderColor' => 'darkred',
-            'scales' => [
-                'min' => '50000'
-            ]
-            
-        ]);
-        return view('bitcoin.index')->with([
-            'bitcoinChart' => $chart
-        ]);
+        $data["dates"] = $labels;
+        $data["prices"] = $prices;
+        $data["numberOfResults"] = $numberOfResults;
+        return view('bitcoin.index')->with("data", $data);
     }
 }
