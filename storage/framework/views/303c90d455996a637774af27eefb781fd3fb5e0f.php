@@ -3,11 +3,19 @@
 <?php $__env->startSection('content'); ?>
 <div class="container">
     <?php echo $__env->make('util.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-
+    <?php if($errors->any()): ?>
+            <div class="alert alert-danger">
+                <ul id="errors">
+                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <li><?php echo e($error); ?></li>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </ul>
+            </div>
+            <?php endif; ?>
     <div class="row justify-content-center">
         <div class="card ml-2 mr-2 mt-2 border-primary">
             <div class="card-image mx-auto">
-                <img style="max-height: 500px; max-width: 500px" class="card-img" src="<?php echo e(asset($data['product']->getImagePath())); ?>"
+                <img style="max-height: 400px; max-width: 400px" class="card-img" src="<?php echo e(asset($data['product']->getImagePath())); ?>"
                     alt="<?php echo e($data['product']->getId()); ?>">
             </div>
             <div class="card-header text-center border-primary">
@@ -38,18 +46,11 @@
             <div class="card-header text-center border-secondary">
                 <h4><?php echo e(__('product.show.reviewTitle')); ?></h4>
             </div>
-            <?php if($errors->any()): ?>
-            <div class="alert alert-danger">
-                <ul id="errors">
-                    <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <li><?php echo e($error); ?></li>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </ul>
-            </div>
-            <?php endif; ?>
+
             <div class="card-body m-2">
-                <?php if($data["product"]["reviews"]->count() == 0): ?>
-                <div class="row ml-4">
+            <div class="container">
+            <?php if($data["product"]["reviews"]->count() == 0): ?>
+                <div class="row mx-auto">
                     <?php echo e(__('product.show.beTheFirst')); ?>
 
                 </div>
@@ -149,6 +150,7 @@
                         <?php endif; ?>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

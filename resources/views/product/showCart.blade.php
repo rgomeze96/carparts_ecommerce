@@ -9,7 +9,7 @@
                 {{ __('product.showCart.product') }}(s)
             </h1>
             @else
-            <h3>{{ __('product.showCart.emptyCart') }}<a href="{{route('product.list')}}">
+            <h3>{{ __('product.showCart.emptyCart') }}<a style="color: #800000" href="{{route('product.list')}}">
                     {{ __('product.showCart.here') }}</a></h3>
             @endif
             <h5>{{__('product.showCart.balance') }} ${{number_format($data["user"]->getBalance(),2, '.', ',')}}</h5>

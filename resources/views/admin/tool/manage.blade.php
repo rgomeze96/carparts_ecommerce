@@ -15,9 +15,11 @@
     @endif
     <div class="row">
         <div class="ml-auto mb-2 mr-2">
+            <a href="{{route('admin.product.manage')}}">
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-add-toolloan">
                 {{ __('toolloan.edit.buttonAdd') }}
             </button>
+</a>
         </div>
     </div>
     <div class="row">

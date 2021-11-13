@@ -1,5 +1,5 @@
 
-
+<?php $__env->startSection("title", $data["title"]); ?>
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid text-center">
     <h1><?php echo e($data["title"]); ?></h1>
@@ -47,7 +47,7 @@
         </div>
         <div class="col">
         <a href="<?php echo e(route('product.list')); ?>"><button
-                            class="btn btn-secondary"><?php echo e(__('product.list.getRidOfFilters')); ?></button></a>
+                            class="btn btn-secondary"><?php echo e(__('product.list.removeFilters')); ?></button></a>
         </div>
     </div>
     <hr class="border-secondary">

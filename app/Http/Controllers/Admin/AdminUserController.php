@@ -16,7 +16,7 @@ class AdminUserController extends Controller
     {
         $data = []; //to be sent to the view
 
-        $data["title"] = "User List";
+        $data["title"] = "Manage Users";
         $data["users"] = User::all();
         $data["loanedTools"] = ToolLoan::all();
 

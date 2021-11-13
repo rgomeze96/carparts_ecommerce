@@ -71,22 +71,22 @@
                                             <input type="email" class="form-control col-md-8 mx-auto" name="email" value="<?php echo e($user->getEmail()); ?>">
 
                                             <label for="address"><?php echo e(__('user.edit.address')); ?></label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter deposit amount required" name="address" value="<?php echo e($user->getAddress()); ?>" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="<?php echo e(__('user.edit.addressPH')); ?>" name="address" value="<?php echo e($user->getAddress()); ?>" />
 
                                             <label for="age"><?php echo e(__('user.edit.age')); ?></label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" min="1" type="number" placeholder="Enter return date for loan" name="age" value="<?php echo e($user->getAge()); ?>" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" min="1" type="number" placeholder="<?php echo e(__('user.edit.agePH')); ?>" name="age" value="<?php echo e($user->getAge()); ?>" />
 
                                             <label for="city"><?php echo e(__('user.edit.city')); ?></label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter return date for loan" name="city" value="<?php echo e($user->getCity()); ?>" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="<?php echo e(__('user.edit.cityPH')); ?>" name="city" value="<?php echo e($user->getCity()); ?>" />
 
                                             <label for="country"><?php echo e(__('user.edit.country')); ?></label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter return date for loan" name="country" value="<?php echo e($user->getCountry()); ?>" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="<?php echo e(__('user.edit.countryPH')); ?>" name="country" value="<?php echo e($user->getCountry()); ?>" />
 
                                             <label for="telephone"><?php echo e(__('user.edit.telephone')); ?></label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter return date for loan" name="telephone" value="<?php echo e($user->getTelephone()); ?>" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="<?php echo e(__('user.edit.telephonePH')); ?>" name="telephone" value="<?php echo e($user->getTelephone()); ?>" />
 
                                             <label for="balance"><?php echo e(__('user.edit.balance')); ?></label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="number" min="1" placeholder="Enter return date for loan" name="balance" value="<?php echo e($user->getBalance()); ?>" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="number" min="1" placeholder="<?php echo e(__('user.edit.balancePH')); ?>" name="balance" value="<?php echo e($user->getBalance()); ?>" />
                                             
                                             <div><?php echo e(__('user.edit.role')); ?></div>
                                             <div class="form-check">

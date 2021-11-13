@@ -33,7 +33,7 @@ return [
 
     //Edit
     'edit' => [
-        'title' => 'List of Users',
+        'title' => 'Manage Users',
         'modifyTitle' => 'Update User Information',
         'id' => 'ID',
         'userName' => 'Name',
@@ -54,6 +54,14 @@ return [
         'clientRole' => 'Client',
         'adminRole' => 'Admin',
         'role' => 'Permission',
+        'userNamePH' => 'Modify user name',
+        'emailPH' => 'Modify user email',
+        'addressPH' => 'Modify user address',
+        'agePH' => 'Modify user age',
+        'cityPH' => 'Modify user city',
+        'countryPH' => 'Modify user country',
+        'telephonePH' => 'Modify user telephone',
+        'balancePH' => 'Modify user balance',
     ],
     
     //Show

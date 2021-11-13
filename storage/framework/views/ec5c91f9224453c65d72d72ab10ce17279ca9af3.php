@@ -10,7 +10,7 @@
                 <?php echo e(__('product.showCart.product')); ?>(s)
             </h1>
             <?php else: ?>
-            <h3><?php echo e(__('product.showCart.emptyCart')); ?><a href="<?php echo e(route('product.list')); ?>">
+            <h3><?php echo e(__('product.showCart.emptyCart')); ?><a style="color: #800000" href="<?php echo e(route('product.list')); ?>">
                     <?php echo e(__('product.showCart.here')); ?></a></h3>
             <?php endif; ?>
             <h5><?php echo e(__('product.showCart.balance')); ?> $<?php echo e(number_format($data["user"]->getBalance(),2, '.', ',')); ?></h5>

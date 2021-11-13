@@ -67,22 +67,22 @@
                                             <input type="email" class="form-control col-md-8 mx-auto" name="email" value="{{ $user->getEmail() }}">
 
                                             <label for="address">{{ __('user.edit.address') }}</label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter deposit amount required" name="address" value="{{ $user->getAddress() }}" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="{{__('user.edit.addressPH')}}" name="address" value="{{ $user->getAddress() }}" />
 
                                             <label for="age">{{ __('user.edit.age') }}</label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" min="1" type="number" placeholder="Enter return date for loan" name="age" value="{{ $user->getAge() }}" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" min="1" type="number" placeholder="{{__('user.edit.agePH')}}" name="age" value="{{ $user->getAge() }}" />
 
                                             <label for="city">{{ __('user.edit.city') }}</label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter return date for loan" name="city" value="{{ $user->getCity() }}" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="{{__('user.edit.cityPH')}}" name="city" value="{{ $user->getCity() }}" />
 
                                             <label for="country">{{ __('user.edit.country') }}</label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter return date for loan" name="country" value="{{ $user->getCountry() }}" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="{{__('user.edit.countryPH')}}" name="country" value="{{ $user->getCountry() }}" />
 
                                             <label for="telephone">{{ __('user.edit.telephone') }}</label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="Enter return date for loan" name="telephone" value="{{ $user->getTelephone() }}" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="text" placeholder="{{__('user.edit.telephonePH')}}" name="telephone" value="{{ $user->getTelephone() }}" />
 
                                             <label for="balance">{{ __('user.edit.balance') }}</label>
-                                            <input class="form-control mb-2 col-md-8 mx-auto" type="number" min="1" placeholder="Enter return date for loan" name="balance" value="{{ $user->getBalance() }}" />
+                                            <input class="form-control mb-2 col-md-8 mx-auto" type="number" min="1" placeholder="{{__('user.edit.balancePH')}}" name="balance" value="{{ $user->getBalance() }}" />
                                             
                                             <div>{{ __('user.edit.role') }}</div>
                                             <div class="form-check">

@@ -75,6 +75,7 @@ return [
         'filterByName' => 'Filter by name',
 
         'findOnName' => 'Filter by name',
+        'removeFilters' => 'Remove Filters',
         'price' => 'Price',
     ],
 
