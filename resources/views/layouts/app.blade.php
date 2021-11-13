@@ -27,7 +27,7 @@
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
             <a class="navbar-brand" href="{{ route('home.index') }}"> <img class="rounded rounded-circle"
-                    style="max-width: 125px; max-height: 70px" src="/storage/tokyo_logo.png"> </a>
+                    style="max-width: 125px; max-height: 70px" src="{{ asset('/storage/tokyo_logo.png') }}"> </a>
             <button
                 class="navbar-toggler navbar-toggler-right text-uppercase font-weight-bold bg-primary text-white rounded"
                 type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
