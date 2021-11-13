@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section("title", $data["title"])
 @section('content')
 @include('util.message')
 <!-- Portfolio Section-->

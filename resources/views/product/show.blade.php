@@ -3,11 +3,19 @@
 @section('content')
 <div class="container">
     @include('util.message')
-
+    @if($errors->any())
+            <div class="alert alert-danger">
+                <ul id="errors">
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
     <div class="row justify-content-center">
         <div class="card ml-2 mr-2 mt-2 border-primary">
             <div class="card-image mx-auto">
-                <img style="max-height: 500px; max-width: 500px" class="card-img" src="{{ asset($data['product']->getImagePath()) }}"
+                <img style="max-height: 400px; max-width: 400px" class="card-img" src="{{ asset($data['product']->getImagePath()) }}"
                     alt="{{$data['product']->getId()}}">
             </div>
             <div class="card-header text-center border-primary">
@@ -38,18 +46,11 @@
             <div class="card-header text-center border-secondary">
                 <h4>{{ __('product.show.reviewTitle') }}</h4>
             </div>
-            @if($errors->any())
-            <div class="alert alert-danger">
-                <ul id="errors">
-                    @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
+
             <div class="card-body m-2">
-                @if($data["product"]["reviews"]->count() == 0)
-                <div class="row ml-4">
+            <div class="container">
+            @if($data["product"]["reviews"]->count() == 0)
+                <div class="row mx-auto">
                     {{__('product.show.beTheFirst')}}
                 </div>
                 @else
@@ -142,6 +143,7 @@
                         @endif
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

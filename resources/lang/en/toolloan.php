@@ -24,6 +24,7 @@ return [
     'edit' => [
         'actions' => 'Actions',
         'button' => 'Modify Tool Loan',
+        'buttonAdd' => 'Loan a Tool',
         'closeButton' => 'Close',
         'confirmDelete' => 'Delete Tool Loan',
         'confirmEdit' => 'Update Tool Loan',

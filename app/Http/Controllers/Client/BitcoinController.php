@@ -22,6 +22,7 @@ class BitcoinController extends Controller
         $data["dates"] = $labels;
         $data["prices"] = $prices;
         $data["numberOfResults"] = $numberOfResults;
+        $data["title"] = 'Bitcoin Prices';
         return view('bitcoin.index')->with("data", $data);
     }
 }

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section("title", $data["title"])
 @section('content')
 <div class="container-fluid text-center">
     <h1>{{$data["title"]}}</h1>
@@ -44,7 +44,7 @@
         </div>
         <div class="col">
         <a href="{{ route('product.list')}}"><button
-                            class="btn btn-secondary">{{ __('product.list.getRidOfFilters') }}</button></a>
+                            class="btn btn-secondary">{{ __('product.list.removeFilters') }}</button></a>
         </div>
     </div>
     <hr class="border-secondary">
