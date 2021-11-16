@@ -2,13 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
 class Item extends Model
 {
-
     //attributes id, subtotal, order_id, product_name, created_at, updated_at
     public function getId()
     {

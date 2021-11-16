@@ -10,7 +10,6 @@ use App\Models\Item;
 use App\Models\Review;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {

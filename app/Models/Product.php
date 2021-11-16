@@ -114,6 +114,7 @@ class Product extends Model
     {
         $this->attributes['warranty'] = $warranty;
     }
+
     public function getQuantity()
     {
         return $this->attributes['quantity'];
@@ -143,6 +144,7 @@ class Product extends Model
     {
         return $this->hasMany(Review::class);
     }
+    
     public function toolloans()
     {
         return $this->hasMany(Toolloan::class);
