@@ -19,7 +19,7 @@ class HomeController extends Controller
 
         foreach ($data["orders"] as $order) {
             foreach ($order['items'] as $item) {
-                if (in_array($item->getProductName(), $numberOfTimesItemSold)) {
+                if (array_key_exists($item->getProductName(), $numberOfTimesItemSold)) {
                     $numberOfTimesItemSold[$item->getProductName()] =
                         $numberOfTimesItemSold[$item->getProductName()] + 1;
                 } else {

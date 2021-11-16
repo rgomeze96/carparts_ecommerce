@@ -92,7 +92,7 @@ class AdminProductController extends Controller
         $productToUpdate->setWarranty($request->warranty);
         $productToUpdate->setQuantity($request->quantity);
         $productToUpdate->save();
-        return redirect()->route('admin.product.list')->with('success', __('product.controller.updated'));
+        return redirect()->route('admin.product.manage')->with('success', __('product.controller.updated'));
     }
 
     public function destroy($id)

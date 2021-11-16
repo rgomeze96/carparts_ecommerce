@@ -39,17 +39,26 @@ class ProductController extends Controller
             $products = Product::find(array_values($ids));
             foreach ($products as $product) {
                 $item = new Item();
-                $item->setOrderId($order->getId());
-                $item->setProductName($product->getName());
                 $total = $total + $product->getSalePrice();
-                $item->setSubtotal($product->getSalePrice());
-                $numberItems = $numberItems + 1;
-                $productToUpdateQuantity = $getProductsToUpdateQuantity->where('name', $product->getName())->first();
-                $productToUpdateQuantity->setQuantity($productToUpdateQuantity->getQuantity() - 1);
-                return $productToUpdateQuantity;
-                $item->save();
+                if ($total > $user->getBalance()) {
+                    $latestOrder = Order::orderByDesc('created_at')->first();
+                    $latestOrder->delete();
+                    return redirect()->route('product.showCart')
+                        ->with('error', __('product.controller.insufficientBalance'));
+                } else {
+                    $item->setOrderId($order->getId());
+                    $item->setProductName($product->getName());
+                    $item->setSubtotal($product->getSalePrice());
+                    $numberItems = $numberItems + 1;
+                    $productToUpdateQuantity = $getProductsToUpdateQuantity->
+                        where('name', $product->getName())->first();
+                    $productToUpdateQuantity->setQuantity($productToUpdateQuantity->getQuantity() - 1);
+                    $item->save();
+                }
             }
             if ($total > $user->getBalance()) {
+                $latestOrder = Order::orderByDesc('created_at')->first();
+                $latestOrder->delete();
                 return redirect()->route('product.showCart')
                     ->with('error', __('product.controller.insufficientBalance'));
             } else {
@@ -58,6 +67,7 @@ class ProductController extends Controller
                 $user->save();
                 $order->setTotal($total);
                 $order->setNumberItems($numberItems);
+                $productToUpdateQuantity->save();
                 $order->save();
                 $request->session()->forget('products');
             }

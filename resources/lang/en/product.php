@@ -5,7 +5,8 @@ return [
     'controller' => [
         'addedToCartSuccessfully' => 'Product added to cart successfully!',
         'allProducts' => 'List of all Products',
-        'buySuccessfuly' => 'Please contact an adminsitrator regarding the delivery of your product, thank you',
+        'buySuccessful' =>
+            'Purchase successful! Please contact an adminsitrator regarding the delivery of your product, thank you',
         'created' => 'Product was created successfully!',
         'deletedAllFromCartSuccessfully' => 'All products removed from cart successfully',
         'deleted1FromCartSuccessfully' => 'Product removed from cart successfully',
@@ -19,7 +20,6 @@ return [
         'updated' => 'Product was updated successfully!',
         'toolsForRent' => 'Tools Available for Rent'
     ],
-
     //Create
     'create' => [
         'title' => 'Create a New Product',
@@ -42,7 +42,6 @@ return [
         'warrantyPH' => 'Enter product warranty',
         'quantityPH' => 'Enter product quantity',
     ],
-
     //Manage
     'manage' => [
         'actions' => 'Actions',
@@ -70,7 +69,6 @@ return [
         'warranty' => 'Warranty',
         'withA'=> ', with a quantity of',
     ],
-    
     //List
     'list' => [
         'addToCart' => 'Add to cart',
@@ -84,7 +82,6 @@ return [
         'removeFilter' => 'Remove Filter',
         'price' => 'Price',
     ],
-
     //Show
     'show' => [
         'beTheFirst' => 'Be the first to leave a review!',
@@ -108,7 +105,6 @@ return [
         'storeReviewTitle' => 'Leave a review for:',
         'warranty' => 'Product warranty:',
     ],
-
     //Show cart
     'showCart' => [
         'price' => 'Price:',
