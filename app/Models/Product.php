@@ -143,6 +143,6 @@ class Product extends Model
     
     public function toolloans()
     {
-        return $this->hasMany(Toolloan::class);
+        return $this->hasMany(ToolLoan::class);
     }
 }
