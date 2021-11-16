@@ -6,7 +6,6 @@ return [
         'created' => 'Tool Loan was created successfully!',
         'deleted' => 'Tool Loan was deleted successfully!',
         'updated' => 'Tool Loan was updated successfully!',
-
     ],
 
     //Create form
@@ -21,6 +20,7 @@ return [
         'title' => 'Loan Tool',
         'user' => 'User',
     ],
+
     //Edit form
     'edit' => [
         'actions' => 'Actions',

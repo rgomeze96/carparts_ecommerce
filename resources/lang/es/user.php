@@ -31,8 +31,8 @@ return [
         'balancePH' => 'Ingrese el saldo',
     ],
 
-    //Edit
-    'edit' => [
+    //Manage
+    'manage' => [
         'title' => 'Lista de Usuarios',
         'modifyTitle' => 'Actualizar la Información del Usuario',
         'id' => 'ID',
@@ -54,6 +54,15 @@ return [
         'clientRole' => 'Cliente',
         'adminRole' => 'Administrador',
         'role' => 'Permisos',
+        'cannotDelete' => 'No se puede eliminar al usuario si actualmente está prestando una herramienta',
+        'userNamePH' => 'Modificar nombre',
+        'emailPH' => 'Modificar email',
+        'addressPH' => 'Modificar dirección',
+        'agePH' => 'Modificar edad',
+        'cityPH' => 'Modificar ciudad',
+        'countryPH' => 'Modificar país',
+        'telephonePH' => 'Modificar teléfono',
+        'balancePH' => 'Modificar saldo',
     ],
     
     //Show

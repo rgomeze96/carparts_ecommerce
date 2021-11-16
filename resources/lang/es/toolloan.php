@@ -10,25 +10,30 @@ return [
 
     //Create form
     'create' => [
+        'createButton' => 'Guardar Préstamo de Herramienta',
+        'loanButton' => 'Prestar Herramienta',
         'title' => 'Crear un Nuevo Préstamo de Herramienta',
-        'userId' => 'ID del Usuario',
+        'user' => 'Usuario',
         'productId' => 'Selccione la Herramienta a Prestar',
         'depositAmount' => 'Cantidad de Depósito Requerida',
         'loanDate' => 'Fecha de inicio del préstamo',
         'returnDate' => 'Fecha de devolución del préstamo',
         'desc' => 'Descripción del préstamo',
-        'button' => 'Crear Préstamo de Herramienta',
     ],
+
     //Edit form
     'edit' => [
+        'dueToday' => 'Herramienta debida hoy',
+        'pastDue' => 'Pasada la fecha de devolución de herramienta',
+        'modifyDesc' => 'Modificar Descripción',
         'title' => 'Lista de Herramientas en Préstamo',
+        'buttonAdd' => 'Prestar una Herramienta',
         'modifyTitle' => 'Modificar un Préstamo de Herramienta Existente',
         'userName' => 'Usuario',
         'productId' => 'ID de Producto',
         'depositAmount' => 'Depósito',
         'loanDate' => 'Modificar Fecha de Inicio',
         'returnDate' => 'Modificar Fecha de Devolución',
-        'desc' => 'Modificar Descripción',
         'button' => 'Modificar Préstamo de Herramienta',
         'loanId' => 'ID',
         'toolName' => 'Nombre Herramienta',
@@ -47,7 +52,6 @@ return [
         'deleteMessage' => 'Está seguro que quiere eliminar el préstamo de herramienta con ID: ',
         'confirmDelete' => 'Eliminar Préstamo de Herramienta',
         'selectNew' => 'Seleccionar nueva herramienta',
-
     ],
 
     //List
