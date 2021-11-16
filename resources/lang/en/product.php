@@ -3,9 +3,14 @@
 return [
     //Controller
     'controller' => [
+        'addedToCartSuccessfully' => 'Product added to cart successfully!',
         'allProducts' => 'List of all Products',
+        'buySuccessfuly' => 'Please contact an adminsitrator regarding the delivery of your product, thank you',
         'created' => 'Product was created successfully!',
+        'deletedAllFromCartSuccessfully' => 'All products removed from cart successfully',
+        'deleted1FromCartSuccessfully' => 'Product removed from cart successfully',
         'inName' => ' - in the name',
+        'insufficientBalance' => 'Insufficient funds, please contact an administrator regarding your account balance',
         'listOfProductsByBrand' => 'Products made by: ',
         'listOfProductsByCategory' => 'Products in the category: ',
         'listOfProductsWith' => 'List of products with: ',
@@ -38,8 +43,8 @@ return [
         'quantityPH' => 'Enter product quantity',
     ],
 
-    //Edit
-    'edit' => [
+    //Manage
+    'manage' => [
         'actions' => 'Actions',
         'areYouSure'=>   'Are you sure you want to delete the product:',
         'brand' => 'Brand',
@@ -49,12 +54,14 @@ return [
         'buttonDeletePro' => 'Delete Product',
         'buttonEdit' => 'Edit',
         'buttonUpdate' => 'Update Product',
+        'cannotDelete' => 'Cannot delete product if it is currently being loaned',
         'category' => 'Category',
         'cost' => 'Cost',
         'desc' => 'Description',
         'id' => 'ID',
         'image' => 'Image',
         'inInv'=> 'in inventory?',
+        'loanQuantity' => 'Quantity on Loan',
         'modifyTitle' => 'Update Product Information',
         'productName' => 'Name',
         'quantity' => 'Quantity',
@@ -73,9 +80,8 @@ return [
         'filterByBrand' => 'Filter by brand',
         'filterByCategory' => 'Filter by category',
         'filterByName' => 'Filter by name',
-
         'findOnName' => 'Filter by name',
-        'removeFilters' => 'Remove Filters',
+        'removeFilter' => 'Remove Filter',
         'price' => 'Price',
     ],
 

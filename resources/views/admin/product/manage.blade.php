@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container-fluid text-center">
-    <h2>{{ __('product.edit.title') }}</h2>
+    <h2>{{ __('product.manage.title') }}</h2>
     @include('util.message')
     @if($errors->any())
     <div class="alert alert-danger">
@@ -18,7 +18,7 @@
     <div class="row">
         <div class="ml-auto mb-2 mr-2">
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-add-product">
-                {{ __('product.edit.buttonAdd') }}
+                {{ __('product.manage.buttonAdd') }}
             </button>
         </div>
     </div>
@@ -76,7 +76,7 @@
                     </div>
                     <div class="modal-footer mx-auto">
                         <button type="button" class="btn btn-secondary"
-                            data-dismiss="modal">{{ __('product.edit.buttonClose') }}</button>
+                            data-dismiss="modal">{{ __('product.manage.buttonClose') }}</button>
                         <button type="submit" class="btn btn-success">{{ __('product.create.button') }}</button>
                     </div>
                 </div>
@@ -84,44 +84,46 @@
         </form>
     </div>
     <div class="row">
-        <table class="table table-dark table-hover bg-secondary text-light text-center">
+        <table class="table table-bordered table-dark table-hover text-center">
             <thead>
-                <th scope="col">{{ __('product.edit.id') }}</th>
-                <th scope="col">{{ __('product.edit.productName') }}</th>
-                <th scope="col">{{ __('product.edit.salePrice') }}</th>
-                <th scope="col">{{ __('product.edit.cost') }}</th>
-                <th scope="col">{{ __('product.edit.category') }}</th>
-                <th scope="col">{{ __('product.edit.brand') }}</th>
-                <th scope="col">{{ __('product.edit.warranty') }}</th>
-                <th scope="col">{{ __('product.edit.actions') }}</th>
+                <th scope="col">{{ __('product.manage.id') }}</th>
+                <th scope="col">{{ __('product.manage.productName') }}</th>
+                <th scope="col">{{ __('product.manage.salePrice') }}</th>
+                <th scope="col">{{ __('product.manage.cost') }}</th>
+                <th scope="col">{{ __('product.manage.quantity') }}</th>
+                <th scope="col">{{ __('product.manage.category') }}</th>
+                <th scope="col">{{ __('product.manage.brand') }}</th>
+                <th scope="col">{{ __('product.manage.warranty') }}</th>
+                <th scope="col">{{ __('product.manage.actions') }}</th>
             </thead>
             @foreach($data["products"] as $product)
             <tbody>
                 <tr>
                     <td scope="row">{{ $product->getId() }}</td>
-                    <td>{{ $product->getName() }}</td>
+                    <a href="{{route('product.show', $product->getId())}}"><td>{{ $product->getName() }}</td></a>
                     <td>${{number_format($product->getSalePrice(),2, '.', ',')}}</td>
                     <td>${{number_format($product->getCost(),2, '.', ',')}}</td>
+                    <td>{{ $product->getQuantity() }}</td>    
                     <td>{{ $product->getCategory() }}</td>
                     <td>{{ $product->getBrand() }}</td>
                     <td>{{ $product->getWarranty() }}</td>
                     <td>
                         <button type="button" class="btn btn-outline-warning" data-toggle="modal"
                             data-target="#modal-edit-{{ $product->getId() }}">
-                            {{ __('product.edit.buttonEdit') }}
+                            {{ __('product.manage.buttonEdit') }}
                         </button>
 
                         @if($data["loanedTools"]->where('product_id', $product->getId())->count() == 0)
                         <button type="button" class="btn btn-outline-danger ml-1" data-toggle="modal"
                             data-target="#modal-delete-{{ $product->getId() }}">
-                            {{ __('product.edit.buttonDelete') }}
+                            {{ __('product.manage.buttonDelete') }}
                         </button>
                         @endif
                         <br>
                         @if($product->getCategory() == "Tool")
                         <button type="button" class="btn btn-outline-light mt-1" data-toggle="modal"
-                            data-target="#modal-add-toolloan">
-                            {{ __('toolloan.create.createButton') }}
+                            data-target="#modal-add-toolloan-{{$product->getId()}}">
+                            {{ __('toolloan.create.loanButton') }}
                         </button>
                         @endif
                     </td>
@@ -137,39 +139,39 @@
                                     <div class="modal-content mx-auto text-center border border-warning">
                                         <div class="modal-header">
                                             <h5 class="modal-title mx-auto">
-                                                {{ __('product.edit.modifyTitle') }}
+                                                {{ __('product.manage.modifyTitle') }}
                                             </h5>
                                         </div>
                                         <div class="modal-body">
                                             @csrf
-                                            <label for="productName">{{ __('product.edit.productName') }}</label>
+                                            <label for="productName">{{ __('product.manage.productName') }}</label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter user ID" name="productName"
                                                 value="{{ $product->getName() }}" />
-                                            <label for="description">{{ __('product.edit.desc') }}</label>
+                                            <label for="description">{{ __('product.manage.desc') }}</label>
                                             <textarea class="form-control col-md-8 mx-auto" name="description"
                                                 rows="3">{{ $product->getDescription() }}</textarea>
-                                            <label for="salePrice">{{ __('product.edit.salePrice') }}</label>
+                                            <label for="salePrice">{{ __('product.manage.salePrice') }}</label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter deposit amount required" name="salePrice"
                                                 value="{{ $product->getSalePrice() }}" />
-                                            <label for="cost">{{ __('product.edit.cost') }}</label>
+                                            <label for="cost">{{ __('product.manage.cost') }}</label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter return date for loan" name="cost"
                                                 value="{{ $product->getCost() }}" />
-                                            <label for="category">{{ __('product.edit.category') }}</label>
+                                            <label for="category">{{ __('product.manage.category') }}</label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter return date for loan" name="category"
                                                 value="{{ $product->getCategory() }}" />
-                                            <label for="brand">{{ __('product.edit.brand') }}</label>
+                                            <label for="brand">{{ __('product.manage.brand') }}</label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter return date for loan" name="brand"
                                                 value="{{ $product->getBrand() }}" />
-                                            <label for="warranty">{{ __('product.edit.warranty') }}</label>
+                                            <label for="warranty">{{ __('product.manage.warranty') }}</label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter return date for loan" name="warranty"
                                                 value="{{ $product->getWarranty() }}" />
-                                            <label for="quantity">{{ __('product.edit.quantity') }}</label>
+                                            <label for="quantity">{{ __('product.manage.quantity') }}</label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="number" min="1"
                                                 placeholder="Enter return date for loan" name="quantity"
                                                 value="{{ $product->getQuantity() }}" />
@@ -180,16 +182,16 @@
                                         </div>
                                         <div class="modal-footer mx-auto">
                                             <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">{{ __('product.edit.buttonClose') }}</button>
+                                                data-dismiss="modal">{{ __('product.manage.buttonClose') }}</button>
                                             <button type="submit"
-                                                class="btn btn-warning">{{ __('product.edit.buttonUpdate') }}</button>
+                                                class="btn btn-warning">{{ __('product.manage.buttonUpdate') }}</button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </form>
                     </div>
-                    <div class="modal fade" id="modal-add-toolloan" tabindex="-1" role="dialog">
+                    <div class="modal fade" id="modal-add-toolloan-{{$product->getId()}}" tabindex="-1" role="dialog">
                         <form class="mx-auto text-center" method="POST" action="{{ route('admin.toolloan.save') }}">
                             {{csrf_field()}}
                             <input type="hidden" name="productId" value="{{ $product->getId() }}">
@@ -211,7 +213,7 @@
                                             value="{{ old('description') }}"></textarea>
                                         <label class="mt-2"
                                             for="depositAmount">{{ __('toolloan.create.depositAmount') }}</label><br>
-                                        <small>{{ __('product.edit.cost') }}:
+                                        <small>{{ __('product.manage.cost') }}:
                                             ${{number_format($product->getCost(),2, '.', ',')}}</small>
                                         <input class="form-control col-md-6 mx-auto" type="text"
                                             placeholder="{{ __('toolloan.create.depositAmount') }}" name="depositAmount"
@@ -226,9 +228,9 @@
                                     </div>
                                     <div class="modal-footer mx-auto">
                                         <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">{{ __('product.edit.buttonClose') }}</button>
+                                            data-dismiss="modal">{{ __('product.manage.buttonClose') }}</button>
                                         <button type="submit"
-                                            class="btn btn-success">{{ __('product.create.button') }}</button>
+                                            class="btn btn-success">{{ __('toolloan.create.createButton') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -243,15 +245,15 @@
                                     class="modal-content mx-auto text-center bg-secondary border border-danger text-light">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <div class="modal-body">
-                                        {{ __('product.edit.areYouSure') }} {{$product->getName()}}
-                                        {{ __('product.edit.withA') }} {{$product->getQuantity()}}
-                                        {{ __('product.edit.inInv') }}
+                                        {{ __('product.manage.areYouSure') }} {{$product->getName()}}
+                                        {{ __('product.manage.withA') }} {{$product->getQuantity()}}
+                                        {{ __('product.manage.inInv') }}
                                     </div>
                                     <div class="modal-footer mx-auto">
                                         <button type="button" class="btn btn-outline-primary"
-                                            data-dismiss="modal">{{ __('product.edit.buttonClose') }}</button>
+                                            data-dismiss="modal">{{ __('product.manage.buttonClose') }}</button>
                                         <button type="submit"
-                                            class="btn btn-danger">{{ __('product.edit.buttonDeletePro')}}</button>
+                                            class="btn btn-danger">{{ __('product.manage.buttonDeletePro')}}</button>
                                     </div>
                                 </div>
                             </div>
@@ -261,5 +263,11 @@
             </tbody>
             @endforeach
         </table>
+        <div class="alert alert-danger mx-auto">{{__('product.manage.cannotDelete')}}</div>
     </div>
-    @endsection
+</div>
+<div class="row justify-content-center">
+    {{ $data["products"]->onEachSide(2)->links() }}
+</div>
+@endsection
+</div>

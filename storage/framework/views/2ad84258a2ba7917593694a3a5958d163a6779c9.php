@@ -20,7 +20,7 @@
 
         });
     }
-    <?php if($chart->api_url): ?>
+    <?php if($chart->api_url) : ?>
     let <?php echo e($chart->id); ?>_refresh = function (url) {
         document.getElementById("<?php echo e($chart->id); ?>").style.display = 'none';
         document.getElementById("<?php echo e($chart->id); ?>_loader").style.display = 'flex';
@@ -40,4 +40,7 @@
 <?php echo $__env->make('charts::init', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
 </script>
-<?php /**PATH C:\xampp\htdocs\carparts_ecommerce\vendor\consoletvs\charts\src/Views/chartjs/script.blade.php ENDPATH**/ ?>
+<?php /**
+       * 
+       * PATH C:\xampp\htdocs\carparts_ecommerce\vendor\consoletvs\charts\src/Views/chartjs/script.blade.php ENDPATH
+       **/ ?>

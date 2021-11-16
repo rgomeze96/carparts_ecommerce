@@ -15,8 +15,10 @@ class ImageServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(ImageStorage::class, function () {
-            return new ImageLocalStorage();
-        });
+        $this->app->bind(
+            ImageStorage::class, function () {
+                return new ImageLocalStorage();
+            }
+        );
     }
 }

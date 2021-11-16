@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\ToolLoan;
-
+use Carbon\Carbon;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,8 @@ class AdminToolLoanController extends Controller
         $data["loanedTools"] = ToolLoan::orderByDesc('id')->get();
         $data["users"] = User::where('role', 'client')->get();
         $data["tools"] = Product::where('category', 'Tool')->get();
+        $getTodaysDate = date('Y-m-d');
+        $data["todaysDate"] = $getTodaysDate;
         if (User::where('id', Auth::id())->first()->getRole() == 'admin') {
             return view('admin.tool.manage')->with("data", $data);
         } else {
@@ -37,7 +40,6 @@ class AdminToolLoanController extends Controller
     public function save(Request $request)
     {
         ToolLoan::validate($request);
-        return $request;
         $newToolLoan = new ToolLoan;
         $newToolLoan->setUserId($request->userId);
         $newToolLoan->setProductId($request->productId);
@@ -48,7 +50,7 @@ class AdminToolLoanController extends Controller
         $newToolLoan->save();
         //ToolLoan::create($request->only(["userId", "productId", "description", "depositAmount", "loanDate",
         //    "returnDate"]));
-        return redirect()->route('admin.toolloan.create')->with('success', __('toolloan.controller.created'));
+        return redirect()->route('admin.toolloan.manage')->with('success', __('toolloan.controller.created'));
     }
     public function update(Request $request, $id)
     {
@@ -65,7 +67,7 @@ class AdminToolLoanController extends Controller
         $toolLoanToUpdate->setLoanDate($request->loanDate);
         $toolLoanToUpdate->setReturnData($request->returnDate);
         $toolLoanToUpdate->save();
-        return redirect()->route('admin.toolloan.list')->with('success', __('toolloan.controller.updated'));
+        return redirect()->route('admin.toolloan.manage')->with('success', __('toolloan.controller.updated'));
     }
     public function show($id)
     {

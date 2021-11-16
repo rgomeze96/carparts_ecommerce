@@ -15,12 +15,18 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Auth::routes();
+
+//Language
+Route::get('/language/{lan}', 'App\Http\Controllers\Client\HomeController@language')->name('home.language');
+//Client routes
+//Bitcoin
+Route::get('/checkBitcoinPrices', 'App\Http\Controllers\Client\BitcoinController@index')->name('bitcoin.index');
+
+//Flowers
+Route::get('/flowerShop', 'App\Http\Controllers\Client\FlowerController@index')->name("flower.index");
+//Home
 Route::get('/', 'App\Http\Controllers\Client\HomeController@index')->name("home.index");
 
-//Chart
-Route::get('chart', 'App\Http\Controllers\Client\HomeController@index');
-
-//Client routes
 //Product
 Route::get('/product/list', 'App\Http\Controllers\Client\ProductController@list')->name("product.list");
 Route::get('/product/show/{id}', 'App\Http\Controllers\Client\ProductController@show')->name("product.show");
@@ -31,8 +37,6 @@ Route::get('/product/showCart/remove/{id}', 'App\Http\Controllers\Client\Product
 Route::get('/product/delete', 'App\Http\Controllers\Client\ProductController@deleteAllCart')
 ->name('product.deleteAllCart');
 Route::get('/product/buy', 'App\Http\Controllers\Client\ProductController@buy')->name('product.buy');
-//Bitcoin
-Route::get('/checkBitcoinPrices', 'App\Http\Controllers\Client\BitcoinController@index')->name('bitcoin.index');
 
 // Product Reviews
 Route::get('/review/create/{id}', 'App\Http\Controllers\Client\ProductController@review')->name('product.writeReview');
@@ -76,7 +80,3 @@ Route::post('/admin/toolloan/update/{id}', 'App\Http\Controllers\Admin\AdminTool
 ->name("admin.toolloan.update");
 Route::delete('/admin/toolloan/destroy/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@destroy')
 ->name("admin.toolloan.destroy");
-
-
-//Language
-Route::get('/language/{lan}', 'App\Http\Controllers\Client\HomeController@language')->name('home.language');

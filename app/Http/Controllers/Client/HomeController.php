@@ -4,14 +4,29 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Models\Item;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $data["products"] = Product::inRandomOrder()->get();
+        $data["products"] = Product::inRandomOrder()->take(6)->get();
+        $data["orders"] = Order::with('items')->get();
+        $numberOfTimesItemSold = [];
+
+        foreach ($data["orders"] as $order) {
+            foreach ($order['items'] as $item) {
+                if (in_array($item->getProductName(), $numberOfTimesItemSold)) {
+                    $numberOfTimesItemSold[$item->getProductName()] =
+                        $numberOfTimesItemSold[$item->getProductName()] + 1;
+                } else {
+                    $numberOfTimesItemSold[$item->getProductName()] = 1;
+                }
+            }
+        }
         return view('home.index')->with("data", $data);
     }
 

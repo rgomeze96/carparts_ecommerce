@@ -31,8 +31,8 @@ return [
         'balancePH' => 'Enter user balance',
     ],
 
-    //Edit
-    'edit' => [
+    //Manage
+    'manage' => [
         'title' => 'Manage Users',
         'modifyTitle' => 'Update User Information',
         'id' => 'ID',
@@ -40,6 +40,7 @@ return [
         'email' => 'Email',
         'address' => 'Address',
         'age' => 'Age',
+        'cannotDelete' => 'Cannot delete user if they are currently renting a tool',
         'city' => 'City',
         'country' => 'Country',
         'telephone' => 'Telephone',

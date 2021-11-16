@@ -1,5 +1,5 @@
 
-
+<?php $__env->startSection("title", $data["title"]); ?>
 <?php $__env->startSection('content'); ?>
 <?php echo $__env->make('util.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <!-- Portfolio Section-->
@@ -16,7 +16,7 @@
                 <?php for($i = 0; $i < $data["numberOfResults"]; $i++): ?>
                 <tr>
                     <td><?php echo e($data["dates"][$i]); ?></td>
-                    <td>$<?php echo e(number_format($data["prices"][$i],2, '.', ',')); ?></td>                 
+                    <td>$<?php echo e(number_format($data["prices"][$i], 2, '.', ',')); ?></td>                 
                 </tr>
                 <?php endfor; ?>
             </tbody>
@@ -25,4 +25,7 @@
 </div>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/bitcoin/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**
+                                                                                                                                      * 
+                                                                                                                                      * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/bitcoin/index.blade.php ENDPATH
+                                                                                                                                      **/ ?>

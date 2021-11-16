@@ -6,7 +6,7 @@
 <div class="container-fluid text-center">
     <h2><?php echo e(__('product.edit.title')); ?></h2>
     <?php echo $__env->make('util.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php if($errors->any()): ?>
+    <?php if($errors->any()) : ?>
     <div class="alert alert-danger">
         <ul id="errors">
             <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -40,8 +40,8 @@
                 <tr>
                     <td scope="row"><?php echo e($product->getId()); ?></td>
                     <td><?php echo e($product->getName()); ?></td>
-                    <td>$<?php echo e(number_format($product->getSalePrice(),2, '.', ',')); ?></td>
-                    <td>$<?php echo e(number_format($product->getCost(),2, '.', ',')); ?></td>
+                    <td>$<?php echo e(number_format($product->getSalePrice(), 2, '.', ',')); ?></td>
+                    <td>$<?php echo e(number_format($product->getCost(), 2, '.', ',')); ?></td>
                     <td><?php echo e($product->getCategory()); ?></td>
                     <td><?php echo e($product->getBrand()); ?></td>
                     <td><?php echo e($product->getWarranty()); ?></td>
@@ -51,7 +51,7 @@
                             <?php echo e(__('product.edit.buttonEdit')); ?>
 
                         </button>
-                        <?php if($data["loanedTools"]->where('product_id', $product->getId())->count() == 0): ?>
+                        <?php if($data["loanedTools"]->where('product_id', $product->getId())->count() == 0) : ?>
                         <button type="button" class="btn btn-outline-danger ml-1" data-toggle="modal"
                             data-target="#modal-delete-<?php echo e($product->getId()); ?>">
                             <?php echo e(__('product.edit.buttonDelete')); ?>
@@ -158,4 +158,7 @@
         </table>
     </div>
     <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/product/list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**
+                                                                                                                                      * 
+                                                                                                                                      * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/product/list.blade.php ENDPATH
+                                                                                                                                      **/ ?>

@@ -44,7 +44,7 @@
         </div>
         <div class="col">
         <a href="{{ route('product.list')}}"><button
-                            class="btn btn-secondary">{{ __('product.list.removeFilters') }}</button></a>
+                            class="btn btn-secondary">{{ __('product.list.removeFilter') }}</button></a>
         </div>
     </div>
     <hr class="border-secondary">
@@ -69,6 +69,9 @@
             </div>
             <br>
             @endforeach
+            <div class="row justify-content-center">
+                {{ $data["products"]->onEachSide(2)->links()}}
+            </div>
         </div>
     </div>
 </div>

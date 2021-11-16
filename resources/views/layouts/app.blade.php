@@ -36,16 +36,18 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto text-light">
                     @guest
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('login') }}">{{ __('layout.login') }}</a></li>
+                            href="{{ route('login') }}">{{ __('layout.login') }}</a></li> <span class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('register') }}">{{ __('layout.register') }}</a></li>
+                            href="{{ route('register') }}">{{ __('layout.register') }}</a></li> <span class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li>
+                            href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li> <span class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('bitcoin.index') }}">{{ __('layout.bitcoin') }}</a></li>
+                            href="{{ route('bitcoin.index') }}">{{ __('layout.bitcoin') }}</a></li> <span class="mt-2">|</span>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
+                            href="{{ route('flower.index') }}">{{ __('layout.flowerShop') }}</a></li>
                     @else
                     @if (Auth::user()->getRole() == "admin")
                     <span style="position: relative">
@@ -57,14 +59,15 @@
                             <li class="dropdown-item text-light"><a class="nav-link"
                                     href="{{ route('admin.product.manage') }}">{{ __('layout.managePro') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('admin.toolloan.manage') }}">{{ __('layout.toolManagement') }}</a></li>
+                                    href="{{ route('admin.toolloan.manage') }}">{{ __('layout.toolManagement') }}</a>
+                            </li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('admin.user.manage') }}">{{ __('layout.manageUsers') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">{{ __('layout.logout') }}</a></li>
                         </div>
-                    </span>
+                    </span><span class="mt-2">|</span>
                     <span style="position: relative">
                         <a style="text-decoration: none" id="navbarDropdown" class="nav-link dropdown-toggle text-light"
                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -77,8 +80,10 @@
                                     href="{{ route('product.showCart') }}">{{ __('layout.myCart') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('user.show', Auth::id()) }}">{{ __('layout.myAccount') }}</a></li>
-                                    <li class="dropdown-item"><a class="nav-link"
+                            <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('bitcoin.index')}}">{{ __('layout.bitcoin') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link"
+                                    href="{{ route('flower.index')}}">{{ __('layout.flowerShop') }}</a></li>
                         </div>
                     </span>
                     @else
@@ -94,11 +99,13 @@
                                     href="{{ route('product.showCart') }}">{{ __('layout.myCart') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('user.show', Auth::id()) }}">{{ __('layout.myAccount') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link"
+                                    href="{{ route('bitcoin.index')}}">{{ __('layout.bitcoin') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link"
+                                    href="{{ route('flower.index')}}">{{ __('layout.flowerShop') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">{{ __('layout.logout') }}</a></li>
-                            <li class="dropdown-item"><a class="nav-link"
-                                    href="{{ route('bitcoin.index')}}">{{ __('layout.bitcoin') }}</a></li>
                         </div>
                     </span>
                     @endif

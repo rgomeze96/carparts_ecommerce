@@ -4,7 +4,7 @@
 <div class="container-fluid text-center">
     <?php echo $__env->make('util.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <h3><?php echo e(__('toolloan.edit.title')); ?></h3>
-    <?php if($errors->any()): ?>
+    <?php if($errors->any()) : ?>
     <div class="alert alert-danger">
         <ul id="errors">
             <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -31,7 +31,7 @@
                     <td><?php echo e($loanedTool->getId()); ?></td>
                     <td><?php echo e($data["users"]->where('id', $loanedTool->getUserId())->first()->getName()); ?></td>
                     <td><?php echo e($data['tools']->where('id', $loanedTool->getProductId())->first()->getName()); ?></td>
-                    <td>$<?php echo e(number_format($loanedTool->getDepositAmount(),2, '.', ',')); ?></td>
+                    <td>$<?php echo e(number_format($loanedTool->getDepositAmount(), 2, '.', ',')); ?></td>
                     <td><?php echo e($loanedTool->getLoanDate()); ?></td>
                     <td><?php echo e($loanedTool->getReturnDate()); ?></td>
                     <td><?php echo e($loanedTool->getDescription()); ?></td>
@@ -62,9 +62,9 @@
                                         <label for="userId"><?php echo e(__('toolloan.edit.modifyUserId')); ?></label>
                                         <select multiple class="form-control col-md-6 mx-auto" name="userId" id="userId">
                                             <?php $__currentLoopData = $data["users"]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $user): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <?php if($user->getId() == $loanedTool->getUserId()): ?>
+                                                <?php if($user->getId() == $loanedTool->getUserId()) : ?>
                                             <option selected value="<?php echo e($user->getId()); ?>">
-                                                <?php echo e($user->getName()); ?>
+                                                    <?php echo e($user->getName()); ?>
 
                                             </option>
                                             <?php else: ?>
@@ -84,7 +84,7 @@
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         </select>
                                         <label for="depositAmount"><?php echo e(__('toolloan.edit.modifyDepositAmount')); ?></label>
-                                        <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Current Deposit Amount: " name="depositAmount" value="<?php echo e(number_format($loanedTool->getDepositAmount(),2, '.', ',')); ?>" />
+                                        <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Current Deposit Amount: " name="depositAmount" value="<?php echo e(number_format($loanedTool->getDepositAmount(), 2, '.', ',')); ?>" />
                                         <label for="loanDate"><?php echo e(__('toolloan.edit.loanDate')); ?></label>
                                         <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="loanDate" value="<?php echo e($loanedTool->getLoanDate()); ?>" />
                                         <label for="returnDate"><?php echo e(__('toolloan.edit.returnDate')); ?></label>
@@ -124,4 +124,7 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/tool/list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**
+                                                                                                                                      * 
+                                                                                                                                      * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/tool/list.blade.php ENDPATH
+                                                                                                                                      **/ ?>
