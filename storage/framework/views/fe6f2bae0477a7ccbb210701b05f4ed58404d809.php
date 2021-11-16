@@ -32,13 +32,13 @@
                     <td><?php echo e($user->getCountry()); ?></td>
                     <td><?php echo e($user->getTelephone()); ?></td>
                     <td><?php echo e($user->getRole()); ?></td>
-                    <td>$<?php echo e(number_format($user->getBalance(),2, '.', ',')); ?></td>
+                    <td>$<?php echo e(number_format($user->getBalance(), 2, '.', ',')); ?></td>
                     <td>
                         <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#modal-edit-<?php echo e($user->getId()); ?>">
                             <?php echo e(__('user.edit.buttonEdit')); ?>
 
                         </button>
-                        <?php if($data["loanedTools"]->where('user_id', $user->getId())->count() == 0): ?>
+                        <?php if($data["loanedTools"]->where('user_id', $user->getId())->count() == 0) : ?>
                         <button type="button" class="btn btn-outline-danger ml-1" data-toggle="modal" data-target="#modal-delete-<?php echo e($user->getId()); ?>">
                             <?php echo e(__('user.edit.buttonDelete')); ?>
 
@@ -136,4 +136,7 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/user/list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**
+                                                                                                                                      * 
+                                                                                                                                      * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/user/list.blade.php ENDPATH
+                                                                                                                                      **/ ?>

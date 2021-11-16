@@ -40,4 +40,7 @@
         </g>
     </svg>
 </div>
-<?php /**PATH C:\xampp\htdocs\carparts_ecommerce\vendor\consoletvs\charts\src/Views/loader.blade.php ENDPATH**/ ?>
+<?php /**
+       * 
+       * PATH C:\xampp\htdocs\carparts_ecommerce\vendor\consoletvs\charts\src/Views/loader.blade.php ENDPATH
+       **/ ?>

@@ -17,7 +17,7 @@ class AdminUserController extends Controller
         $data = []; //to be sent to the view
 
         $data["title"] = "Manage Users";
-        $data["users"] = User::all();
+        $data["users"] = User::paginate(5);
         $data["loanedTools"] = ToolLoan::all();
 
         if (User::where('id', Auth::id())->first()->getRole() == 'admin') {

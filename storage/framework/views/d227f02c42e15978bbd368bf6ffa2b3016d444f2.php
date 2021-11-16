@@ -37,18 +37,20 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <?php if(auth()->guard()->guest()): ?>
+                <ul class="navbar-nav ml-auto text-light">
+                    <?php if(auth()->guard()->guest()) : ?>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="<?php echo e(route('login')); ?>"><?php echo e(__('layout.login')); ?></a></li>
+                            href="<?php echo e(route('login')); ?>"><?php echo e(__('layout.login')); ?></a></li> <span class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="<?php echo e(route('register')); ?>"><?php echo e(__('layout.register')); ?></a></li>
+                            href="<?php echo e(route('register')); ?>"><?php echo e(__('layout.register')); ?></a></li> <span class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="<?php echo e(route('product.list')); ?>"><?php echo e(__('layout.products')); ?></a></li>
+                            href="<?php echo e(route('product.list')); ?>"><?php echo e(__('layout.products')); ?></a></li> <span class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="<?php echo e(route('bitcoin.index')); ?>"><?php echo e(__('layout.bitcoin')); ?></a></li>
+                            href="<?php echo e(route('bitcoin.index')); ?>"><?php echo e(__('layout.bitcoin')); ?></a></li> <span class="mt-2">|</span>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
+                            href="<?php echo e(route('flower.index')); ?>"><?php echo e(__('layout.flowerShop')); ?></a></li>
                     <?php else: ?>
-                    <?php if(Auth::user()->getRole() == "admin"): ?>
+                        <?php if(Auth::user()->getRole() == "admin") : ?>
                     <span style="position: relative">
                         <a style="text-decoration: none" id="navbarDropdown" class="nav-link dropdown-toggle text-light"
                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -59,14 +61,15 @@
                             <li class="dropdown-item text-light"><a class="nav-link"
                                     href="<?php echo e(route('admin.product.manage')); ?>"><?php echo e(__('layout.managePro')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
-                                    href="<?php echo e(route('admin.toolloan.manage')); ?>"><?php echo e(__('layout.toolManagement')); ?></a></li>
+                                    href="<?php echo e(route('admin.toolloan.manage')); ?>"><?php echo e(__('layout.toolManagement')); ?></a>
+                            </li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="<?php echo e(route('admin.user.manage')); ?>"><?php echo e(__('layout.manageUsers')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link" href="<?php echo e(route('logout')); ?>"
                                     onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();"><?php echo e(__('layout.logout')); ?></a></li>
                         </div>
-                    </span>
+                    </span><span class="mt-2">|</span>
                     <span style="position: relative">
                         <a style="text-decoration: none" id="navbarDropdown" class="nav-link dropdown-toggle text-light"
                             href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -80,8 +83,10 @@
                                     href="<?php echo e(route('product.showCart')); ?>"><?php echo e(__('layout.myCart')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="<?php echo e(route('user.show', Auth::id())); ?>"><?php echo e(__('layout.myAccount')); ?></a></li>
-                                    <li class="dropdown-item"><a class="nav-link"
+                            <li class="dropdown-item"><a class="nav-link"
                                     href="<?php echo e(route('bitcoin.index')); ?>"><?php echo e(__('layout.bitcoin')); ?></a></li>
+                            <li class="dropdown-item"><a class="nav-link"
+                                    href="<?php echo e(route('flower.index')); ?>"><?php echo e(__('layout.flowerShop')); ?></a></li>
                         </div>
                     </span>
                     <?php else: ?>
@@ -98,11 +103,13 @@
                                     href="<?php echo e(route('product.showCart')); ?>"><?php echo e(__('layout.myCart')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="<?php echo e(route('user.show', Auth::id())); ?>"><?php echo e(__('layout.myAccount')); ?></a></li>
+                            <li class="dropdown-item"><a class="nav-link"
+                                    href="<?php echo e(route('bitcoin.index')); ?>"><?php echo e(__('layout.bitcoin')); ?></a></li>
+                            <li class="dropdown-item"><a class="nav-link"
+                                    href="<?php echo e(route('flower.index')); ?>"><?php echo e(__('layout.flowerShop')); ?></a></li>
                             <li class="dropdown-item"><a class="nav-link" href="<?php echo e(route('logout')); ?>"
                                     onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();"><?php echo e(__('layout.logout')); ?></a></li>
-                            <li class="dropdown-item"><a class="nav-link"
-                                    href="<?php echo e(route('bitcoin.index')); ?>"><?php echo e(__('layout.bitcoin')); ?></a></li>
                         </div>
                     </span>
                     <?php endif; ?>
@@ -132,4 +139,7 @@
     <script src="<?php echo e(asset('/js/scripts.js')); ?>"></script>
 </body>
 
-</html><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/layouts/app.blade.php ENDPATH**/ ?>
+</html><?php /**
+              * 
+              * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/layouts/app.blade.php ENDPATH
+              **/ ?>

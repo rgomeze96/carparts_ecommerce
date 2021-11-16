@@ -21,7 +21,8 @@ class Product extends Model
 
     public static function validateProduct(Request $request)
     {
-        $request->validate([
+        $request->validate(
+            [
             "productName" => "required",
             "description" => "required",
             "salePrice" => "required|numeric|gt:0",
@@ -30,7 +31,8 @@ class Product extends Model
             "brand" => "required",
             "warranty" => "required",
             "quantity" => "required|numeric|gt:0"
-        ]);
+            ]
+        );
     }
 
     public function getId()
@@ -140,5 +142,9 @@ class Product extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+    public function toolloans()
+    {
+        return $this->hasMany(Toolloan::class);
     }
 }

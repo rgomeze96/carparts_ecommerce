@@ -16,14 +16,14 @@
     <div class="row">
         <div class="ml-auto mb-2 mr-2">
             <a href="{{route('admin.product.manage')}}">
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-add-toolloan">
-                {{ __('toolloan.edit.buttonAdd') }}
-            </button>
-</a>
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-add-toolloan">
+                    {{ __('toolloan.edit.buttonAdd') }}
+                </button>
+            </a>
         </div>
     </div>
     <div class="row">
-        <table class="table table-dark table-hover bg-secondary text-light text-center">
+        <table class="table table-bordered table-dark table-hover text-center">
             <thead>
                 <th scope="col">{{ __('toolloan.edit.loanId') }}</th>
                 <th scope="col">{{ __('toolloan.edit.userName') }}</th>
@@ -42,18 +42,37 @@
                     <td>{{ $data['tools']->where('id', $loanedTool->getProductId())->first()->getName()}}</td>
                     <td>${{number_format($loanedTool->getDepositAmount(),2, '.', ',')}}</td>
                     <td>{{ $loanedTool->getLoanDate() }}</td>
-                    <td>{{ $loanedTool->getReturnDate() }}</td>
+                    @if($loanedTool->getReturnDate() < $data['todaysDate'])
+                    <td class="text-danger">{{ $loanedTool->getReturnDate() }} <br>
+                    <small class="text-danger">{{__('toolloan.edit.pastDue')}}</small>
+                    </td>
+                    
+                    @endif
+                    @if($loanedTool->getReturnDate() == $data['todaysDate'])
+                    <td class="text-warning">{{ $loanedTool->getReturnDate() }} <br>
+                    <small class="text-warning">{{__('toolloan.edit.dueToday')}}</small>
+                    </td>
+                    
+                    @endif
+                    @if($loanedTool->getReturnDate() > $data['todaysDate'])
+                    <td class="text-success">{{ $loanedTool->getReturnDate() }}</td>
+                    @endif
+                    
                     <td>{{ $loanedTool->getDescription() }}</td>
                     <td>
-                        <button type="button" class="btn btn-outline-warning mt-1" data-toggle="modal" data-target="#modal-edit-{{ $loanedTool->getId() }}">
+                        <button type="button" class="btn btn-outline-warning mt-1" data-toggle="modal"
+                            data-target="#modal-edit-{{ $loanedTool->getId() }}">
                             {{ __('toolloan.edit.editButton') }}
                         </button>
-                        <button type="button" class="btn btn-outline-danger ml-1 mt-1" data-toggle="modal" data-target="#modal-delete-{{ $loanedTool->getId() }}">
+                        <button type="button" class="btn btn-outline-danger ml-1 mt-1" data-toggle="modal"
+                            data-target="#modal-delete-{{ $loanedTool->getId() }}">
                             {{ __('toolloan.edit.deleteButton') }}
                         </button>
                     </td>
-                    <div class="modal fade" id="modal-edit-{{ $loanedTool->getId() }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <form novalidate method="POST" style="text-align: center" action="{{ route('admin.toolloan.update', $loanedTool->getId()) }}">
+                    <div class="modal fade" id="modal-edit-{{ $loanedTool->getId() }}" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <form novalidate method="POST" style="text-align: center"
+                            action="{{ route('admin.toolloan.update', $loanedTool->getId()) }}">
                             {{csrf_field()}}
                             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                                 <div class="modal-content mx-auto text-center border border-warning">
@@ -65,7 +84,8 @@
                                     <div class="modal-body">
                                         @csrf
                                         <label for="userId">{{ __('toolloan.edit.modifyUserId') }}</label>
-                                        <select multiple class="form-control col-md-6 mx-auto" name="userId" id="userId">
+                                        <select multiple class="form-control col-md-6 mx-auto" name="userId"
+                                            id="userId">
                                             @foreach($data["users"] as $user)
                                             @if($user->getId() == $loanedTool->getUserId())
                                             <option selected value="{{$user->getId()}}">
@@ -79,7 +99,8 @@
                                             @endforeach
                                         </select>
                                         <small>{{ __('toolloan.edit.userHelp') }}</small><br>
-                                        <label class="mt-1" for="productId">{{ __('toolloan.edit.modifyProductId') }}</label>
+                                        <label class="mt-1"
+                                            for="productId">{{ __('toolloan.edit.modifyProductId') }}</label>
                                         <select class="form-control col-md-6 mx-auto text-center" name="productId">
                                             <option>{{ __('toolloan.edit.selectNew') }}</option>
                                             @foreach($data["tools"] as $tool)
@@ -87,23 +108,33 @@
                                             @endforeach
                                         </select>
                                         <label for="depositAmount">{{ __('toolloan.edit.modifyDepositAmount') }}</label>
-                                        <input class="form-control mb-2 col-md-6 mx-auto" type="text" placeholder="Current Deposit Amount: " name="depositAmount" value="{{number_format($loanedTool->getDepositAmount(),2, '.', ',')}}" />
+                                        <input class="form-control mb-2 col-md-6 mx-auto" type="text"
+                                            placeholder="Current Deposit Amount: " name="depositAmount"
+                                            value="{{number_format($loanedTool->getDepositAmount(),2, '.', ',')}}" />
                                         <label for="loanDate">{{ __('toolloan.edit.loanDate') }}</label>
-                                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="loanDate" value="{{ $loanedTool->getLoanDate() }}" />
+                                        <input class="form-control mb-2 col-md-6 mx-auto" type="date"
+                                            placeholder="Enter return date for loan" name="loanDate"
+                                            value="{{ $loanedTool->getLoanDate() }}" />
                                         <label for="returnDate">{{ __('toolloan.edit.returnDate') }}</label>
-                                        <input class="form-control mb-2 col-md-6 mx-auto" type="date" placeholder="Enter return date for loan" name="returnDate" value="{{ $loanedTool->getReturnDate() }}" />
+                                        <input class="form-control mb-2 col-md-6 mx-auto" type="date"
+                                            placeholder="Enter return date for loan" name="returnDate"
+                                            value="{{ $loanedTool->getReturnDate() }}" />
                                         <label for="description">{{ __('toolloan.edit.desc') }}</label>
-                                        <textarea class="form-control col-md-6 mx-auto" name="description" rows="3">{{ $loanedTool->getDescription() }}</textarea>
+                                        <textarea class="form-control col-md-6 mx-auto" name="description"
+                                            rows="3">{{ $loanedTool->getDescription() }}</textarea>
                                     </div>
                                     <div class="modal-footer mx-auto">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('toolloan.edit.closeButton') }}</button>
-                                        <button type="submit" class="btn btn-warning">{{ __('toolloan.edit.confirmEdit') }}</button>
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">{{ __('toolloan.edit.closeButton') }}</button>
+                                        <button type="submit"
+                                            class="btn btn-warning">{{ __('toolloan.edit.confirmEdit') }}</button>
                                     </div>
                                 </div>
                         </form>
                     </div>
                 </tr>
-                <div class="modal fade" id="modal-delete-{{ $loanedTool->getId() }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal fade" id="modal-delete-{{ $loanedTool->getId() }}" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <form novalidate method="POST" action="{{ route('admin.toolloan.destroy', $loanedTool->getId()) }}">
                         {{csrf_field()}}
                         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -113,8 +144,10 @@
                                     {{ __('toolloan.edit.deleteMessage') }} {{$loanedTool->getId()}}?
                                 </div>
                                 <div class="modal-footer mx-auto">
-                                    <button type="button" class="btn btn-outline-primary" data-dismiss="modal">{{ __('toolloan.edit.closeButton') }}</button>
-                                    <button type="submit" class="btn btn-danger">{{ __('toolloan.edit.confirmDelete') }}</button>
+                                    <button type="button" class="btn btn-outline-primary"
+                                        data-dismiss="modal">{{ __('toolloan.edit.closeButton') }}</button>
+                                    <button type="submit"
+                                        class="btn btn-danger">{{ __('toolloan.edit.confirmDelete') }}</button>
                                 </div>
                             </div>
                         </div>

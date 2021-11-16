@@ -21,7 +21,7 @@ class AdminProductController extends Controller
         $data = []; //to be sent to the view
 
         $data["title"] = "Product Management";
-        $data["products"] = Product::all();
+        $data["products"] = Product::with('toolloans.user')->paginate(5);
         $data["loanedTools"] = ToolLoan::all();
         $data["customers"] = User::where('role', 'client')->get();
 
@@ -62,10 +62,10 @@ class AdminProductController extends Controller
         $newProduct->setSalePrice($request->salePrice);
         $newProduct->setCost($request->cost);
         $newProduct->setCategory($request->category);
-        $newProduct->setBrand($request->brand) ;
-        $newProduct->setWarranty($request->warranty) ;
-        $newProduct->setQuantity($request->quantity) ;
-        $newProduct->setImagePath($imagePath) ;
+        $newProduct->setBrand($request->brand);
+        $newProduct->setWarranty($request->warranty);
+        $newProduct->setQuantity($request->quantity);
+        $newProduct->setImagePath($imagePath);
         $newProduct->save();
         
         return redirect()->route('admin.product.manage')->with('success', __('product.controller.created'));

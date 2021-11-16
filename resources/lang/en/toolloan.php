@@ -11,9 +11,10 @@ return [
 
     //Create form
     'create' => [
-        'createButton' => 'Loan Tool',
+        'createButton' => 'Save Tool Loan',
         'depositAmount' => 'Deposit Amount Required',
         'desc' => 'Description of Loan',
+        'loanButton' => 'Loan this Tool',
         'loanDate' => 'Start date of loan',
         'productId' => 'Select Tool to Loan',
         'returnDate' => 'Date to return tool',
@@ -32,6 +33,7 @@ return [
         'deleteMessage' => 'Are you sure you want to delete the tool loan with ID: ',
         'depositAmount' => 'Deposit',
         'description' => 'Description',
+        'dueToday' => 'Tool due today',
         'editButton' => 'Edit',
         'loanDate' => 'Modify Start date',
         'loanEnd' => 'End Date',
@@ -42,6 +44,7 @@ return [
         'modifyProductId' => 'Modify Tool',
         'modifyTitle' => 'Modify Existing Tool Loan',
         'modifyUserId' => 'Modify User',
+        'pastDue' => 'Tool past return date',
         'productId' => 'Product ID',
         'returnDate' => 'Modify Return Date',
         'selectNew' => 'Select new tool',

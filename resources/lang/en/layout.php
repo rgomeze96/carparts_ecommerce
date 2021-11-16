@@ -4,6 +4,7 @@ return [
     'admin' => 'Admin',
     'bitcoin' => 'Check Recent Bitcoin Value',
     'copyright' => '© 2021 Copyright:',
+    'flowerShop' => 'FlowerShop Products',
     'link' => 'CarPart.com',
     'login' => 'Login',
     'logout' => 'Logout',

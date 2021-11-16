@@ -4,9 +4,9 @@
 
 <?php $__env->startSection('content'); ?>
 <div class="container-fluid text-center">
-    <h2><?php echo e(__('product.edit.title')); ?></h2>
+    <h2><?php echo e(__('product.manage.title')); ?></h2>
     <?php echo $__env->make('util.message', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
-    <?php if($errors->any()): ?>
+    <?php if($errors->any()) : ?>
     <div class="alert alert-danger">
         <ul id="errors">
             <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -18,7 +18,7 @@
     <div class="row">
         <div class="ml-auto mb-2 mr-2">
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-add-product">
-                <?php echo e(__('product.edit.buttonAdd')); ?>
+                <?php echo e(__('product.manage.buttonAdd')); ?>
 
             </button>
         </div>
@@ -79,7 +79,7 @@
                     </div>
                     <div class="modal-footer mx-auto">
                         <button type="button" class="btn btn-secondary"
-                            data-dismiss="modal"><?php echo e(__('product.edit.buttonClose')); ?></button>
+                            data-dismiss="modal"><?php echo e(__('product.manage.buttonClose')); ?></button>
                         <button type="submit" class="btn btn-success"><?php echo e(__('product.create.button')); ?></button>
                     </div>
                 </div>
@@ -87,46 +87,48 @@
         </form>
     </div>
     <div class="row">
-        <table class="table table-dark table-hover bg-secondary text-light text-center">
+        <table class="table table-bordered table-dark table-hover text-center">
             <thead>
-                <th scope="col"><?php echo e(__('product.edit.id')); ?></th>
-                <th scope="col"><?php echo e(__('product.edit.productName')); ?></th>
-                <th scope="col"><?php echo e(__('product.edit.salePrice')); ?></th>
-                <th scope="col"><?php echo e(__('product.edit.cost')); ?></th>
-                <th scope="col"><?php echo e(__('product.edit.category')); ?></th>
-                <th scope="col"><?php echo e(__('product.edit.brand')); ?></th>
-                <th scope="col"><?php echo e(__('product.edit.warranty')); ?></th>
-                <th scope="col"><?php echo e(__('product.edit.actions')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.id')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.productName')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.salePrice')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.cost')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.quantity')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.category')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.brand')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.warranty')); ?></th>
+                <th scope="col"><?php echo e(__('product.manage.actions')); ?></th>
             </thead>
             <?php $__currentLoopData = $data["products"]; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tbody>
                 <tr>
                     <td scope="row"><?php echo e($product->getId()); ?></td>
-                    <td><?php echo e($product->getName()); ?></td>
-                    <td>$<?php echo e(number_format($product->getSalePrice(),2, '.', ',')); ?></td>
-                    <td>$<?php echo e(number_format($product->getCost(),2, '.', ',')); ?></td>
+                    <a href="<?php echo e(route('product.show', $product->getId())); ?>"><td><?php echo e($product->getName()); ?></td></a>
+                    <td>$<?php echo e(number_format($product->getSalePrice(), 2, '.', ',')); ?></td>
+                    <td>$<?php echo e(number_format($product->getCost(), 2, '.', ',')); ?></td>
+                    <td><?php echo e($product->getQuantity()); ?></td>    
                     <td><?php echo e($product->getCategory()); ?></td>
                     <td><?php echo e($product->getBrand()); ?></td>
                     <td><?php echo e($product->getWarranty()); ?></td>
                     <td>
                         <button type="button" class="btn btn-outline-warning" data-toggle="modal"
                             data-target="#modal-edit-<?php echo e($product->getId()); ?>">
-                            <?php echo e(__('product.edit.buttonEdit')); ?>
+                            <?php echo e(__('product.manage.buttonEdit')); ?>
 
                         </button>
 
-                        <?php if($data["loanedTools"]->where('product_id', $product->getId())->count() == 0): ?>
+                        <?php if($data["loanedTools"]->where('product_id', $product->getId())->count() == 0) : ?>
                         <button type="button" class="btn btn-outline-danger ml-1" data-toggle="modal"
                             data-target="#modal-delete-<?php echo e($product->getId()); ?>">
-                            <?php echo e(__('product.edit.buttonDelete')); ?>
+                            <?php echo e(__('product.manage.buttonDelete')); ?>
 
                         </button>
                         <?php endif; ?>
                         <br>
-                        <?php if($product->getCategory() == "Tool"): ?>
+                        <?php if($product->getCategory() == "Tool") : ?>
                         <button type="button" class="btn btn-outline-light mt-1" data-toggle="modal"
-                            data-target="#modal-add-toolloan">
-                            <?php echo e(__('toolloan.create.createButton')); ?>
+                            data-target="#modal-add-toolloan-<?php echo e($product->getId()); ?>">
+                            <?php echo e(__('toolloan.create.loanButton')); ?>
 
                         </button>
                         <?php endif; ?>
@@ -144,40 +146,40 @@
                                     <div class="modal-content mx-auto text-center border border-warning">
                                         <div class="modal-header">
                                             <h5 class="modal-title mx-auto">
-                                                <?php echo e(__('product.edit.modifyTitle')); ?>
+                                                <?php echo e(__('product.manage.modifyTitle')); ?>
 
                                             </h5>
                                         </div>
                                         <div class="modal-body">
                                             <?php echo csrf_field(); ?>
-                                            <label for="productName"><?php echo e(__('product.edit.productName')); ?></label>
+                                            <label for="productName"><?php echo e(__('product.manage.productName')); ?></label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter user ID" name="productName"
                                                 value="<?php echo e($product->getName()); ?>" />
-                                            <label for="description"><?php echo e(__('product.edit.desc')); ?></label>
+                                            <label for="description"><?php echo e(__('product.manage.desc')); ?></label>
                                             <textarea class="form-control col-md-8 mx-auto" name="description"
                                                 rows="3"><?php echo e($product->getDescription()); ?></textarea>
-                                            <label for="salePrice"><?php echo e(__('product.edit.salePrice')); ?></label>
+                                            <label for="salePrice"><?php echo e(__('product.manage.salePrice')); ?></label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter deposit amount required" name="salePrice"
                                                 value="<?php echo e($product->getSalePrice()); ?>" />
-                                            <label for="cost"><?php echo e(__('product.edit.cost')); ?></label>
+                                            <label for="cost"><?php echo e(__('product.manage.cost')); ?></label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter return date for loan" name="cost"
                                                 value="<?php echo e($product->getCost()); ?>" />
-                                            <label for="category"><?php echo e(__('product.edit.category')); ?></label>
+                                            <label for="category"><?php echo e(__('product.manage.category')); ?></label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter return date for loan" name="category"
                                                 value="<?php echo e($product->getCategory()); ?>" />
-                                            <label for="brand"><?php echo e(__('product.edit.brand')); ?></label>
+                                            <label for="brand"><?php echo e(__('product.manage.brand')); ?></label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter return date for loan" name="brand"
                                                 value="<?php echo e($product->getBrand()); ?>" />
-                                            <label for="warranty"><?php echo e(__('product.edit.warranty')); ?></label>
+                                            <label for="warranty"><?php echo e(__('product.manage.warranty')); ?></label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="text"
                                                 placeholder="Enter return date for loan" name="warranty"
                                                 value="<?php echo e($product->getWarranty()); ?>" />
-                                            <label for="quantity"><?php echo e(__('product.edit.quantity')); ?></label>
+                                            <label for="quantity"><?php echo e(__('product.manage.quantity')); ?></label>
                                             <input class="form-control mb-2 col-md-8 mx-auto" type="number" min="1"
                                                 placeholder="Enter return date for loan" name="quantity"
                                                 value="<?php echo e($product->getQuantity()); ?>" />
@@ -188,16 +190,16 @@
                                         </div>
                                         <div class="modal-footer mx-auto">
                                             <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal"><?php echo e(__('product.edit.buttonClose')); ?></button>
+                                                data-dismiss="modal"><?php echo e(__('product.manage.buttonClose')); ?></button>
                                             <button type="submit"
-                                                class="btn btn-warning"><?php echo e(__('product.edit.buttonUpdate')); ?></button>
+                                                class="btn btn-warning"><?php echo e(__('product.manage.buttonUpdate')); ?></button>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </form>
                     </div>
-                    <div class="modal fade" id="modal-add-toolloan" tabindex="-1" role="dialog">
+                    <div class="modal fade" id="modal-add-toolloan-<?php echo e($product->getId()); ?>" tabindex="-1" role="dialog">
                         <form class="mx-auto text-center" method="POST" action="<?php echo e(route('admin.toolloan.save')); ?>">
                             <?php echo e(csrf_field()); ?>
 
@@ -221,8 +223,8 @@
                                             value="<?php echo e(old('description')); ?>"></textarea>
                                         <label class="mt-2"
                                             for="depositAmount"><?php echo e(__('toolloan.create.depositAmount')); ?></label><br>
-                                        <small><?php echo e(__('product.edit.cost')); ?>:
-                                            $<?php echo e(number_format($product->getCost(),2, '.', ',')); ?></small>
+                                        <small><?php echo e(__('product.manage.cost')); ?>:
+                                            $<?php echo e(number_format($product->getCost(), 2, '.', ',')); ?></small>
                                         <input class="form-control col-md-6 mx-auto" type="text"
                                             placeholder="<?php echo e(__('toolloan.create.depositAmount')); ?>" name="depositAmount"
                                             value="<?php echo e(old('depositAmount')); ?>" />
@@ -236,9 +238,9 @@
                                     </div>
                                     <div class="modal-footer mx-auto">
                                         <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal"><?php echo e(__('product.edit.buttonClose')); ?></button>
+                                            data-dismiss="modal"><?php echo e(__('product.manage.buttonClose')); ?></button>
                                         <button type="submit"
-                                            class="btn btn-success"><?php echo e(__('product.create.button')); ?></button>
+                                            class="btn btn-success"><?php echo e(__('toolloan.create.createButton')); ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -254,18 +256,18 @@
                                     class="modal-content mx-auto text-center bg-secondary border border-danger text-light">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <div class="modal-body">
-                                        <?php echo e(__('product.edit.areYouSure')); ?> <?php echo e($product->getName()); ?>
+                                        <?php echo e(__('product.manage.areYouSure')); ?> <?php echo e($product->getName()); ?>
 
-                                        <?php echo e(__('product.edit.withA')); ?> <?php echo e($product->getQuantity()); ?>
+                                        <?php echo e(__('product.manage.withA')); ?> <?php echo e($product->getQuantity()); ?>
 
-                                        <?php echo e(__('product.edit.inInv')); ?>
+                                        <?php echo e(__('product.manage.inInv')); ?>
 
                                     </div>
                                     <div class="modal-footer mx-auto">
                                         <button type="button" class="btn btn-outline-primary"
-                                            data-dismiss="modal"><?php echo e(__('product.edit.buttonClose')); ?></button>
+                                            data-dismiss="modal"><?php echo e(__('product.manage.buttonClose')); ?></button>
                                         <button type="submit"
-                                            class="btn btn-danger"><?php echo e(__('product.edit.buttonDeletePro')); ?></button>
+                                            class="btn btn-danger"><?php echo e(__('product.manage.buttonDeletePro')); ?></button>
                                     </div>
                                 </div>
                             </div>
@@ -275,6 +277,17 @@
             </tbody>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </table>
+        <div class="alert alert-danger mx-auto"><?php echo e(__('product.manage.cannotDelete')); ?></div>
     </div>
-    <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/product/manage.blade.php ENDPATH**/ ?>
+</div>
+<div class="row justify-content-center">
+    <?php echo e($data["products"]->onEachSide(2)->links()); ?>
+
+</div>
+<?php $__env->stopSection(); ?>
+</div>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**
+                                                                                                                                      * 
+                                                                                                                                      * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/admin/product/manage.blade.php ENDPATH
+                                                                                                                                      **/ ?>

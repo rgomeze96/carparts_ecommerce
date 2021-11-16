@@ -10,7 +10,7 @@
             <h5><?php echo e(__('user.show.accountInfo')); ?></h5>
         </div>
         <div class="card-body">
-            <?php if($errors->any()): ?>
+            <?php if($errors->any()) : ?>
             <div class="alert alert-danger">
                 <ul id="errors">
                     <?php $__currentLoopData = $errors->all(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $error): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
@@ -26,7 +26,7 @@
             <p><b><?php echo e(__('user.show.city')); ?>:</b> <?php echo e($data["user"]->getCity()); ?><br /></p>
             <p><b><?php echo e(__('user.show.country')); ?>:</b> <?php echo e($data["user"]->getCountry()); ?><br /></p>
             <p><b><?php echo e(__('user.show.telephone')); ?>:</b> <?php echo e($data["user"]->getTelephone()); ?><br /></p>
-            <p><b><?php echo e(__('user.show.balance')); ?>:</b> $<?php echo e(number_format($data["user"]->getBalance(),2, '.', ',')); ?><br /></p>
+            <p><b><?php echo e(__('user.show.balance')); ?>:</b> $<?php echo e(number_format($data["user"]->getBalance(), 2, '.', ',')); ?><br /></p>
             <button type="button" class="btn btn-secondary" data-toggle="modal"
                 data-target="#modal-edit-<?php echo e($data['user']->getId()); ?>">
                 <?php echo e(__('user.show.modifyAccountButton')); ?>
@@ -94,4 +94,7 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/user/show.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**
+                                                                                                                                      * 
+                                                                                                                                      * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/user/show.blade.php ENDPATH
+                                                                                                                                      **/ ?>

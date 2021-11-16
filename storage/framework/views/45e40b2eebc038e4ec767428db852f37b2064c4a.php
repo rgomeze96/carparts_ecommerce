@@ -47,7 +47,7 @@
         </div>
         <div class="col">
         <a href="<?php echo e(route('product.list')); ?>"><button
-                            class="btn btn-secondary"><?php echo e(__('product.list.removeFilters')); ?></button></a>
+                            class="btn btn-secondary"><?php echo e(__('product.list.removeFilter')); ?></button></a>
         </div>
     </div>
     <hr class="border-secondary">
@@ -64,7 +64,7 @@
                     <h4><a class="text-secondary"
                             href="<?php echo e(route('product.show', $product->getId())); ?>"><?php echo e($product->getName()); ?></a></h4>
 
-                    <h5><?php echo e(__('product.list.price')); ?>: $<?php echo e(number_format($product->getSalePrice(),2, '.', ',')); ?></h5>
+                    <h5><?php echo e(__('product.list.price')); ?>: $<?php echo e(number_format($product->getSalePrice(), 2, '.', ',')); ?></h5>
                     <h5><?php echo e(__('product.list.brand')); ?>: <?php echo e($product->getBrand()); ?></h5><br>
                     <a href="<?php echo e(route('product.addToCart', $product->getId())); ?>"><button
                             class="btn btn-primary"><?php echo e(__('product.list.addToCart')); ?></button></a>
@@ -72,8 +72,15 @@
             </div>
             <br>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+            <div class="row justify-content-center">
+                <?php echo e($data["products"]->onEachSide(2)->links()); ?>
+
+            </div>
         </div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/product/list.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**
+                                                                                                                                      * 
+                                                                                                                                      * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/product/list.blade.php ENDPATH
+                                                                                                                                      **/ ?>

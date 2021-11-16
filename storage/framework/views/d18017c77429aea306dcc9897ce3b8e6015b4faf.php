@@ -29,7 +29,7 @@
                                 style="height: 180px;" src="<?php echo e(asset($product->getImagePath())); ?>" alt="" /></a>
                     </div>
                     <div class="card-body text-center">
-                        <h5><?php echo e(__('home.price')); ?>: $<?php echo e(number_format($product->getSalePrice(),2, '.', ',')); ?></h5><br>
+                        <h5><?php echo e(__('home.price')); ?>: $<?php echo e(number_format($product->getSalePrice(), 2, '.', ',')); ?></h5><br>
 
                         <a href="<?php echo e(route('product.addToCart', $product->getId())); ?>"><button
                                 class="btn btn-primary"><?php echo e(__('product.list.addToCart')); ?></button></a>
@@ -69,4 +69,7 @@
     </div>
 </section>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/home/index.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**
+                                                                                                                                      * 
+                                                                                                                                      * PATH C:\xampp\htdocs\carparts_ecommerce\resources\views/home/index.blade.php ENDPATH
+                                                                                                                                      **/ ?>
