@@ -3,19 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 use App\Models\Product;
 use App\Models\ToolLoan;
 use App\Models\User;
-
 use App\Interfaces\ImageStorage;
 
 class AdminProductController extends Controller
 {
-
     public function manage()
     {
         $data = []; //to be sent to the view
