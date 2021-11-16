@@ -18,6 +18,7 @@ Auth::routes();
 
 //Language
 Route::get('/language/{lan}', 'App\Http\Controllers\Client\HomeController@language')->name('home.language');
+
 //Client routes
 //Bitcoin
 Route::get('/checkBitcoinPrices', 'App\Http\Controllers\Client\BitcoinController@index')->name('bitcoin.index');
@@ -45,7 +46,9 @@ Route::post('/review/storeReview/{id}', 'App\Http\Controllers\Client\ProductCont
 
 //User
 Route::get('/user/create', 'App\Http\Controllers\Client\UserController@create')->name("user.create");
+
 Route::post('/user/save', 'App\Http\Controllers\Client\UserController@save')->name("user.save");
+Route::get('/user/orders/{id}', 'App\Http\Controllers\Client\UserController@orders')->name("user.orders");
 Route::get('/user/show/{id}', 'App\Http\Controllers\Client\UserController@show')->name("user.show");
 Route::post('/user/update/{id}', 'App\Http\Controllers\Client\UserController@update')
         ->name("user.update");

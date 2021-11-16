@@ -71,7 +71,7 @@ class ProductController extends Controller
                 $order->save();
                 $request->session()->forget('products');
             }
-            return redirect()->route('product.showCart')->with('success', __('product.controller.buySuccessful'));
+            return redirect()->route('user.orders', $user->getId())->with('success', __('product.controller.buySuccessful'));
         }
     }
 

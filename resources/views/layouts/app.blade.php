@@ -41,11 +41,14 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
                             href="{{ route('login') }}">{{ __('layout.login') }}</a></li> <span class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('register') }}">{{ __('layout.register') }}</a></li> <span class="mt-2">|</span>
+                            href="{{ route('register') }}">{{ __('layout.register') }}</a></li> <span
+                        class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li> <span class="mt-2">|</span>
+                            href="{{ route('product.list') }}">{{ __('layout.products') }}</a></li> <span
+                        class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
-                            href="{{ route('bitcoin.index') }}">{{ __('layout.bitcoin') }}</a></li> <span class="mt-2">|</span>
+                            href="{{ route('bitcoin.index') }}">{{ __('layout.bitcoin') }}</a></li> <span
+                        class="mt-2">|</span>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link"
                             href="{{ route('flower.index') }}">{{ __('layout.flowerShop') }}</a></li>
                     @else
@@ -81,6 +84,8 @@
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('user.show', Auth::id()) }}">{{ __('layout.myAccount') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
+                                    href="{{ route('user.orders', Auth::id()) }}">{{ __('layout.myOrders') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('bitcoin.index')}}">{{ __('layout.bitcoin') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('flower.index')}}">{{ __('layout.flowerShop') }}</a></li>
@@ -99,6 +104,8 @@
                                     href="{{ route('product.showCart') }}">{{ __('layout.myCart') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('user.show', Auth::id()) }}">{{ __('layout.myAccount') }}</a></li>
+                            <li class="dropdown-item"><a class="nav-link"
+                                    href="{{ route('user.orders', Auth::id()) }}">{{ __('layout.myOrders') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"
                                     href="{{ route('bitcoin.index')}}">{{ __('layout.bitcoin') }}</a></li>
                             <li class="dropdown-item"><a class="nav-link"

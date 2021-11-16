@@ -42,7 +42,7 @@ class AdminUserController extends Controller
             $userToModify->setRole($request->role);
         }
         $userToModify->save();
-        return redirect()->route('admin.user.list')->with('success', __('User.controller.updated'));
+        return redirect()->route('admin.user.manage')->with('success', __('User.controller.updated'));
     }
 
     public function destroy($id)
@@ -50,6 +50,6 @@ class AdminUserController extends Controller
         $userToDelete = User::findOrFail($id);
         $userToDelete->delete();
 
-        return back()->with('success', __('User.controller.removed'));
+        return redirect()->route('admin.user.manage')->with('success', __('User.controller.removed'));
     }
 }

@@ -64,6 +64,20 @@ return [
         'telephonePH' => 'Modify user telephone',
         'balancePH' => 'Modify user balance',
     ],
+    //Orders
+    'orders' => [
+        'closeButton' => 'Close Purchase Items',
+        'dateOfPurchase' => 'Purchase Date',
+        'itemName' => 'Product Name',
+        'itemSubtotal' => 'Item Price',
+        'numberItems' => 'Number of Items Purchased',
+        'purchaseTotal' => 'Purchase Total',
+        'reviewPurchase' => 'Review Purchased Items',
+        'seeItemsButton' => 'Review Items',
+        'seeItemsTitle' => 'Items Purchased with this Order',
+        'title' => 'My Previous Orders',
+        'total' => 'Total Purchase Price'
+    ],
     
     //Show
     'show' => [
