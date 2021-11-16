@@ -132,8 +132,15 @@
         <?php echo $__env->yieldContent('content'); ?>
     </div>
     <!-- Copyright -->
-    <div class="bg-secondary text-light text-center py-3">© 2021 Copyright:
-        <a href="<?php echo e(route('home.index')); ?>"> CarPart.com</a>
+    <div class="container-fluid bg-secondary text-light text-center py-3">
+        <div class="row">
+            <div class="col">
+                <div class="">© 2021 Copyright:
+                    <a href="<?php echo e(route('home.index')); ?>"> CarPart.com</a>
+                </div>
+            </div>
+            <div class="col"><a href="/language/en">English</a> | <a href="/language/es">Español</a></div>
+        </div>
     </div>
     <!-- Copyright -->
     <!-- Bootstrap core JS-->
