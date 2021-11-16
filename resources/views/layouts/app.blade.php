@@ -135,7 +135,7 @@
                     <a href="{{route('home.index')}}"> CarPart.com</a>
                 </div>
             </div>
-            <div class="col"><a href="/language/en">English</a> | <a href="/language/es">Español</a></div>
+            <div class="col"><a href="{{route('home.language', 'en')}}">English</a> | <a href="{{route('home.language', 'es')}}">Español</a></div>
         </div>
     </div>
     <!-- Copyright -->

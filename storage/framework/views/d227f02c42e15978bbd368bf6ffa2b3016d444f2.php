@@ -139,7 +139,7 @@
                     <a href="<?php echo e(route('home.index')); ?>"> CarPart.com</a>
                 </div>
             </div>
-            <div class="col"><a href="/language/en">English</a> | <a href="/language/es">Español</a></div>
+            <div class="col"><a href="<?php echo e(route('home.language', 'en')); ?>">English</a> | <a href="<?php echo e(route('home.language', 'es')); ?>">Español</a></div>
         </div>
     </div>
     <!-- Copyright -->
