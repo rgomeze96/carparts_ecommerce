@@ -20,6 +20,7 @@ return [
         'updated' => 'Product was updated successfully!',
         'toolsForRent' => 'Tools Available for Rent'
     ],
+
     //Create
     'create' => [
         'title' => 'Create a New Product',
@@ -42,6 +43,7 @@ return [
         'warrantyPH' => 'Enter product warranty',
         'quantityPH' => 'Enter product quantity',
     ],
+
     //Manage
     'manage' => [
         'actions' => 'Actions',
@@ -69,6 +71,7 @@ return [
         'warranty' => 'Warranty',
         'withA'=> ', with a quantity of',
     ],
+
     //List
     'list' => [
         'addToCart' => 'Add to cart',
@@ -82,6 +85,7 @@ return [
         'removeFilter' => 'Remove Filter',
         'price' => 'Price',
     ],
+
     //Show
     'show' => [
         'beTheFirst' => 'Be the first to leave a review!',
@@ -105,6 +109,7 @@ return [
         'storeReviewTitle' => 'Leave a review for:',
         'warranty' => 'Product warranty:',
     ],
+    
     //Show cart
     'showCart' => [
         'price' => 'Price:',

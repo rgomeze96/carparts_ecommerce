@@ -31,8 +31,8 @@ return [
         'balancePH' => 'Ingrese el saldo',
     ],
 
-    //Edit
-    'edit' => [
+    //Manage
+    'manage' => [
         'title' => 'Lista de Usuarios',
         'modifyTitle' => 'Actualizar la Información del Usuario',
         'id' => 'ID',
@@ -40,6 +40,7 @@ return [
         'email' => 'Correo Electrónico',
         'address' => 'Dirección',
         'age' => 'Edad',
+        'cannotDelete' => 'No se puede eliminar al usuario si actualmente está alquilando una herramienta',
         'city' => 'Ciudad',
         'country' => 'País',
         'telephone' => 'Teléfono',
@@ -54,8 +55,31 @@ return [
         'clientRole' => 'Cliente',
         'adminRole' => 'Administrador',
         'role' => 'Permisos',
+        'userNamePH' => 'Modificar nombre',
+        'emailPH' => 'Modificar email',
+        'addressPH' => 'Modificar dirección',
+        'agePH' => 'Modificar edad',
+        'cityPH' => 'Modificar ciudad',
+        'countryPH' => 'Modificar país',
+        'telephonePH' => 'Modificar teléfono',
+        'balancePH' => 'Modificar saldo',
     ],
     
+    //Orders
+    'orders' => [
+        'closeButton' => 'Cerrar',
+        'dateOfPurchase' => 'Fecha de Compra',
+        'itemName' => 'Nombre del producto',
+        'itemSubtotal' => 'Precio del Artículo',
+        'numberItems' => 'Número de Artículos Comprados',
+        'purchaseTotal' => 'Total de Compra',
+        'reviewPurchase' => 'Revisar los Artículos Comprados',
+        'seeItemsButton' => 'Revisar Artículos',
+        'seeItemsTitle' => 'Artículos Comprados con este Pedido',
+        'title' => 'Mis Pedidos Anteriores',
+        'total' => 'Precio Total de Compra'
+    ],
+
     //Show
     'show' => [
         'accountInfo' => 'Información de mi Cuenta',

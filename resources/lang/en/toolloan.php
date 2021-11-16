@@ -21,6 +21,7 @@ return [
         'title' => 'Loan Tool',
         'user' => 'User',
     ],
+    
     //Edit form
     'edit' => [
         'actions' => 'Actions',

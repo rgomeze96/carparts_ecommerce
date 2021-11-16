@@ -64,6 +64,7 @@ return [
         'telephonePH' => 'Modify user telephone',
         'balancePH' => 'Modify user balance',
     ],
+    
     //Orders
     'orders' => [
         'closeButton' => 'Close Purchase Items',

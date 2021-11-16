@@ -6,14 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-//use App\Http\Controllers\ProductController;
-
 class Product extends Model
 {
     use HasFactory;
 
     //attributes id, name, description, sale_price, cost, category, brand, warranty, image_path, created_at, updated_at
-
     //methods validateProduct
 
     protected $fillable = ['name','description','sale_price','cost','category','brand','warranty', 'quantity',

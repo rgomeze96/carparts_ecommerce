@@ -26,6 +26,7 @@ class User extends Authenticatable
         'balance',
         'role'
     ];
+    
     public static function validateUser(Request $request)
     {
         $request->validate(

@@ -3,14 +3,22 @@
 return [
     //Controller
     'controller' => [
-        'allProducts' => 'Lista de todos los productos',
-        'created' => 'El producto fue creado satisfactoriamente!',
+        'addedToCartSuccessfully' => 'Producto agregado al carrito satisfactoriamente!',
+        'allProducts' => 'Lista de todos los Productos',
+        'buySuccessful' =>
+            'Compra exitosa! Comuníquese con un administrador con respecto a la entrega de su producto, gracias',
+        'created' => 'Producto creado satisfactoriamente!',
+        'deletedAllFromCartSuccessfully' => 'Todos los productos fueron eliminados del carrito',
+        'deleted1FromCartSuccessfully' => 'Producto eliminado del carrito',
         'inName' => ' - en el nombre',
+        'insufficientBalance' => 'Fondos insuficientes, comuníquese con un administrador con respecto al saldo de su cuenta',
+        'listOfProductsByBrand' => 'Productos fabricados por: ',
+        'listOfProductsByCategory' => 'Productos en la categoría: ',
         'listOfProductsWith' => 'Lista de productos con: ',
-        'removed' => 'El producto fue eliminado satisfactoriamente!',
+        'removed' => 'Producto eliminado satisfactoriamente!',
         'reviewCreated' => 'Tu reseña fue creada satisfactoriamente!',
-        'updated' => 'El producto fue actualizado satisfactoriamente!',
-        'toolsForRent' => 'Herramientas disponibles para alquiler'
+        'updated' => 'Producto actualizado satisfactoriamente!',
+        'toolsForRent' => 'Herramientas Disponibles para Rentar'
     ],
 
     //Create
@@ -36,14 +44,14 @@ return [
         'quantityPH' => 'Ingrese la cantidad',
     ],
 
-    //Edit
-    'edit' => [
+    //Manage
+    'manage' => [
         'title' => 'Lista de Productos',
         'modifyTitle' => 'Actualizar la Información del Producto',
         'id' => 'ID',
         'productName' => 'Nombre',
         'desc' => 'Descripción',
-        'salePrice' => 'Pricio de Venta',
+        'salePrice' => 'Precio de Venta',
         'cost' => 'Costo',
         'category' => 'Categoría',
         'brand' => 'Marca',
@@ -52,6 +60,7 @@ return [
         'image' => 'Imagen',
         'buttonEdit' => 'Editar',
         'buttonDelete' => 'Eliminar',
+        'buttonAdd' => 'Añadir Nuevo Producto',
         'actions' => 'Acciones',
         'buttonUpdate' => 'Actualizar Producto',
         'buttonClose' => 'Cerrar',
@@ -59,20 +68,27 @@ return [
         'areYouSure'=>   'Está seguro de que quiere eliminar el producto:',
         'withA'=> ', con una cantidad de ',
         'inIn'=> ' en el inventario?',
+        'cannotDelete' => 'No se puede eliminar el producto si se está prestando actualmente',
+        'loanQuantity' => 'Cantidad en préstamo',
     ],
     
     //List
     'list' => [
         'addToCart' => 'Añadir al carrito',
         'brand' => 'Marca',
-        'brandFilter' => 'Filter by Brand',
-        'price' => 'Precio',
+        'filter' => 'Aplicar Filtros',
         'filters' => 'Filtros',
+        'filterByBrand' => 'Filtrar por marca',
+        'filterByCategory' => 'Filtrar por categoría',
+        'filterByName' => 'Filtrar por nombre',
         'findOnName' => 'Filtrar por nombre',
+        'removeFilter' => 'Eliminar Filtro',
+        'price' => 'Precio',
     ],
 
     //Show
     'show' => [
+        'beTheFirst' => 'Sé el primero en dejar una reseña!',
         'name' => 'Nombre:',
         'desc' => 'Descripción:',
         'salePrice' => 'Precio:',
@@ -89,7 +105,9 @@ return [
         'newReviewRating' => 'Tú Valoración',
         'newReviewRatingHelp' => 'Escribe un número entre 1-5, 5 siendo una buena valoración',
         'newReviewText' => 'Tú Experiencia',
-        'saveReviewButton' => 'Guardar Reseña'
+        'saveReviewButton' => 'Guardar Reseña',
+        'loginButton' => 'Iniciar Sesión Aquí',
+        'loginToReview' => 'Por favor inicie sesión para dejar una reseña',
     ],
 
     //Show cart

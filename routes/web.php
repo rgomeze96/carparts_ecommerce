@@ -19,12 +19,13 @@ Auth::routes();
 //Language
 Route::get('/language/{lan}', 'App\Http\Controllers\Client\HomeController@language')->name('home.language');
 
-//Client routes
+//-------- Client routes --------
 //Bitcoin
 Route::get('/checkBitcoinPrices', 'App\Http\Controllers\Client\BitcoinController@index')->name('bitcoin.index');
 
 //Flowers
 Route::get('/flowerShop', 'App\Http\Controllers\Client\FlowerController@index')->name("flower.index");
+
 //Home
 Route::get('/', 'App\Http\Controllers\Client\HomeController@index')->name("home.index");
 
@@ -39,23 +40,21 @@ Route::get('/product/delete', 'App\Http\Controllers\Client\ProductController@del
 ->name('product.deleteAllCart');
 Route::get('/product/buy', 'App\Http\Controllers\Client\ProductController@buy')->name('product.buy');
 
-// Product Reviews
+//Product Reviews
 Route::get('/review/create/{id}', 'App\Http\Controllers\Client\ProductController@review')->name('product.writeReview');
 Route::post('/review/storeReview/{id}', 'App\Http\Controllers\Client\ProductController@storeReview')
         ->name('product.storeReview');
 
 //User
 Route::get('/user/create', 'App\Http\Controllers\Client\UserController@create')->name("user.create");
-
 Route::post('/user/save', 'App\Http\Controllers\Client\UserController@save')->name("user.save");
 Route::get('/user/orders/{id}', 'App\Http\Controllers\Client\UserController@orders')->name("user.orders");
 Route::get('/user/show/{id}', 'App\Http\Controllers\Client\UserController@show')->name("user.show");
 Route::post('/user/update/{id}', 'App\Http\Controllers\Client\UserController@update')
         ->name("user.update");
 
-//---------------------------------------------------------------------------------------------------------------------------
-//Admin routes
-//user
+//-------- Admin routes --------
+//User
 Route::delete('/admin/user/destroy/{id}', 'App\Http\Controllers\Admin\AdminUserController@destroy')
         ->name("admin.user.destroy");
 Route::get('/admin/user/manage', 'App\Http\Controllers\Admin\AdminUserController@manage')->name("admin.user.manage");
@@ -73,10 +72,9 @@ Route::post('/admin/product/update/{id}', 'App\Http\Controllers\Admin\AdminProdu
 Route::delete('/admin/product/destroy/{id}', 'App\Http\Controllers\Admin\AdminProductController@destroy')
         ->name("admin.product.destroy");
 
-// Tool Loan
+//Tool Loan
 Route::get('/admin/toolloan/manage', 'App\Http\Controllers\Admin\AdminToolLoanController@manage')
 ->name("admin.toolloan.manage");
-
 Route::post('/admin/toolloan/save', 'App\Http\Controllers\Admin\AdminToolLoanController@save')
 ->name("admin.toolloan.save");
 Route::post('/admin/toolloan/update/{id}', 'App\Http\Controllers\Admin\AdminToolLoanController@update')
