@@ -17,7 +17,7 @@ return [
     'products' => 'Products',
     'register' => 'Register',
     'myCart' => 'My Cart',
+    'myOrders' => 'My Orders',
     'title' => 'CarPart Home',
     'toolManagement' => 'Tool Loan Management',
-    
 ];

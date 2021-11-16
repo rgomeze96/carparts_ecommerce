@@ -6,10 +6,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
+use App\Models\Order;
 use App\Models\User;
 
 class UserController extends Controller
 {
+    public function orders($id)
+    {
+        $data = []; //to be sent to the view
+        $user = User::findOrFail($id);
+        $data["orders"] = Order::where('user_id', $user->getId())->with('items')->get();
+        $data["title"] = __('user.orders.title');
+        $data["user"] = $user;
+        return view('user.orders')->with("data", $data);
+    }
     public function show($id)
     {
         $data = []; //to be sent to the view
