@@ -46,7 +46,7 @@ return [
 
     //Manage
     'manage' => [
-        'title' => 'Lista de Productos',
+        'title' => 'Manejo de Productos',
         'modifyTitle' => 'Actualizar la Información del Producto',
         'id' => 'ID',
         'productName' => 'Nombre',
